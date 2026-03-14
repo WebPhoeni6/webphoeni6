@@ -1,0 +1,31 @@
+.skills {
+  background: var(--color-bg);
+  padding: 8rem 2rem;
+}
+.skills__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.skills__header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.skills__heading {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+.skills__accent {
+  color: var(--color-accent);
+}
+.skills__subtitle {
+  color: var(--color-text-muted);
+  font-size: 1.1rem;
+}
+.skills__marquee {
+  margin-bottom: 4rem;
+  overflow: hidden;
+}
+.skills__bento {
+  margin-top: 2rem;
+}

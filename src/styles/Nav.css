@@ -1,0 +1,97 @@
+.nav {
+  position: fixed;
+  top: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  width: max-content;
+  visibility: hidden; /* GSAP will show it */
+}
+.nav__pill {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 0.75rem 1.5rem;
+  background: rgba(10, 10, 10, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 100px;
+}
+.nav__logo {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--color-accent);
+  letter-spacing: 0.05em;
+}
+.nav__links {
+  display: flex;
+  list-style: none;
+  gap: 0.25rem;
+}
+.nav__link {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: 1.2em;
+  padding: 0 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  transition: color 0.2s;
+}
+.nav__link:hover { color: var(--color-text); }
+.nav__link-text,
+.nav__link-hover {
+  display: block;
+  transition: transform 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+}
+.nav__link-hover {
+  position: absolute;
+  top: 100%;
+  left: 0.75rem;
+  color: var(--color-accent);
+}
+.nav__link:hover .nav__link-text { transform: translateY(-100%); }
+.nav__link:hover .nav__link-hover { transform: translateY(-100%); }
+.nav__burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.nav__burger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--color-text);
+  transition: transform 0.3s, opacity 0.3s;
+}
+.nav__burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav__burger.open span:nth-child(2) { opacity: 0; }
+.nav__burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.nav__mobile {
+  position: fixed;
+  inset: 0;
+  background: rgba(10,10,10,0.97);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+.nav__mobile-link {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-text);
+  transition: color 0.2s;
+}
+.nav__mobile-link:hover { color: var(--color-accent); }
+@media (max-width: 640px) {
+  .nav__links { display: none; }
+  .nav__burger { display: flex; }
+}
