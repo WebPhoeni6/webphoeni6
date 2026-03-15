@@ -1,4 +1,6 @@
-* { cursor: none !important; }
+@media (pointer: fine) {
+  * { cursor: none !important; }
+}
 
 .rc-dot,
 .rc-ring {
@@ -31,4 +33,9 @@
   width: 56px;
   height: 56px;
   border-color: rgba(0, 212, 255, 0.3);
+}
+
+@media (pointer: coarse) {
+  .rc-dot,
+  .rc-ring { display: none; }
 }
