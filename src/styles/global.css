@@ -1,5 +1,5 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: auto; } /* Lenis handles scroll */
+html { scroll-behavior: auto; overflow-x: hidden; } /* Lenis handles scroll */
 
 :root {
   --font-heading: 'Domine', Georgia, serif;

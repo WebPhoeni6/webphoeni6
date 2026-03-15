@@ -5,6 +5,7 @@
   transform: translateX(-50%);
   z-index: 1000;
   width: max-content;
+  max-width: calc(100vw - 2rem);
   visibility: hidden; /* GSAP will show it */
 }
 .nav__pill {
@@ -94,4 +95,5 @@
 @media (max-width: 640px) {
   .nav__links { display: none; }
   .nav__burger { display: flex; }
+  .nav__pill { padding: 0.6rem 1rem; gap: 1rem; }
 }
