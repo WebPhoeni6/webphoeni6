@@ -1,9 +1,8 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
-import DarkVeil from './DarkVeil';
 import SplitText from './SplitText';
 import GradientText from './GradientText';
-import ProfileCard from './ProfileCard';
+import Antigravity from './Antigravity';
 import { personal } from '../data/index';
 import '../styles/Hero.css';
 
@@ -28,124 +27,68 @@ const ArrowIcon = () => (
 
 export default function Hero() {
   const greetingRef = useRef<HTMLParagraphElement>(null);
-  const rightRef = useRef<HTMLDivElement>(null);
+  const socialsRef = useRef<HTMLDivElement>(null);
+  const ctaRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      if (greetingRef.current) {
-        gsap.fromTo(
-          greetingRef.current,
-          { opacity: 0, y: 20 },
-          { opacity: 1, y: 0, duration: 0.8, delay: 0.2, ease: 'power3.out' }
-        );
-      }
-      if (rightRef.current) {
-        gsap.fromTo(
-          rightRef.current,
-          { opacity: 0, x: 40 },
-          { opacity: 1, x: 0, duration: 0.9, delay: 0.6, ease: 'power3.out' }
-        );
-      }
+      gsap.fromTo(
+        [greetingRef.current, socialsRef.current, ctaRef.current],
+        { opacity: 0, y: 24 },
+        { opacity: 1, y: 0, duration: 0.8, stagger: 0.15, delay: 0.6, ease: 'power3.out' }
+      );
     });
     return () => ctx.revert();
   }, []);
 
-  const handleCtaClick = () => {
-    const portfolio = document.getElementById('portfolio');
-    if (portfolio) {
-      portfolio.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <section className="hero" id="hero">
-      <div className="hero__bg">
-        <DarkVeil
-          hueShift={180}
-          noiseIntensity={0.04}
-          scanlineIntensity={0.1}
-          scanlineFrequency={80}
-          warpAmount={0.3}
-          speed={0.4}
-        />
+      <div className="hero__antigravity">
+        <Antigravity count={60} color="#00d4ff" />
       </div>
 
       <div className="hero__content">
-        <div className="hero__left">
-          <p ref={greetingRef} className="hero__greeting">
-            Hello, I'm
-          </p>
+        <p ref={greetingRef} className="hero__greeting">Hello, I'm</p>
 
-          <div className="hero__name">
-            <SplitText
-              text={personal.name}
-              tag="h1"
-              className="hero__name-text"
-              splitType="chars"
-              delay={40}
-              duration={1}
-              ease="power3.out"
-              from={{ opacity: 0, y: 30 }}
-              to={{ opacity: 1, y: 0 }}
-              threshold={0}
-              rootMargin="0px"
-              textAlign="left"
-            />
-          </div>
-
-          <div className="hero__title">
-            <GradientText
-              colors={['#00d4ff', '#0099bb', '#00d4ff', '#00eeff', '#00d4ff']}
-              animationSpeed={6}
-              direction="horizontal"
-            >
-              {personal.title}
-            </GradientText>
-          </div>
-
-          <div className="hero__socials">
-            <a
-              href={personal.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hero__social"
-              aria-label="GitHub profile"
-            >
-              <GitHubIcon />
-              GitHub
-            </a>
-            <a
-              href={personal.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hero__social"
-              aria-label="LinkedIn profile"
-            >
-              <LinkedInIcon />
-              LinkedIn
-            </a>
-          </div>
-
-          <button className="hero__cta" onClick={handleCtaClick} type="button">
-            View My Work
-            <ArrowIcon />
-          </button>
-        </div>
-
-        <div ref={rightRef} className="hero__right">
-          <ProfileCard
-            avatarUrl="/images/me.png"
-            name={personal.name}
-            title={personal.title}
-            handle="webphoeni6"
-            status="Available for hire"
-            contactText="Contact"
-            onContactClick={() => {
-              const contact = document.getElementById('contact');
-              if (contact) contact.scrollIntoView({ behavior: 'smooth' });
-            }}
+        <div className="hero__name">
+          <SplitText
+            text={personal.name}
+            tag="h1"
+            className="hero__name-text"
+            splitType="chars"
+            delay={40}
+            duration={1}
+            ease="power3.out"
+            from={{ opacity: 0, y: 30 }}
+            to={{ opacity: 1, y: 0 }}
+            threshold={0}
+            rootMargin="0px"
+            textAlign="center"
           />
         </div>
+
+        <div className="hero__title">
+          <GradientText
+            colors={['#00d4ff', '#0099bb', '#00d4ff', '#00eeff', '#00d4ff']}
+            animationSpeed={6}
+            direction="horizontal"
+          >
+            {personal.title}
+          </GradientText>
+        </div>
+
+        <div ref={socialsRef} className="hero__socials">
+          <a href={personal.github} target="_blank" rel="noopener noreferrer" className="hero__social" aria-label="GitHub">
+            <GitHubIcon /> GitHub
+          </a>
+          <a href={personal.linkedin} target="_blank" rel="noopener noreferrer" className="hero__social" aria-label="LinkedIn">
+            <LinkedInIcon /> LinkedIn
+          </a>
+        </div>
+
+        <button ref={ctaRef} className="hero__cta" onClick={() => document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' })} type="button">
+          View My Work <ArrowIcon />
+        </button>
       </div>
     </section>
   );

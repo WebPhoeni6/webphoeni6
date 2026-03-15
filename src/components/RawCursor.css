@@ -1,0 +1,34 @@
+* { cursor: none !important; }
+
+.rc-dot,
+.rc-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  will-change: transform;
+}
+
+.rc-dot {
+  width: 8px;
+  height: 8px;
+  background: #00d4ff;
+}
+
+.rc-ring {
+  border: 1.5px solid rgba(0, 212, 255, 0.6);
+  background: transparent;
+}
+
+.rc-ring--1 {
+  width: 32px;
+  height: 32px;
+}
+
+.rc-ring--2 {
+  width: 56px;
+  height: 56px;
+  border-color: rgba(0, 212, 255, 0.3);
+}

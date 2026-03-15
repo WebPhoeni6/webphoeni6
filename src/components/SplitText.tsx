@@ -167,10 +167,11 @@ const SplitText: React.FC<SplitTextProps> = ({
     const classes = `split-parent ${className}`;
     const Tag = (tag || 'p') as React.ElementType;
 
+    const TagAny = Tag as any;
     return (
-      <Tag ref={ref} style={style} className={classes}>
+      <TagAny ref={ref} style={style} className={classes}>
         {text}
-      </Tag>
+      </TagAny>
     );
   };
   return renderTag();

@@ -23,76 +23,76 @@ export const skills: Skill[] = [
 export const projects: Project[] = [
   {
     title: "Bistropulse",
-    description: "Restaurant Management SaaS",
+    description: "Restaurant management SaaS — menu, orders, and staff scheduling in one place.",
     image: "images/bistropulse.png",
-    tag: "Full Stack",
+    tag: "SaaS",
     liveUrl: "https://bistropulse.vercel.app/",
   },
   {
     title: "Afrophuket",
-    description: "Event Ticketing & Management Platform",
+    description: "Event ticketing platform handling discovery, seat selection, and payment flow.",
     image: "images/afrophuket.png",
-    tag: "Full Stack",
+    tag: "Platform",
     liveUrl: "https://afrophuket.vercel.app/",
   },
   {
     title: "Pulsecore",
-    description: "Inventory Management Dashboard",
+    description: "Inventory dashboard with real-time stock tracking, alerts, and supplier management.",
     image: "images/pulsecore.png",
-    tag: "Full Stack",
+    tag: "Dashboard",
     liveUrl: "http://pulsecore-inventory.vercel.app/home",
   },
   {
     title: "AbJotters",
-    description: "Notebook Ecommerce App",
+    description: "Notebook e-commerce store — product catalogue, cart, and Stripe checkout.",
     image: "images/abjoters.png",
-    tag: "Full Stack",
+    tag: "E-commerce",
     liveUrl: "https://abifortune-jotters.vercel.app/",
   },
   {
     title: "Nest Food",
-    description: "Ecommerce App",
+    description: "Grocery delivery app with category browsing, cart persistence, and order tracking.",
     image: "images/nest.png",
-    tag: "Full Stack",
+    tag: "E-commerce",
     liveUrl: "https://nest-roan.vercel.app/home",
   },
   {
-    title: "More Projects",
-    description: "Explore my work",
+    title: "More on GitHub",
+    description: "Smaller experiments, open-source contributions, and work-in-progress projects.",
     image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&fit=crop",
-    tag: "Various",
+    tag: "GitHub",
     liveUrl: "https://github.com/WebPhoeni6",
   },
 ]
 
 export const experiences: Experience[] = [
   {
-    date: "November 2024 - Present",
+    date: "November 2024 – Present",
     title: "Frontend Developer",
     company: "Earlybena Inc",
     description:
-      "Designed and implemented responsive, accessible UI components with React. Optimized performance and bundle size, collaborated with designers and backend engineers to integrate APIs, and improved user experience through usability testing and analytics.",
+      "Building React components for a B2B SaaS product. Cut initial bundle size by 30% through code-splitting and lazy loading. Work directly with the design team to close the gap between Figma and production.",
   },
   {
-    date: "May 2024 - November 2024",
-    title: "Full Stack Developer",
+    date: "May 2024 – November 2024",
+    title: "Software Developer",
     company: "Charis BI",
     description:
-      "Built marketing-focused web applications and campaign landing pages, integrated analytics and tracking, collaborated with designers and marketers to optimize conversion funnels, and implemented CMS and automation integrations to support campaign workflows.",
+      "Built campaign landing pages and integrated analytics tracking for a digital marketing agency. Wired up CMS and automation tools that reduced manual publishing time for the content team.",
   },
   {
-    date: "March 2023 - February 2024",
+    date: "March 2023 – February 2024",
     title: "Frontend Developer",
     company: "Expintek LTD",
     description:
-      "Built and maintained the frontend of an HR system, implementing responsive interfaces, complex form workflows, employee dashboards, and integrations with HR APIs and authentication. Focused on performance, accessibility, and close collaboration with backend and QA teams to deliver production-ready features.",
+      "Maintained and extended the frontend of an HR platform — employee dashboards, multi-step onboarding forms, and role-based access. Worked alongside backend and QA to ship fortnightly releases.",
   },
 ]
 
 export const personal: Personal = {
   name: "Samuel Emeka",
-  title: "Full Stack Developer",
-  bio: "I'm a passionate Full Stack Developer with expertise in building scalable web applications. I specialize in modern frameworks and technologies, creating seamless user experiences from front-end to back-end. With a strong foundation in both client and server-side development, I bring ideas to life through clean, efficient code.",
+  title: "Software Developer",
+  bio: "I build things end to end — React UIs, Node/Django APIs, PostgreSQL databases. Three years shipping production apps across SaaS, HR, and e-commerce. I'm picky about the parts users don't notice until they're missing.",
   email: "devsamuel0611@gmail.com",
   linkedin: "https://www.linkedin.com/in/samuelemekawp",
   github: "https://github.com/WebPhoeni6",
