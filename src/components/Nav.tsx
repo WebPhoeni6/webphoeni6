@@ -1,9 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import '../styles/Nav.css'
-
-gsap.registerPlugin(ScrollTrigger)
 
 const links = [
   { label: 'About', href: '#about' },
@@ -14,14 +11,14 @@ const links = [
 
 export default function Nav() {
   const navRef = useRef<HTMLElement>(null)
+  const mobileRef = useRef<HTMLDivElement>(null)
   const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
     const nav = navRef.current
     if (!nav) return
-    // Entrance animation
     gsap.fromTo(nav, { autoAlpha: 0, y: -20 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: 'power2.out', delay: 0.3 })
-    // Hide on scroll down, show on scroll up
+
     let lastY = 0
     const onScroll = () => {
       const y = window.scrollY
@@ -32,6 +29,28 @@ export default function Nav() {
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
+
+  // Animate mobile menu in/out
+  useEffect(() => {
+    const el = mobileRef.current
+    if (!el) return
+    if (menuOpen) {
+      el.style.display = 'flex'
+      gsap.fromTo(el, { autoAlpha: 0, y: -12 }, { autoAlpha: 1, y: 0, duration: 0.25, ease: 'power2.out' })
+    } else {
+      gsap.to(el, { autoAlpha: 0, y: -12, duration: 0.2, ease: 'power2.in', onComplete: () => { el.style.display = 'none' } })
+    }
+  }, [menuOpen])
+
+  // Close on outside click
+  useEffect(() => {
+    if (!menuOpen) return
+    const close = (e: MouseEvent) => {
+      if (navRef.current && !navRef.current.contains(e.target as Node)) setMenuOpen(false)
+    }
+    document.addEventListener('mousedown', close)
+    return () => document.removeEventListener('mousedown', close)
+  }, [menuOpen])
 
   const handleLink = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault()
@@ -53,17 +72,24 @@ export default function Nav() {
             </li>
           ))}
         </ul>
-        <button className={`nav__burger ${menuOpen ? 'open' : ''}`} onClick={() => setMenuOpen(!menuOpen)} aria-label="menu">
+        <button
+          className={`nav__burger ${menuOpen ? 'open' : ''}`}
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle menu"
+          aria-expanded={menuOpen}
+        >
           <span /><span /><span />
         </button>
       </div>
-      {menuOpen && (
-        <div className="nav__mobile">
-          {links.map(({ label, href }) => (
-            <a key={label} href={href} className="nav__mobile-link" onClick={(e) => handleLink(e, href)}>{label}</a>
-          ))}
-        </div>
-      )}
+
+      {/* Dropdown — rendered inside pill container so it aligns correctly */}
+      <div ref={mobileRef} className="nav__dropdown" style={{ display: 'none' }}>
+        {links.map(({ label, href }) => (
+          <a key={label} href={href} className="nav__dropdown-link" onClick={(e) => handleLink(e, href)}>
+            {label}
+          </a>
+        ))}
+      </div>
     </nav>
   )
 }
