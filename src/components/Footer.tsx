@@ -11,7 +11,7 @@ export default function Footer() {
         <div className="footer__center">
           <div className="footer__circular" onClick={scrollTop} title="Back to top">
             <CircularText
-              text="WEB PHOENIX • FULL STACK DEV • "
+              text="WEB PHOENIX • SOFTWARE DEV • "
               spinDuration={20}
               onHover="speedUp"
             />
