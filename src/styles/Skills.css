@@ -1,6 +1,6 @@
 .skills {
   background: var(--color-bg);
-  padding: 8rem 2rem;
+  padding: 8rem 0rem;
 }
 .skills__inner {
   max-width: 1200px;
