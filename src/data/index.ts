@@ -100,7 +100,7 @@ export const experiences: Experience[] = [
     title: "Frontend Developer",
     company: "Earlybean Inc",
     description:
-      "Frontend at a Techstars-backed fintech startup building financial literacy tools for kids. Built gamified UI for the youngster app, parental control dashboards, and the school-facing cashless payment interface — all on Next.js against a live banking API.",
+      "Frontend at a Techstars-backed fintech building financial literacy tools for kids. Built parental control dashboards, and the school-facing cashless payment interface — all on React.js against a live banking API.",
   },
   {
     date: "May 2024 – November 2024",
