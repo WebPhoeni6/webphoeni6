@@ -1,0 +1,183 @@
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #f5f5f4;
+  --color-ink: #111111;
+  --color-night: #262626;
+  --color-mute: #8a8a87;
+  --color-line: #e4e4e1;
+  --color-live: #22c55e;
+  --font-display: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+  background: #d9d9d7;
+}
+
+body {
+  background: #d9d9d7;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-ink);
+  color: #fff;
+}
+
+/* Soft cloud backdrop that peeks around the rounded sections */
+.cloud-bg {
+  background:
+    radial-gradient(60% 40% at 15% 10%, #f1f1f0 0%, transparent 70%),
+    radial-gradient(50% 35% at 85% 25%, #cfcfcd 0%, transparent 70%),
+    radial-gradient(70% 45% at 40% 80%, #e6e6e4 0%, transparent 70%),
+    #d4d4d2;
+}
+
+.ghost-text {
+  color: transparent;
+  -webkit-text-stroke: 1px currentColor;
+  opacity: 0.08;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ---- Brand portfolio: screen + print share one layout ---- */
+.brand-doc {
+  background: #d9d9d7;
+  padding-bottom: 40px;
+}
+.sheet-wrap {
+  container-type: inline-size;
+  width: min(100% - 32px, 1123px);
+  margin: 0 auto 24px;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px -20px rgba(0, 0, 0, 0.35);
+}
+.sheet {
+  --u: calc(100cqw / 112.3);
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1123 / 794;
+  overflow: hidden;
+  font-family: var(--font-sans);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+@media print {
+  @page {
+    size: 1123px 794px;
+    margin: 0;
+  }
+  html,
+  body,
+  .brand-doc {
+    background: #fff;
+    padding: 0;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .sheet-wrap {
+    width: 1123px;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+    break-after: page;
+  }
+  .sheet-wrap:last-of-type {
+    break-after: auto;
+  }
+}
+
+/* Progress fill while the hover preview is about to open */
+@keyframes dwell {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+.dwell-bar {
+  animation-name: dwell;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+/* ---- Motion without a library: reveals, entrances ---- */
+.reveal {
+  opacity: 0;
+  transform: translate3d(0, var(--ry, 28px), 0);
+  transition:
+    opacity 0.9s var(--ease-out-expo) var(--rd, 0s),
+    transform 0.9s var(--ease-out-expo) var(--rd, 0s);
+}
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+@media (scripting: none) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes fade-down {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -20px, 0);
+  }
+}
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0);
+  }
+}
+.anim-down {
+  animation: fade-down 0.9s var(--ease-out-expo) 0.1s backwards;
+}
+.anim-up {
+  animation: fade-up 0.9s var(--ease-out-expo) backwards;
+}
+
+/* Brand ticker: compositor-only loop */
+@keyframes marquee {
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+.m-track {
+  animation: marquee 45s linear infinite;
+  will-change: transform;
+}
+.m-wrap:hover .m-track {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .m-track {
+    animation: none;
+  }
+}
