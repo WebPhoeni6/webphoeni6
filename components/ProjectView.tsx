@@ -44,6 +44,19 @@ export default function ProjectView({ p, next }: { p: Project; next: Project }) 
           <Reveal delay={0.16}>
             <p className="mt-6 max-w-lg text-[13px] leading-relaxed text-ink/60 md:text-sm">{p.description}</p>
           </Reveal>
+          {p.highlights && p.highlights.length > 0 && (
+            <Reveal delay={0.2} className="mt-10 max-w-xl">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-mute">What I built</p>
+              <ul className="mt-4 space-y-3">
+                {p.highlights.map((h) => (
+                  <li key={h} className="flex gap-3 text-[13px] leading-relaxed text-ink/70 md:text-sm">
+                    <span aria-hidden className="mt-[0.6em] size-1 shrink-0 rounded-full bg-ink/40" />
+                    {h}
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+          )}
           <Reveal delay={0.24} className="mt-8 flex gap-2.5">
             {p.link && (
               <a href={p.link} target="_blank" rel="noreferrer" className="group inline-flex items-center gap-1.5 rounded-full bg-ink px-4 py-2.5 text-xs font-medium text-white transition-transform hover:scale-[1.04]">
@@ -58,6 +71,7 @@ export default function ProjectView({ p, next }: { p: Project; next: Project }) 
         </div>
 
         <Reveal delay={0.2} className="flex flex-col gap-6 text-sm md:items-end md:text-right">
+          {p.role && <Meta label="Role" value={p.role} />}
           <Meta label="Services" value={p.services} />
           <Meta label="Timeline" value={p.timeline} />
           <div className="md:text-right">

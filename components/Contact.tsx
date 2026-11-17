@@ -52,6 +52,9 @@ export default function Contact() {
               <SocialIcon label={x.label} className="size-[15px]" />
             </a>
           ))}
+          <a href="/about" className="rounded-full border border-white/20 px-3.5 py-2 text-[11px] font-medium text-white/80 transition-colors hover:bg-white/10">
+            About me
+          </a>
           <a href="/socials" className="rounded-full border border-white/20 px-3.5 py-2 text-[11px] font-medium text-white/80 transition-colors hover:bg-white/10">
             All socials
           </a>

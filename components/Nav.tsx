@@ -15,6 +15,7 @@ export default function Nav() {
     { label: "Service", href: "/#service", count: pad(services.length) },
     { label: "Experience", href: "/#experience", count: pad(experience.length) },
     { label: "Brand PDF", href: "/brand", count: undefined },
+    { label: "About", href: "/about", count: undefined },
     { label: "Socials", href: "/socials", count: undefined },
     { label: "Contact", href: "/#contact", count: undefined },
   ];

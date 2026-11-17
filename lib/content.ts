@@ -39,6 +39,10 @@ export type Project = {
   services: string;
   timeline: string;
   tools: string[];
+  /** Your part in the project, shown beside the tools. */
+  role?: string;
+  /** Short, concrete points shown as "What I built" on the project page. */
+  highlights?: string[];
   cover: string;
   /** Solid background used behind logo-style covers. */
   coverBg?: string;
@@ -75,13 +79,19 @@ export const projects: Project[] = [
     kind: "Fintech Platform",
     category: "Development",
     tags: ["Web App", "Fintech"],
-    summary:
-      "Protected payments. A licensed partner holds the money until both sides meet the agreed conditions.",
-    description:
-      "Vowrify records the agreement, the evidence and what each side owes, and it authorises payment instructions. A licensed bank or payment partner holds the money. It launches in Nigeria, on the web first, starting with real-estate buyer deposits. I'm designing and building it one slice at a time, with the API and the screens together.",
+    summary: "Protected payments for big purchases. A licensed partner holds the money until both sides meet the agreed conditions.",
+    description: "Vowrify protects large payments between people who do not know each other yet. Buyer and seller agree the terms, a licensed bank or payment partner holds the money, and it is released only when the agreed evidence is in. Vowrify never holds the funds itself. It keeps the agreement, the evidence and a permanent record of every step, and it tells the partner what to do. It launches in Nigeria, on the web first, starting with real-estate buyer deposits for Hommission. I am doing all of it: the brand, the screens and the backend.",
     services: "Product design, full-stack development",
+    role: "Founder, design and engineering",
     timeline: "In progress",
-    tools: ["TypeScript", "Node.js", "React"],
+    tools: ["TypeScript", "Node.js", "PostgreSQL", "Redis", "React"],
+    highlights: [
+      "A modular TypeScript backend on Node and PostgreSQL, with an automated check that stops one module from reaching into another.",
+      "Every change to a transaction goes through one command path with idempotency keys, so a retried request cannot release or charge twice.",
+      "Money is stored in whole minor units, never decimals, and every state change is written to an append-only audit trail.",
+      "Calls to payment and identity providers happen after the database commit, and incoming provider events are verified and de-duplicated first.",
+      "Built one slice at a time. Each slice ships its API, its tests and its screens, and I click through it before starting the next.",
+    ],
     cover: "/work/live/vowrify-1.webp",
     shot: true,
     coverFit: "cover",
@@ -110,12 +120,19 @@ export const projects: Project[] = [
     kind: "Mobile and web app",
     category: "Development",
     tags: ["Mobile App", "Real-time"],
-    summary: "Voice parties, group calls and chat for gaming communities.",
-    description:
-      "Pendu started as a Flutter chat app. It now also has a Node.js backend, a React web app with offline caching and live sockets, an admin panel and a marketing site. I designed the brand, the interface and the landing page, and I built the stack.",
+    summary: "Voice, chat and calls for gaming communities, on mobile and web.",
+    description: "Gaming communities juggle one app for voice, another for casual chat and more for events and discovery. Pendu puts messaging, voice and video calls and community discovery in one free app for Android, iOS and the web. I designed the brand and the interface, and I built the mobile app, the backend, the web app and the landing page.",
     services: "Brand, UI/UX design, mobile and web development",
+    role: "Product designer and developer",
     timeline: "2026",
-    tools: ["Flutter", "React", "Node.js", "Socket.IO"],
+    tools: ["Flutter", "React", "Node.js", "Socket.IO", "PostgreSQL", "Redis"],
+    highlights: [
+      "Real-time chat with replies, reactions, voice notes, link previews and read receipts, plus one-to-one and group audio and video calls.",
+      "Messages survive bad networks. An outbox and replay system makes sure nothing is lost when the app is killed or the connection drops.",
+      "Sessions are tracked per device, so logging out one phone does not break live connections. Deleted accounts get a 30-day grace period.",
+      "A Flutter app for Android and iOS, a React web app that caches offline in the browser, and a Node backend with Socket.IO, PostgreSQL and Redis.",
+      "The brand itself: the P and D monogram, the mascot, the wordmark and the landing page.",
+    ],
     cover: "/work/live/pendu-1.webp",
     shot: true,
     coverFit: "cover",
@@ -152,17 +169,23 @@ export const projects: Project[] = [
   },
   {
     slug: "rendo",
-    title: "Rendo: Rental platform",
+    title: "Rendo: Hostels and rentals",
     kind: "Marketplace Backend",
     category: "Development",
     tags: ["API", "Marketplace"],
-    summary:
-      "Rental housing for students and urban professionals. Apply online, pay securely, move in.",
-    description:
-      "This is the backend behind Rendo, a rental platform. It covers listings, applications, deals, verification, chat, payments and the owner portal. I build it in small packages that get reviewed one at a time, with a typed API, tests on every change and automatic deploys to a sandbox.",
+    summary: "Rental housing for students and urban professionals. Apply online, pay securely, move in.",
+    description: "Rendo, formerly Rentipede, helps students and urban professionals find a room, apply, pay and move in. It also gives owners, institutions and staff the tools to run their hostels. I am the lead backend developer: I design the API, the database and the payment flows, and ship the work in small packages that are reviewed one at a time.",
     services: "Backend architecture, API design",
+    role: "Lead backend developer",
     timeline: "2026 to now",
-    tools: ["Node.js", "Express", "Prisma", "PostgreSQL", "TypeScript", "Jest"],
+    tools: ["Node.js", "Express", "Prisma", "PostgreSQL", "TypeScript", "Zod", "Jest"],
+    highlights: [
+      "An Express and Prisma API on PostgreSQL with 37 data models, covering hostels, institutions, owners, applications, reservations, wallets, payments, maintenance and announcements.",
+      "Payments through the Inflow gateway: hosted checkout, virtual accounts and wallet balances, with webhooks that confirm money in and out.",
+      "85 test files and a pipeline that lints, builds and runs the tests in four parallel groups before anything can merge.",
+      "Work lands as pull requests, and every merge deploys to a live sandbox with Swagger docs.",
+      "Argon2 password hashing, JWT sessions, rate limiting, Helmet and Zod validation on every request.",
+    ],
     cover: "/work/live/rendo-1.webp",
     shot: true,
     coverFit: "cover",
@@ -180,16 +203,24 @@ export const projects: Project[] = [
   },
   {
     slug: "earlybean",
-    title: "Earlybean: School platform",
-    kind: "Web Platform",
+    title: "Earlybean: Money app for kids",
+    kind: "Fintech for kids",
     category: "Development",
-    tags: ["Dashboard", "Education"],
-    summary: "Communication and admin tools for schools, parents and staff.",
-    description:
-      "A marketing site and blog, a school portal, an admin panel and the Laravel API behind them. I did the design and built both the front end and the back end.",
+    tags: ["Fintech", "Education"],
+    summary: "A money app that teaches kids to save, spend and earn, with parents in control and schools able to collect fees.",
+    description: "Earlybean is a money app for children and teenagers in Nigeria. Kids get a wallet, savings goals, an allowance and short courses on saving and business, sorted by age. Parents link their children's accounts and set the rules, and schools can collect fees through the same system. I worked across the whole family of products: the marketing site and blog, the school portal, the admin panel and the Laravel API behind them.",
     services: "UI/UX design, full-stack development",
+    role: "Full-stack developer",
     timeline: "Delivered",
-    tools: ["Laravel", "Next.js", "React", "MUI"],
+    tools: ["Laravel", "Next.js", "React", "Material UI", "OpenAPI"],
+    highlights: [
+      "A Laravel API with 505 routes, split by area (auth, wallets, parents, kids, schools, merchants, admin) and documented with generated OpenAPI docs.",
+      "Wallets and ledgers for transactions, allowances, savings goals and interest, plus a daily bonus and in-app coins.",
+      "Courses with sections, lessons and quizzes, assigned by age group.",
+      "A school portal for collecting and managing fees, and an admin panel for users, courses, earnings, wallets and transactions.",
+      "A Next.js marketing site with separate pages for kids, parents and schools, and a blog.",
+      "Bank account and BVN checks, and telecom bill payments for Nigeria.",
+    ],
     cover: w("earlybean-logo"),
     coverBg: "#efeaff",
     coverFit: "contain",
