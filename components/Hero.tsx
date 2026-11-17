@@ -151,7 +151,7 @@ export default function Hero({ hasPortrait }: { hasPortrait: boolean }) {
         </div>
 
         {/* Text | portrait | info */}
-        <div className="relative mt-8 grid items-end gap-8 md:-mt-[14vw] md:flex-1 md:grid-cols-[minmax(15rem,1fr)_auto] md:gap-6 lg:gap-8">
+        <div className="relative -mt-[9vw] grid items-end gap-8 md:-mt-[14vw] md:flex-1 md:grid-cols-[minmax(15rem,1fr)_auto] md:gap-6 lg:gap-8">
           {/* Portrait: overlaps up into the name */}
           <div className="h-portrait-wrap relative z-20 order-1 mx-auto w-full md:absolute md:w-auto md:-bottom-10 md:left-1/2 md:mx-0 md:-translate-x-1/2">
             <div className="h-portrait relative aspect-[1200/1245] w-full md:w-auto md:h-[min(88svh,900px,52vw)]">
@@ -171,7 +171,7 @@ export default function Hero({ hasPortrait }: { hasPortrait: boolean }) {
           </div>
 
           {/* Left: who I am */}
-          <div className="relative z-30 order-2 md:order-1 md:max-w-sm">
+          <div className="relative z-30 order-2 -mt-[30vw] md:order-1 md:mt-0 md:max-w-sm">
             <p className="h-copy font-display text-xl font-medium tracking-tight text-white/90 md:text-2xl">
               {profile.role}
             </p>
