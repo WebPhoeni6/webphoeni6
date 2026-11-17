@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useContactHref, useContent } from "./ContentProvider";
 import { ArrowUpRight } from "./ui";
+import ShareButton from "./ShareButton";
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
@@ -33,6 +34,7 @@ export default function Nav() {
             <span className="absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-white transition-transform duration-500 group-hover:scale-x-100" />
           </Link>
         ))}
+        <ShareButton variant="icon" tone="dark" path="/" title="Samuel Emeka, developer and designer" text="Samuel Emeka (Web Phoenix), developer and designer" className="hidden sm:inline-block [&>button]:size-9" label="Share this site" />
         <Link
           href={contactHref}
           className="group flex items-center gap-1.5 rounded-full bg-white px-4 py-2.5 font-medium text-ink transition-transform hover:scale-[1.04]"

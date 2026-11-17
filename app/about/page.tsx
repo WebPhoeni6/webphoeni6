@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { getContent } from "@/lib/store";
 import { about } from "@/lib/about";
+import ShareButton from "@/components/ShareButton";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { profile } = await getContent();
@@ -32,6 +33,8 @@ export default async function AboutPage() {
             </svg>
             Back
           </Link>
+          <div className="flex items-center gap-2">
+          <ShareButton path="/about" title="About Samuel Emeka" text="Samuel Emeka, designer and developer" />
           <nav aria-label="Switch side" className="flex rounded-full bg-white p-1 text-[12px] font-medium shadow-[0_1px_8px_rgba(0,0,0,0.06)]">
             <Link href="/#work" className="rounded-full px-4 py-1.5 text-ink/55 transition-colors hover:text-ink">
               Work
@@ -40,6 +43,7 @@ export default async function AboutPage() {
               Me
             </span>
           </nav>
+          </div>
         </header>
 
         {/* Intro */}

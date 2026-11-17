@@ -3,7 +3,8 @@
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import ShareButton from "./ShareButton";
 import type { Project } from "@/lib/content";
 import { useContactHref } from "./ContentProvider";
 import { ArrowUpRight, Cover, Reveal } from "./ui";
@@ -14,6 +15,11 @@ const Lightbox = dynamic(() => import("./Lightbox"), { ssr: false });
 export default function ProjectView({ p, next }: { p: Project; next: Project }) {
   const contactHref = useContactHref();
   const [viewer, setViewer] = useState<number | null>(null);
+  // A shared poster link (?poster=3) opens the viewer on that poster.
+  useEffect(() => {
+    const n = Number(new URLSearchParams(window.location.search).get("poster"));
+    if (p.poster && n >= 1 && n <= p.gallery.length) setViewer(n - 1);
+  }, [p.poster, p.gallery.length]);
   const [name, ...rest] = p.title.split(": ");
   const sub = rest.join(": ");
 
@@ -24,6 +30,7 @@ export default function ProjectView({ p, next }: { p: Project; next: Project }) 
           <svg viewBox="0 0 16 16" className="size-3 transition-transform duration-300 group-hover:-translate-x-1" fill="none"><path d="M13 8H3m4-4L3 8l4 4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>
           Back
         </Link>
+        <ShareButton path={`/work/${p.slug}`} title={p.title.split(": ")[0]} text={`${p.title.split(": ")[0]} by Samuel Emeka: ${p.summary}`} image={p.cover} />
       </header>
 
       <section className="grid gap-10 px-5 pb-16 pt-16 md:grid-cols-[1.4fr_1fr] md:px-10 md:pt-24">
@@ -168,7 +175,7 @@ export default function ProjectView({ p, next }: { p: Project; next: Project }) 
           <ArrowUpRight className="size-8 shrink-0 transition-transform duration-500 group-hover:-translate-y-1 group-hover:translate-x-1 md:size-12" />
         </div>
       </Link>
-    {viewer !== null && <Lightbox items={p.gallery} start={viewer} onClose={() => setViewer(null)} />}
+    {viewer !== null && <Lightbox slug={p.slug} items={p.gallery} start={viewer} onClose={() => setViewer(null)} />}
     </main>
   );
 }

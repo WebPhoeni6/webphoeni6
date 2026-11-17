@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import Image from "next/image";
+import ShareButton from "./ShareButton";
 
 type Item = { src: string; alt: string };
 
@@ -10,7 +11,7 @@ type Item = { src: string; alt: string };
  * thumbnails all move between items. Esc or a click on the backdrop closes it.
  * The track is a native scroll-snap row, so swiping is smooth and costs no JavaScript.
  */
-export default function Lightbox({ items, start, onClose }: { items: Item[]; start: number; onClose: () => void }) {
+export default function Lightbox({ slug, items, start, onClose }: { slug: string; items: Item[]; start: number; onClose: () => void }) {
   const [index, setIndex] = useState(start);
   const track = useRef<HTMLDivElement>(null);
   const thumbs = useRef<HTMLDivElement>(null);
@@ -76,11 +77,21 @@ export default function Lightbox({ items, start, onClose }: { items: Item[]; sta
         <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-white/60">
           {nn(index + 1)} / {nn(items.length)}
         </p>
+        <div className="flex items-center gap-2">
+        <ShareButton
+          variant="icon"
+          tone="dark"
+          path={`/work/${slug}?poster=${index + 1}`}
+          title={items[index]?.alt.replace(/ poster$/i, "") ?? "Poster"}
+          text={`${items[index]?.alt.replace(/ poster$/i, "")}, a poster by Samuel Emeka`}
+          image={items[index]?.src}
+        />
         <button ref={closeBtn} onClick={onClose} aria-label="Close viewer" className="grid size-10 place-items-center rounded-full border border-white/25 transition-colors hover:bg-white hover:text-black">
           <svg viewBox="0 0 16 16" className="size-4" fill="none" aria-hidden>
             <path d="M3 3l10 10M13 3L3 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
           </svg>
         </button>
+        </div>
       </div>
 
       <div className="relative min-h-0 flex-1">
