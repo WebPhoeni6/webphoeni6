@@ -9,7 +9,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const name = `${profile.firstName} ${profile.lastName}`;
   return {
     title: `About ${name}`,
-    description: `${name} is a designer and developer in Nigeria who builds products and brands, also known online as Web Phoenix.`,
+    description: `${name} is a designer and developer who builds products and brands, also known online as Web Phoenix.`,
   };
 }
 
@@ -18,6 +18,9 @@ const label = "text-[11px] font-semibold uppercase tracking-[0.18em] text-ink/45
 export default async function AboutPage() {
   const { profile, projects } = await getContent();
   const contact = profile.email ? `mailto:${profile.email}` : "/#contact";
+  const hasPrinciples = about.principles.length > 0;
+  const hasBeyond = about.beyond.length > 0;
+  const nn = (n: number) => String(n).padStart(2, "0");
 
   return (
     <main className="min-h-svh bg-paper text-ink">
@@ -73,6 +76,7 @@ export default async function AboutPage() {
         </section>
 
         {/* How I work */}
+        {hasPrinciples && (
         <section className="mt-28 md:mt-40">
           <p className={label}>01 / How I work</p>
           <h2 className="mt-5 max-w-3xl font-display text-[clamp(2.2rem,5.5vw,4.6rem)] font-bold leading-[0.95] tracking-[-0.045em]">What working with me looks like</h2>
@@ -86,10 +90,12 @@ export default async function AboutPage() {
             ))}
           </ol>
         </section>
+        )}
 
         {/* Beyond work */}
+        {hasBeyond && (
         <section className="mt-28 md:mt-40">
-          <p className={label}>02 / Beyond work</p>
+          <p className={label}>{nn(1 + Number(hasPrinciples))} / Beyond work</p>
           <h2 className="mt-5 font-display text-[clamp(2.2rem,5.5vw,4.6rem)] font-bold leading-[0.95] tracking-[-0.045em]">Away from the client work</h2>
           <div className="mt-12 grid gap-4 md:grid-cols-2 md:gap-5">
             {about.beyond.map((b) => (
@@ -105,10 +111,11 @@ export default async function AboutPage() {
             ))}
           </div>
         </section>
+        )}
 
         {/* Now */}
         <section className="mt-28 md:mt-40">
-          <p className={label}>03 / Now</p>
+          <p className={label}>{nn(1 + Number(hasPrinciples) + Number(hasBeyond))} / Now</p>
           <h2 className="mt-5 font-display text-[clamp(2.2rem,5.5vw,4.6rem)] font-bold leading-[0.95] tracking-[-0.045em]">What I&apos;m working on</h2>
           <ul className="mt-12 border-t border-ink/15">
             {about.now.map((n) => {
