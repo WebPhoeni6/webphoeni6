@@ -7,6 +7,7 @@ import { useContent } from "./ContentProvider";
 import { ArrowUpRight, Cover, Reveal } from "./ui";
 import PreviewTile from "./PreviewTile";
 import PosterCover from "./PosterCover";
+import Latest from "./Latest";
 
 const filters: ("All" | Category)[] = ["All", "Development", "Design", "Branding"];
 
@@ -18,6 +19,7 @@ export default function Work() {
   return (
     <section id="work" className="relative -mt-8 rounded-t-[2rem] bg-paper px-5 pb-28 pt-16 md:px-10 md:pt-24">
       <div className="mx-auto max-w-[1600px]">
+        <Latest />
         <Reveal className="flex items-center justify-between text-[11px] font-semibold uppercase tracking-[0.18em] text-ink/50">
           <span>01 / Selected work</span>
           <span>{String(shown.length).padStart(2, "0")} projects</span>
