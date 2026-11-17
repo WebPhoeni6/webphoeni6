@@ -4,7 +4,7 @@ import Image from "next/image";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import ShareButton from "./ShareButton";
+import Nav from "./Nav";
 import type { Project } from "@/lib/content";
 import { useContactHref } from "./ContentProvider";
 import { ArrowUpRight, Cover, Reveal } from "./ui";
@@ -25,15 +25,9 @@ export default function ProjectView({ p, next }: { p: Project; next: Project }) 
 
   return (
     <main className="anim-up mx-auto max-w-[1600px] bg-paper">
-      <header className="flex items-center justify-between px-5 pt-5 md:px-10">
-        <Link href="/#work" className="group flex items-center gap-2 rounded-full bg-white px-3.5 py-2 text-[12px] font-medium shadow-[0_1px_8px_rgba(0,0,0,0.06)]">
-          <svg viewBox="0 0 16 16" className="size-3 transition-transform duration-300 group-hover:-translate-x-1" fill="none"><path d="M13 8H3m4-4L3 8l4 4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>
-          Back
-        </Link>
-        <ShareButton path={`/work/${p.slug}`} title={p.title.split(": ")[0]} text={`${p.title.split(": ")[0]} by Samuel Emeka: ${p.summary}`} image={p.cover} />
-      </header>
+      <Nav tone="light" />
 
-      <section className="grid gap-10 px-5 pb-16 pt-16 md:grid-cols-[1.4fr_1fr] md:px-10 md:pt-24">
+      <section className="grid gap-10 px-5 pb-16 pt-32 md:grid-cols-[1.4fr_1fr] md:px-10 md:pt-40">
         <div>
           <Reveal className="flex flex-wrap gap-2">
             <span className="rounded-full bg-white px-3 py-1.5 text-[11px] font-medium shadow-[0_1px_6px_rgba(0,0,0,0.05)]">{p.category}</span>
@@ -44,7 +38,7 @@ export default function ProjectView({ p, next }: { p: Project; next: Project }) 
           <Reveal delay={0.08}>
             <h1 className="mt-7 font-display text-[clamp(2.6rem,7vw,5.5rem)] font-semibold leading-[0.95] tracking-tight">
               {name}
-              <span className="ml-3 align-baseline text-sm font-normal text-ink/45 md:text-base">/{p.kind}</span>
+              <span className="ml-3 align-baseline text-sm font-normal tracking-normal text-ink/45 md:text-base">/{p.kind}</span>
             </h1>
             {sub && <p className="mt-3 font-display text-xl text-ink/60">{sub}</p>}
           </Reveal>

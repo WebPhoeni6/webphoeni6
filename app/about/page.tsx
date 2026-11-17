@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { getContent } from "@/lib/store";
 import { about } from "@/lib/about";
-import ShareButton from "@/components/ShareButton";
+import Nav from "@/components/Nav";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { profile } = await getContent();
@@ -25,29 +25,11 @@ export default async function AboutPage() {
 
   return (
     <main className="min-h-svh bg-paper text-ink">
+      <Nav tone="light" />
       <div className="mx-auto max-w-[1400px] px-5 pb-28 md:px-10">
-        <header className="flex items-center justify-between pt-5">
-          <Link href="/" className="group inline-flex items-center gap-2 rounded-full bg-white px-3.5 py-2 text-[12px] font-medium shadow-[0_1px_8px_rgba(0,0,0,0.06)]">
-            <svg viewBox="0 0 16 16" className="size-3 transition-transform duration-300 group-hover:-translate-x-1" fill="none" aria-hidden>
-              <path d="M13 8H3m4-4L3 8l4 4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-            Back
-          </Link>
-          <div className="flex items-center gap-2">
-          <ShareButton path="/about" title="About Samuel Emeka" text="Samuel Emeka, designer and developer" />
-          <nav aria-label="Switch side" className="flex rounded-full bg-white p-1 text-[12px] font-medium shadow-[0_1px_8px_rgba(0,0,0,0.06)]">
-            <Link href="/#work" className="rounded-full px-4 py-1.5 text-ink/55 transition-colors hover:text-ink">
-              Work
-            </Link>
-            <span aria-current="page" className="rounded-full bg-ink px-4 py-1.5 text-white">
-              Me
-            </span>
-          </nav>
-          </div>
-        </header>
 
         {/* Intro */}
-        <section className="grid items-end gap-12 pt-16 md:grid-cols-[1.2fr_1fr] md:pt-24">
+        <section className="grid items-end gap-12 pt-32 md:grid-cols-[1.2fr_1fr] md:pt-40">
           <div>
             <p className={label}>About</p>
             <h1 className="mt-6 font-display text-[clamp(3.4rem,10vw,9rem)] font-bold leading-[0.9] tracking-[-0.05em]">

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { getContent } from "@/lib/store";
 import { SocialIcon, socialHandle } from "@/components/SocialIcon";
+import Nav from "@/components/Nav";
 
 export const metadata: Metadata = {
   title: "Socials",
@@ -17,19 +17,9 @@ export default async function SocialsPage() {
 
   return (
     <main className="mx-auto min-h-svh max-w-[1600px] bg-[#111] px-5 pb-24 pt-5 text-white md:px-10">
-      <header className="flex items-center justify-between">
-        <Link href="/" className="group inline-flex items-center gap-2 rounded-full border border-white/20 px-3.5 py-2 text-[12px] font-medium text-white/80 transition-colors hover:bg-white/10">
-          <svg viewBox="0 0 16 16" className="size-3 transition-transform duration-300 group-hover:-translate-x-1" fill="none" aria-hidden>
-            <path d="M13 8H3m4-4L3 8l4 4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-          Back
-        </Link>
-        <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-white/45">
-          {profile.firstName} {profile.lastName}
-        </span>
-      </header>
+      <Nav />
 
-      <div className="mt-16 md:mt-24">
+      <div className="mt-28 md:mt-36">
         <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-white/45">Get in touch</p>
         <h1 className="mt-5 font-display text-[clamp(3.2rem,10vw,9rem)] font-bold leading-[0.9] tracking-[-0.05em]">Socials</h1>
         <p className="mt-6 max-w-md text-[13px] leading-relaxed text-white/50">Pick whichever you check most. I answer on all of them.</p>
