@@ -1,13 +1,19 @@
 "use client";
 
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import Link from "next/link";
+import { useState } from "react";
 import type { Project } from "@/lib/content";
 import { useContactHref } from "./ContentProvider";
 import { ArrowUpRight, Cover, Reveal } from "./ui";
 
+// Loaded only when a poster is opened, so it adds nothing to the page weight.
+const Lightbox = dynamic(() => import("./Lightbox"), { ssr: false });
+
 export default function ProjectView({ p, next }: { p: Project; next: Project }) {
   const contactHref = useContactHref();
+  const [viewer, setViewer] = useState<number | null>(null);
   const [name, ...rest] = p.title.split(": ");
   const sub = rest.join(": ");
 
@@ -83,9 +89,18 @@ export default function ProjectView({ p, next }: { p: Project; next: Project }) 
         )}
         {p.gallery.map((g, i) => p.poster ? (
           <Reveal key={g.src} y={40} delay={(i % 3) * 0.06}>
-            <div className="overflow-hidden rounded-xl bg-white shadow-[0_2px_18px_rgba(0,0,0,0.06)]">
-              <Image src={g.src} alt={g.alt} width={900} height={1125} priority={i < 3} sizes="(min-width: 1024px) 320px, 50vw" className="aspect-[4/5] h-auto w-full object-cover" />
-            </div>
+            <button
+              type="button"
+              onClick={() => setViewer(i)}
+              aria-label={`Open ${g.alt} in the viewer`}
+              className="group relative block w-full cursor-zoom-in overflow-hidden rounded-xl bg-white text-left shadow-[0_2px_18px_rgba(0,0,0,0.06)]"
+            >
+              <Image src={g.src} alt={g.alt} width={900} height={1125} priority={i < 3} sizes="(min-width: 1024px) 320px, 50vw" className="aspect-[4/5] h-auto w-full object-cover transition-transform duration-[900ms] ease-[var(--ease-out-expo)] group-hover:scale-[1.04]" />
+              <span className="pointer-events-none absolute inset-x-0 bottom-0 flex items-center justify-between bg-gradient-to-t from-black/55 to-transparent px-3 pb-2.5 pt-8 text-[11px] font-medium text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                {g.alt.replace(/ poster$/i, "")}
+                <span aria-hidden>View</span>
+              </span>
+            </button>
           </Reveal>
         ) : (
           <Reveal key={g.src} y={50}>
@@ -139,6 +154,7 @@ export default function ProjectView({ p, next }: { p: Project; next: Project }) 
           <ArrowUpRight className="size-8 shrink-0 transition-transform duration-500 group-hover:-translate-y-1 group-hover:translate-x-1 md:size-12" />
         </div>
       </Link>
+    {viewer !== null && <Lightbox items={p.gallery} start={viewer} onClose={() => setViewer(null)} />}
     </main>
   );
 }
