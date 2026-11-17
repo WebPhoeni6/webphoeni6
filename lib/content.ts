@@ -241,6 +241,7 @@ export const projects: Project[] = [
     coverFit: "cover",
     gallery: [
       { src: w("for-the-record"), alt: "For the Record poster" },
+      { src: w("lagos"), alt: "Lagos hustle poster" },
       { src: w("polar"), alt: "Polar poster" },
       { src: w("liquid-gold"), alt: "Liquid gold poster" },
       { src: w("june"), alt: "June poster" },

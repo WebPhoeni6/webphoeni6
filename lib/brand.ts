@@ -161,7 +161,7 @@ export const campaigns = {
     title: "Poster explorations",
     type: "Type-led poster studies",
     sets: [
-      ["/work/for-the-record.webp", "/work/maze.webp", "/work/reveal.webp"],
+      ["/work/for-the-record.webp", "/work/lagos.webp", "/work/maze.webp"],
       ["/work/polar.webp", "/work/liquid-gold.webp", "/work/june.webp"],
     ],
   },
