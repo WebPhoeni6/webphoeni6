@@ -17,9 +17,10 @@ export type Update = {
 };
 
 export const updates: Update[] = [
+  { date: "2026-11-18", label: "New poster", title: "Pizza", poster: "pizza" },
+  { date: "2026-11-18", label: "New poster", title: "Coca-Cola", poster: "coca-cola" },
   { date: "2026-11-17", label: "New poster series", title: "Board Notes: six chess pieces", poster: "pawn" },
   { date: "2026-11-17", label: "New poster", title: "Lagos", poster: "lagos" },
   { date: "2026-10-22", label: "New poster", title: "Clouds", poster: "clouds" },
   { date: "2026-10-22", label: "New poster", title: "Maze", poster: "maze" },
-  { date: "2026-10-15", label: "New poster", title: "For the Record", poster: "for-the-record" },
 ];
