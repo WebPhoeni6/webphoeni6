@@ -18,6 +18,7 @@ export const profile = {
   email: "devsamuel0611@gmail.com",
   socials: [
     { label: "LinkedIn", href: "https://ng.linkedin.com/in/samuelemekawp" },
+    { label: "Behance", href: "https://www.behance.net/samuelemeka2" },
     { label: "Instagram", href: "https://www.instagram.com/web_phoenix___/" },
     { label: "Telegram", href: "https://t.me/webphoeni6" },
     { label: "WhatsApp", href: "https://wa.me/qr/BCKVQZZLC4HZG1" },

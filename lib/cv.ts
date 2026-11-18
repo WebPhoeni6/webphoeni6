@@ -14,6 +14,7 @@ export const cv = {
     { label: "devsamuel0611@gmail.com", href: "mailto:devsamuel0611@gmail.com" },
     { label: "linkedin.com/in/samuelemekawp", href: "https://www.linkedin.com/in/samuelemekawp" },
     { label: "webphoenix.net", href: "https://webphoenix.net" },
+    { label: "behance.net/samuelemeka2", href: "https://www.behance.net/samuelemeka2" },
   ],
 
   summary:

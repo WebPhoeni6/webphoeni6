@@ -33,7 +33,7 @@ export default function TalkMenu({ className = "" }: { className?: string }) {
     };
   }, [open]);
 
-  const rank = (l: string) => ["whatsapp", "email", "telegram", "instagram", "linkedin", "discord", "facebook"].indexOf(l.toLowerCase());
+  const rank = (l: string) => ["whatsapp", "email", "telegram", "instagram", "linkedin", "behance", "discord", "facebook"].indexOf(l.toLowerCase());
   const rows = [
     ...(profile.email ? [{ label: "Email", href: `mailto:${profile.email}`, text: profile.email }] : []),
     ...profile.socials.filter((s) => s.href).map((s) => ({ label: s.label, href: s.href, text: socialHandle(s.label, s.href) })),
