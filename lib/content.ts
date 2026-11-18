@@ -57,6 +57,8 @@ export type Project = {
   mockups?: string[];
   /** Identity details. When set, the project page is laid out as a brand case study. */
   brand?: BrandWork;
+  /** The same project on Behance, shown as a button on the project page. */
+  behance?: string;
   /**
    * Hover preview on the Work grid: after a short dwell, a browser-style frame
    * opens and scrolls this full-page capture as the mouse moves. `height` is the
@@ -350,6 +352,13 @@ for (const p of projects) {
     if (b) p.brand = b;
   }
 }
+
+const behance: Record<string, string> = {
+  sendforte: "https://www.behance.net/gallery/258656069/Sendforte-Logo-Brand-Identity",
+  "hommission-logo": "https://www.behance.net/gallery/258656203/Hommission-Logo-Brand-Identity",
+  "unipulse-logo": "https://www.behance.net/gallery/258656245/Unipulse-Logo-Brand-Identity",
+};
+for (const p of projects) if (behance[p.slug]) p.behance = behance[p.slug];
 
 export const filters: ("All" | Category)[] = [
   "All",

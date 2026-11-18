@@ -65,6 +65,12 @@ export default function ProjectView({ p, next }: { p: Project; next: Project }) 
                 <ArrowUpRight className="size-3" />
               </a>
             )}
+            {p.behance && (
+              <a href={p.behance} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 rounded-full bg-card px-4 py-2.5 text-xs font-medium shadow-[0_1px_8px_rgba(0,0,0,0.06)] transition-transform hover:scale-[1.04]">
+                View on Behance
+                <ArrowUpRight className="size-3" />
+              </a>
+            )}
             <ContactLink className="rounded-full bg-card px-4 py-2.5 text-xs font-medium shadow-[0_1px_8px_rgba(0,0,0,0.06)] transition-transform hover:scale-[1.04]">
               Contact Me
             </ContactLink>
