@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import LogoMark from "@/components/LogoMark";
 import { cv } from "@/lib/cv";
 
 // The CV is shared as a PDF. This page is where that PDF is made from, so it stays out of search.
@@ -37,7 +36,6 @@ export default function CvPage() {
             <h1 className="font-display text-[24pt] font-bold leading-none tracking-[-0.02em]">{cv.name}</h1>
             <p className="mt-[2.4mm] text-[10.5pt] font-semibold text-[#e0430f]">{cv.title}</p>
           </div>
-          <LogoMark className="size-[14mm] shrink-0 text-[#111]" />
         </header>
         <p className="mt-[4mm] flex flex-wrap gap-x-[4mm] gap-y-[1mm] border-y-[0.35mm] border-[#111] py-[2mm] text-[8.6pt]">
           {cv.contact.map((c) =>
