@@ -3,6 +3,7 @@
 import { createContext, useContext } from "react";
 import type { SiteContent } from "@/lib/seed";
 import SmoothScroll from "./SmoothScroll";
+import BackToTop from "./BackToTop";
 
 const Ctx = createContext<SiteContent | null>(null);
 
@@ -11,6 +12,7 @@ export function ContentProvider({ value, children }: { value: SiteContent; child
     <Ctx.Provider value={value}>
       <SmoothScroll />
       {children}
+      <BackToTop />
     </Ctx.Provider>
   );
 }
