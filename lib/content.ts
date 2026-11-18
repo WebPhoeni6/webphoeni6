@@ -82,7 +82,7 @@ export const projects: Project[] = [
     summary: "A safe way to pay for something big when you don't know the other person yet.",
     description: "Vowrify makes it safe to pay for something big when you don't know the other person yet. The money stays with a licensed partner until both sides have done what they agreed, and Vowrify keeps the record of who agreed to what. I'm designing and building all of it: the brand, the screens and the system behind them.",
     services: "Product design, full-stack development",
-    role: "Founder, design and engineering",
+    role: "Head software engineer",
     timeline: "In progress",
     tools: ["TypeScript", "Node.js", "PostgreSQL", "Redis", "React"],
     highlights: [
@@ -119,9 +119,9 @@ export const projects: Project[] = [
     category: "Development",
     tags: ["Mobile App", "Real-time"],
     summary: "Voice, chat and calls for gaming communities, on mobile and web.",
-    description: "Gaming groups usually end up with one app for voice, another for chat and a third for finding people to play with. Pendu puts chat, voice and video calls and finding communities in one free app for Android, iOS and the web. I designed the brand and the screens, and built the apps and the system behind them.",
+    description: "Gaming groups usually end up with one app for voice, another for chat and a third for finding people to play with. Pendu puts chat, voice and video calls and finding communities in one free app for Android, iOS and the web. I co-founded Pendu, designed the brand and the screens, and built the apps and the system behind them.",
     services: "Brand, UI/UX design, mobile and web development",
-    role: "Product designer and developer",
+    role: "Co-founder, designer and developer",
     timeline: "2026",
     tools: ["Flutter", "React", "Node.js", "Socket.IO", "PostgreSQL", "Redis"],
     highlights: [
@@ -170,9 +170,9 @@ export const projects: Project[] = [
     category: "Development",
     tags: ["API", "Marketplace"],
     summary: "Rental housing for students and urban professionals. Apply online, pay securely, move in.",
-    description: "Rendo, formerly Rentipede, helps students and professionals find a room, apply, pay and move in. Owners and hostel staff use it to manage their rooms, tenants and payments. I'm the lead backend developer, so I build the system behind the app: the data, the payments and the rules for who can do what.",
+    description: "Rendo, formerly Rentipede, helps students and professionals find a room, apply, pay and move in. Owners and hostel staff use it to manage their rooms, tenants and payments. I'm a backend developer on the team, so I build the system behind the app: the data, the payments and the rules for who can do what.",
     services: "Backend architecture, API design",
-    role: "Lead backend developer",
+    role: "Backend developer",
     timeline: "2026 to now",
     tools: ["Node.js", "Express", "Prisma", "PostgreSQL", "TypeScript", "Zod", "Jest"],
     highlights: [
@@ -368,19 +368,19 @@ export const services = [
 export const experience = [
   {
     place: "Vowrify",
-    role: "Founder, design and engineering",
+    role: "Head software engineer",
     period: "2026 to now",
     slug: "vowrify",
   },
   {
     place: "Pendu",
-    role: "Product designer and developer",
+    role: "Co-founder, designer and developer",
     period: "2026 to now",
     slug: "pendu",
   },
   {
     place: "Rendo",
-    role: "Lead backend developer",
+    role: "Backend developer",
     period: "2026 to now",
     slug: "rendo",
   },
