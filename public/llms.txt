@@ -1,0 +1,14 @@
+# Samuel Emeka (Web Phoenix)
+
+> Portfolio of Samuel Emeka, who goes by Web Phoenix online: a developer and designer who builds products and brand identities, from the logo to the backend.
+
+## Pages
+- [Home and selected work](https://webphoenix.net/): projects, services and experience
+- [About](https://webphoenix.net/about): who Samuel is and what he is working on now
+- [Brand portfolio](https://webphoenix.net/brand): logos, mascots and poster work
+- [Socials and contact](https://webphoenix.net/socials): email, WhatsApp, Telegram, Instagram, LinkedIn
+
+## Roles
+- Co-founder, designer and developer at Pendu (voice, chat and calls for gaming communities)
+- Head software engineer at Vowrify (protected payments for big purchases)
+- Backend developer at Rendo, formerly Rentipede (hostels and rental housing)

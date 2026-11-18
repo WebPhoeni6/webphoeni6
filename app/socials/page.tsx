@@ -3,10 +3,19 @@ import { getContent } from "@/lib/store";
 import { SocialIcon, socialHandle } from "@/components/SocialIcon";
 import Nav from "@/components/Nav";
 
-export const metadata: Metadata = {
-  title: "Socials",
-  description: "Where to reach me.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const { profile } = await getContent();
+  const fullName = `${profile.firstName} ${profile.lastName}`;
+  const title = `Contact ${fullName}`;
+  const description = `Official contact and social profiles for ${fullName}, known as Web Phoenix.`;
+  return {
+    title,
+    description,
+    alternates: { canonical: "/socials" },
+    openGraph: { type: "website", url: "/socials", siteName: "Web Phoenix", title, description },
+    twitter: { card: "summary_large_image", title, description },
+  };
+}
 
 export default async function SocialsPage() {
   const { profile } = await getContent();

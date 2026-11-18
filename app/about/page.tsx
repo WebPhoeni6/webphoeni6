@@ -4,14 +4,21 @@ import Link from "next/link";
 import { getContent } from "@/lib/store";
 import { about } from "@/lib/about";
 import Nav from "@/components/Nav";
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbs, brandSchema, graph, personSchema, PERSON_ID, SITE_URL, WEBSITE_ID } from "@/lib/seo";
 import ContactLink from "@/components/ContactLink";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { profile } = await getContent();
   const name = `${profile.firstName} ${profile.lastName}`;
+  const title = `About ${name}`;
+  const description = `${name} is a designer and developer who builds products and brands, also known online as Web Phoenix.`;
   return {
-    title: `About ${name}`,
-    description: `${name} is a designer and developer who builds products and brands, also known online as Web Phoenix.`,
+    title,
+    description,
+    alternates: { canonical: "/about" },
+    openGraph: { type: "profile", url: "/about", siteName: "Web Phoenix", title, description, firstName: profile.firstName, lastName: profile.lastName },
+    twitter: { card: "summary_large_image", title, description },
   };
 }
 
@@ -25,6 +32,14 @@ export default async function AboutPage() {
 
   return (
     <main className="min-h-svh bg-paper text-ink">
+      <JsonLd
+        json={graph(
+          personSchema(profile),
+          brandSchema(profile),
+          { "@type": "ProfilePage", "@id": `${SITE_URL}/about#page`, url: `${SITE_URL}/about`, name: `About ${profile.firstName} ${profile.lastName}`, isPartOf: { "@id": WEBSITE_ID }, mainEntity: { "@id": PERSON_ID } },
+          breadcrumbs([{ name: "Home", path: "/" }, { name: "About", path: "/about" }]),
+        )}
+      />
       <Nav tone="light" />
       <div className="mx-auto max-w-[1400px] px-5 pb-28 md:px-10">
 

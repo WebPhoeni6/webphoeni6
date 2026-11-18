@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useContent } from "./ContentProvider";
-import ContactLink from "./ContactLink";
+import TalkMenu from "./TalkMenu";
 import { ArrowUpRight } from "./ui";
 import ThemeToggle from "./ThemeToggle";
 import LogoMark from "./LogoMark";
@@ -111,10 +111,7 @@ export default function Nav({ tone = "light" }: { tone?: "dark" | "light" }) {
               </Link>
             ))}
             <ThemeToggle tone={open || dark ? "dark" : "light"} />
-            <ContactLink className={`group flex items-center gap-1.5 rounded-full px-4 py-2.5 font-medium transition-transform hover:scale-[1.04] ${ctaTone}`}>
-              Let&apos;s Talk
-              <ArrowUpRight className="size-3 transition-transform duration-300 group-hover:-translate-y-px group-hover:translate-x-px" />
-            </ContactLink>
+            <TalkMenu className={`group flex items-center gap-1.5 rounded-full px-4 py-2.5 font-medium transition-transform hover:scale-[1.04] ${ctaTone}`} />
             <button
               type="button"
               onClick={() => setOpen((o) => !o)}

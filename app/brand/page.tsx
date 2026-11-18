@@ -6,9 +6,15 @@ import { getContent } from "@/lib/store";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { profile } = await getContent();
+  const fullName = `${profile.firstName} ${profile.lastName}`;
+  const title = `Brand identity and design by ${fullName}`;
+  const description = `Selected brand identity, visual identity, and poster design work by ${fullName}, known as Web Phoenix.`;
   return {
-    title: `${profile.firstName} ${profile.lastName} | Brand and visual design`,
-    description: "Selected brand identity and poster work.",
+    title,
+    description,
+    alternates: { canonical: "/brand" },
+    openGraph: { type: "website", url: "/brand", siteName: "Web Phoenix", title, description },
+    twitter: { card: "summary_large_image", title, description },
   };
 }
 
