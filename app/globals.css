@@ -37,6 +37,18 @@
   --backdrop: #d9d9d7;
 }
 
+/* Lenis takes over smooth scrolling, so the browser's own must be off while it runs. */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
 html {
   scroll-behavior: smooth;
   background: var(--backdrop);

@@ -135,6 +135,7 @@ export default function Nav({ tone = "hero" }: { tone?: "hero" | "dark" | "light
 
       <div
         id="mobile-menu"
+        data-lenis-prevent
         aria-hidden={!open}
         inert={!open}
         className={`fixed inset-0 z-[39] flex flex-col justify-between bg-[#111] px-5 pb-8 pt-28 text-white transition-opacity duration-300 lg:hidden ${open ? "opacity-100" : "pointer-events-none opacity-0"}`}

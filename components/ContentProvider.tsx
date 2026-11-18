@@ -2,11 +2,17 @@
 
 import { createContext, useContext } from "react";
 import type { SiteContent } from "@/lib/seed";
+import SmoothScroll from "./SmoothScroll";
 
 const Ctx = createContext<SiteContent | null>(null);
 
 export function ContentProvider({ value, children }: { value: SiteContent; children: React.ReactNode }) {
-  return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
+  return (
+    <Ctx.Provider value={value}>
+      <SmoothScroll />
+      {children}
+    </Ctx.Provider>
+  );
 }
 
 export function useContent() {

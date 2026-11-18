@@ -72,7 +72,7 @@ export default function Lightbox({ slug, items, start, onClose }: { slug: string
   const nn = (n: number) => String(n).padStart(2, "0");
 
   return (
-    <div role="dialog" aria-modal="true" aria-label="Poster viewer" className="fixed inset-0 z-50 flex flex-col bg-black/92 text-white backdrop-blur-md">
+    <div data-lenis-prevent role="dialog" aria-modal="true" aria-label="Poster viewer" className="fixed inset-0 z-50 flex flex-col bg-black/92 text-white backdrop-blur-md">
       <div className="flex items-center justify-between px-5 py-4 md:px-8">
         <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-white/60">
           {nn(index + 1)} / {nn(items.length)}
