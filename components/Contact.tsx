@@ -28,7 +28,7 @@ export default function Contact() {
             Brand identity, product design or a full build. Tell me what you&apos;re making and I&apos;ll tell you how I&apos;d approach it.
           </Reveal>
           <Reveal delay={0.2}>
-            <a href={contactHref} className="group inline-flex items-center gap-2 rounded-full bg-white px-7 py-4 text-[14px] font-medium text-ink transition-transform duration-300 hover:scale-105 active:scale-[0.97]">
+            <a href={contactHref} className="group inline-flex items-center gap-2 rounded-full bg-ember px-7 py-4 text-[14px] font-medium text-ink transition-transform duration-300 hover:scale-105 active:scale-[0.97]">
               Say hello
               <ArrowUpRight className="size-3.5 transition-transform duration-300 group-hover:-translate-y-px group-hover:translate-x-px" />
             </a>

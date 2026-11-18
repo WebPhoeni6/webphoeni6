@@ -7,6 +7,9 @@
   --color-mute: #8a8a87;
   --color-line: #e4e4e1;
   --color-live: #22c55e;
+  /* The Web Phoenix orange, from the logo. Use it for small accents. */
+  --color-ember: #ff4f1a;
+  --color-ember-deep: #e0430f;
   --font-display: var(--font-display), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -26,8 +29,8 @@ body {
 }
 
 ::selection {
-  background: var(--color-ink);
-  color: #fff;
+  background: var(--color-ember);
+  color: var(--color-ink);
 }
 
 /* Soft cloud backdrop that peeks around the rounded sections */

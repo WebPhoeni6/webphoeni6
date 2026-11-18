@@ -88,7 +88,7 @@ export default function Latest() {
                 <Image src={u.image} alt="" fill sizes="(min-width: 768px) 312px, 58vw" className="object-cover transition-transform duration-[900ms] ease-[var(--ease-out-expo)] group-hover:scale-[1.05]" />
                 {i < NEW_COUNT && (
                   <span className="absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-ink py-1 pl-2 pr-2.5 text-[10px] font-semibold uppercase leading-none tracking-[0.14em] text-white">
-                    <svg viewBox="0 0 12 12" className="size-2.5 text-amber-300" aria-hidden>
+                    <svg viewBox="0 0 12 12" className="size-2.5 text-ember" aria-hidden>
                       <path d="M6 0l1.4 4.1L11.5 5.5 7.4 6.9 6 11 4.6 6.9.5 5.5l4.1-1.4z" fill="currentColor" />
                     </svg>
                     New
@@ -105,7 +105,7 @@ export default function Latest() {
       </ul>
 
       <div aria-hidden className="mt-5 h-0.5 overflow-hidden rounded-full bg-ink/10">
-        <div className="h-full rounded-full bg-ink" style={{ width: `${edge.ratio * 100}%`, transform: `translateX(${edge.progress * (1 / edge.ratio - 1) * 100}%)` }} />
+        <div className="h-full rounded-full bg-ember" style={{ width: `${edge.ratio * 100}%`, transform: `translateX(${edge.progress * (1 / edge.ratio - 1) * 100}%)` }} />
       </div>
     </Reveal>
   );

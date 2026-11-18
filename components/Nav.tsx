@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useContactHref, useContent } from "./ContentProvider";
 import { ArrowUpRight } from "./ui";
 import ShareButton from "./ShareButton";
+import LogoMark from "./LogoMark";
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
@@ -80,18 +81,16 @@ export default function Nav({ tone = "dark" }: { tone?: "dark" | "light" }) {
   const text = open || dark ? "text-white" : "text-ink";
   const idle = dark ? "text-white/65 hover:text-white" : "text-ink/60 hover:text-ink";
   const on = dark ? "text-white" : "text-ink";
-  const ctaTone = dark ? "bg-white text-ink" : "bg-ink text-white";
+  const ctaTone = "bg-ember text-ink";
   const share = "Samuel Emeka (Web Phoenix), developer and designer";
 
   return (
     <>
       <header className={`fixed inset-x-0 top-0 z-40 transition-[background-color,box-shadow] duration-300 ${bar} ${text}`}>
         <div className="mx-auto flex h-[4.25rem] max-w-[1600px] items-center justify-between gap-4 px-5 text-[13px] md:px-10">
-          <Link href="/" onClick={() => setOpen(false)} aria-label="Home" className="font-display text-base font-bold tracking-tight">
-            <span className="md:hidden">
-              {profile.firstName[0]}.{profile.lastName[0]}
-            </span>
-            <span className="hidden md:inline">
+          <Link href="/" onClick={() => setOpen(false)} aria-label="Home" className="flex items-center gap-2.5 font-display text-base font-bold tracking-tight">
+            <LogoMark className="size-8" />
+            <span className="hidden sm:inline">
               {profile.firstName} {profile.lastName}
             </span>
           </Link>
@@ -108,7 +107,7 @@ export default function Nav({ tone = "dark" }: { tone?: "dark" | "light" }) {
                 {l.count && (
                   <span className={`ml-1.5 rounded-full px-1.5 py-0.5 align-middle text-[10px] font-semibold leading-none ${dark ? "bg-white/12 text-white/75" : "bg-ink/8 text-ink/60"}`}>{l.count}</span>
                 )}
-                <span className={`absolute -bottom-1 left-0 h-px w-full origin-left bg-current transition-transform duration-500 ${isActive(l) ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}`} />
+                <span className={`absolute -bottom-1 left-0 h-px w-full origin-left bg-ember transition-transform duration-500 ${isActive(l) ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}`} />
               </Link>
             ))}
             <ShareButton variant="icon" tone={dark ? "dark" : "light"} path="/" title="Samuel Emeka, developer and designer" text={share} className="hidden sm:inline-block [&>button]:size-9" label="Share this site" />

@@ -31,7 +31,7 @@ export async function shareImage(o: { eyebrow: string; title: string; line: stri
     (
       <div style={{ width: "100%", height: "100%", display: "flex", background: "#111", color: "#fff", fontFamily: "sans-serif" }}>
         <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", padding: "56px 56px 52px", width: ogSize.width - panelW }}>
-          <div style={{ display: "flex", fontSize: 20, letterSpacing: 4, textTransform: "uppercase", color: "#8a8a8a" }}>{o.eyebrow}</div>
+          <div style={{ display: "flex", fontSize: 20, letterSpacing: 4, textTransform: "uppercase", color: "#ff4f1a" }}>{o.eyebrow}</div>
           <div style={{ display: "flex", flexDirection: "column" }}>
             <div style={{ display: "flex", fontSize: size, fontWeight: 700, lineHeight: 1.02, letterSpacing: -3 }}>{o.title}</div>
             <div style={{ display: "flex", marginTop: 22, fontSize: 28, color: "#cfcfcf", lineHeight: 1.3 }}>{o.line}</div>
