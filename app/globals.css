@@ -253,12 +253,14 @@ body {
 @page cv {
   size: A4;
   margin: 11mm 14mm;
+  background: #fff;
 }
 @media print {
   /* The margins around the page take the page background, so it has to be white, not the theme color. */
   html:has(.cv-doc),
   body:has(.cv-doc) {
     background: #fff !important;
+    color-scheme: light !important;
   }
   .cv-doc {
     background: #fff;
