@@ -3,7 +3,8 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { useContactHref, useContent } from "./ContentProvider";
+import { useContent } from "./ContentProvider";
+import ContactLink from "./ContactLink";
 import { ArrowUpRight } from "./ui";
 import Portrait from "./Portrait";
 
@@ -36,7 +37,6 @@ function Chars({
 
 export default function Hero({ hasPortrait }: { hasPortrait: boolean }) {
   const { profile, projects, brands } = useContent();
-  const contactHref = useContactHref();
   const root = useRef<HTMLElement>(null);
 
   // Numbers come from the content itself, so they stay true as you add work.
@@ -144,7 +144,7 @@ export default function Hero({ hasPortrait }: { hasPortrait: boolean }) {
         {/* Name, big and behind the portrait */}
         {/* Name sits behind the portrait */}
         <div className="relative">
-          <h1 aria-label={`${profile.firstName} ${profile.lastName}`} className="h-name relative z-10 mt-5 flex flex-wrap justify-between gap-x-[0.2em] font-display text-[clamp(3.4rem,12.4vw,13.5rem)] font-bold leading-[0.86] tracking-[-0.055em] md:mt-6">
+          <h1 aria-label={`${profile.firstName} ${profile.lastName}`} className="h-name relative z-10 mt-5 flex flex-wrap justify-between gap-x-[0.2em] font-display text-[clamp(2.11rem,7.69vw,8.37rem)] font-bold leading-[0.98] tracking-[-0.035em] md:mt-6">
             <Chars text={profile.firstName} />
             <Chars text={profile.lastName} />
           </h1>
@@ -172,7 +172,7 @@ export default function Hero({ hasPortrait }: { hasPortrait: boolean }) {
 
           {/* Left: who I am */}
           <div className="relative z-30 order-2 -mt-[30vw] md:order-1 md:mt-0 md:max-w-sm">
-            <p className="h-copy font-display text-xl font-medium tracking-tight text-white/90 md:text-2xl">
+            <p className="h-copy font-display text-xl font-medium tracking-[-0.02em] text-white/90 md:text-2xl">
               {profile.role}
             </p>
             <p className="h-copy mt-3 text-[13px] leading-relaxed text-white/55">
@@ -182,7 +182,7 @@ export default function Hero({ hasPortrait }: { hasPortrait: boolean }) {
             <div className="h-copy mt-6 flex flex-wrap gap-2.5">
               <a
                 href="#work"
-                className="group inline-flex items-center gap-1.5 rounded-full bg-white px-5 py-3 text-[13px] font-medium text-ink transition-transform hover:scale-[1.04]"
+                className="group inline-flex items-center gap-1.5 rounded-full bg-white px-5 py-3 text-[13px] font-medium text-[#111] transition-transform hover:scale-[1.04]"
               >
                 See my work
                 <ArrowUpRight className="size-3 rotate-90 transition-transform duration-300 group-hover:translate-y-0.5" />
@@ -202,7 +202,7 @@ export default function Hero({ hasPortrait }: { hasPortrait: boolean }) {
             <div className="grid grid-cols-3 gap-4 border-t border-white/15 pt-5">
               {stats.map((x) => (
                 <div key={x.label}>
-                  <p className="font-display text-4xl font-bold leading-none tracking-[-0.04em] md:text-5xl">
+                  <p className="font-display text-4xl font-bold leading-none tracking-[-0.03em] md:text-5xl">
                     {x.n}
                   </p>
                   <p className="mt-2 text-[11px] leading-tight text-white/45">
@@ -221,13 +221,12 @@ export default function Hero({ hasPortrait }: { hasPortrait: boolean }) {
                   Got a project?
                 </span>
               )}
-              <a
-                href={contactHref}
-                className="group inline-flex shrink-0 items-center gap-1.5 rounded-full bg-white px-5 py-3 text-[13px] font-medium text-ink transition-transform hover:scale-[1.04]"
+              <ContactLink
+                className="group inline-flex shrink-0 items-center gap-1.5 rounded-full bg-ember px-5 py-3 text-[13px] font-medium text-[#111] transition-transform hover:scale-[1.04]"
               >
                 Say hello
                 <ArrowUpRight className="size-3 transition-transform duration-300 group-hover:-translate-y-px group-hover:translate-x-px" />
-              </a>
+              </ContactLink>
             </div>
           </div>
         </div>

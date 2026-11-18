@@ -17,11 +17,11 @@ export default async function SocialsPage() {
 
   return (
     <main className="mx-auto min-h-svh max-w-[1600px] bg-[#111] px-5 pb-24 pt-5 text-white md:px-10">
-      <Nav />
+      <Nav tone="dark" />
 
       <div className="mt-28 md:mt-36">
         <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-white/45">Get in touch</p>
-        <h1 className="mt-5 font-display text-[clamp(3.2rem,10vw,9rem)] font-bold leading-[0.9] tracking-[-0.05em]">Socials</h1>
+        <h1 className="mt-5 font-display text-[clamp(2.24rem,7vw,6.3rem)] font-bold leading-[1.02] tracking-[-0.03em]">Socials</h1>
         <p className="mt-6 max-w-md text-[13px] leading-relaxed text-white/50">Pick whichever you check most. I answer on all of them.</p>
       </div>
 
@@ -37,7 +37,7 @@ export default async function SocialsPage() {
               <span className="grid size-12 shrink-0 place-items-center rounded-full bg-white/[0.07] text-white/80 transition-colors duration-300 group-hover:bg-white group-hover:text-ink md:size-14">
                 <SocialIcon label={r.label} className="size-5" />
               </span>
-              <span className="font-display text-[clamp(1.6rem,4.6vw,3.4rem)] font-medium leading-none tracking-[-0.03em] transition-transform duration-500 group-hover:translate-x-2 md:group-hover:translate-x-4">
+              <span className="font-display text-[clamp(1.12rem,3.22vw,2.38rem)] font-medium leading-none tracking-[-0.03em] transition-transform duration-500 group-hover:translate-x-2 md:group-hover:translate-x-4">
                 {r.label}
               </span>
               <span className="ml-auto hidden truncate text-[13px] text-white/45 sm:block">{r.handle}</span>

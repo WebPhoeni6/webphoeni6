@@ -182,7 +182,6 @@ function MockupSheet({ b, n, who }: { b: BrandWork; n: string; who: string }) {
 export default async function BrandPortfolio() {
   const { profile, brands, campaigns } = await getContent();
   const who = `${profile.firstName} ${profile.lastName}`;
-  const L = campaigns.linkco;
   const E = campaigns.explorations;
   const total = brands.length;
   const nn = (i: number) => String(i).padStart(2, "0");
@@ -227,22 +226,10 @@ export default async function BrandPortfolio() {
         </Fragment>
       ))}
 
-      {/* Campaign */}
-      <Sheet>
-        <Header who={who} n={nn(total + 1)} left="Campaign" />
-        <Copy name={L.title} type={L.type} challenge={L.challenge} approach={L.approach} accent="#F3B933" />
-        <div style={{ position: "absolute", left: u(43), right: u(5), top: u(10), bottom: u(5), display: "grid", gridTemplateColumns: "1fr 1fr", gap: u(2), alignContent: "center" }}>
-          {L.images.map((src) => (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img key={src} src={pdf(src)} alt="Linkco poster" style={{ width: "100%", aspectRatio: "4 / 5", objectFit: "cover", borderRadius: u(1.6) }} />
-          ))}
-        </div>
-      </Sheet>
-
       {/* Explorations */}
       {E.sets.map((set, k) => (
         <Sheet key={k} bg={k === 0 ? "#f4f4f2" : "#fff"}>
-          <Header who={who} n={nn(total + 2 + k)} left={`Explorations ${k === 0 ? "I" : "II"}`} />
+          <Header who={who} n={nn(total + 1 + k)} left={`Explorations ${k === 0 ? "I" : "II"}`} />
           <div style={{ position: "absolute", left: u(5), top: u(9), right: u(5) }}>
             <h2 style={{ ...display, fontSize: u(5.6), lineHeight: 1 }}>{E.title}</h2>
             <p style={{ fontSize: u(1.35), marginTop: u(0.8), opacity: 0.55 }}>{E.type}</p>

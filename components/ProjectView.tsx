@@ -6,14 +6,13 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import Nav from "./Nav";
 import type { Project } from "@/lib/content";
-import { useContactHref } from "./ContentProvider";
+import ContactLink from "./ContactLink";
 import { ArrowUpRight, Cover, Reveal } from "./ui";
 
 // Loaded only when a poster is opened, so it adds nothing to the page weight.
 const Lightbox = dynamic(() => import("./Lightbox"), { ssr: false });
 
 export default function ProjectView({ p, next }: { p: Project; next: Project }) {
-  const contactHref = useContactHref();
   const [viewer, setViewer] = useState<number | null>(null);
   // A shared poster link (?poster=3) opens the viewer on that poster.
   useEffect(() => {
@@ -30,13 +29,13 @@ export default function ProjectView({ p, next }: { p: Project; next: Project }) 
       <section className="grid gap-10 px-5 pb-16 pt-32 md:grid-cols-[1.4fr_1fr] md:px-10 md:pt-40">
         <div>
           <Reveal className="flex flex-wrap gap-2">
-            <span className="rounded-full bg-white px-3 py-1.5 text-[11px] font-medium shadow-[0_1px_6px_rgba(0,0,0,0.05)]">{p.category}</span>
+            <span className="rounded-full bg-card px-3 py-1.5 text-[11px] font-medium shadow-[0_1px_6px_rgba(0,0,0,0.05)]">{p.category}</span>
             {p.tags.map((t) => (
-              <span key={t} className="rounded-full bg-white px-3 py-1.5 text-[11px] font-medium shadow-[0_1px_6px_rgba(0,0,0,0.05)]">{t}</span>
+              <span key={t} className="rounded-full bg-card px-3 py-1.5 text-[11px] font-medium shadow-[0_1px_6px_rgba(0,0,0,0.05)]">{t}</span>
             ))}
           </Reveal>
           <Reveal delay={0.08}>
-            <h1 className="mt-7 font-display text-[clamp(2.6rem,7vw,5.5rem)] font-semibold leading-[0.95] tracking-tight">
+            <h1 className="mt-7 font-display text-[clamp(1.82rem,4.9vw,3.85rem)] font-semibold leading-[1.05] tracking-[-0.02em]">
               {name}
               <span className="ml-3 align-baseline text-sm font-normal tracking-normal text-ink/45 md:text-base">/{p.kind}</span>
             </h1>
@@ -60,14 +59,14 @@ export default function ProjectView({ p, next }: { p: Project; next: Project }) 
           )}
           <Reveal delay={0.24} className="mt-8 flex gap-2.5">
             {p.link && (
-              <a href={p.link} target="_blank" rel="noreferrer" className="group inline-flex items-center gap-1.5 rounded-full bg-ink px-4 py-2.5 text-xs font-medium text-white transition-transform hover:scale-[1.04]">
+              <a href={p.link} target="_blank" rel="noreferrer" className="group inline-flex items-center gap-1.5 rounded-full bg-ink px-4 py-2.5 text-xs font-medium text-paper transition-transform hover:scale-[1.04]">
                 Live Preview
                 <ArrowUpRight className="size-3" />
               </a>
             )}
-            <Link href={contactHref} className="rounded-full bg-white px-4 py-2.5 text-xs font-medium shadow-[0_1px_8px_rgba(0,0,0,0.06)] transition-transform hover:scale-[1.04]">
+            <ContactLink className="rounded-full bg-card px-4 py-2.5 text-xs font-medium shadow-[0_1px_8px_rgba(0,0,0,0.06)] transition-transform hover:scale-[1.04]">
               Contact Me
-            </Link>
+            </ContactLink>
           </Reveal>
         </div>
 
@@ -79,7 +78,7 @@ export default function ProjectView({ p, next }: { p: Project; next: Project }) 
             <p className="text-[10px] uppercase tracking-[0.18em] text-mute">Tools</p>
             <div className="mt-2 flex flex-wrap gap-1.5 md:justify-end">
               {p.tools.map((t) => (
-                <span key={t} className="rounded-md bg-white px-2.5 py-1 text-[11px] font-medium shadow-[0_1px_6px_rgba(0,0,0,0.05)]">{t}</span>
+                <span key={t} className="rounded-md bg-card px-2.5 py-1 text-[11px] font-medium shadow-[0_1px_6px_rgba(0,0,0,0.05)]">{t}</span>
               ))}
             </div>
           </div>
@@ -108,7 +107,7 @@ export default function ProjectView({ p, next }: { p: Project; next: Project }) 
               type="button"
               onClick={() => setViewer(i)}
               aria-label={`Open ${g.alt} in the viewer`}
-              className="group relative block w-full cursor-zoom-in overflow-hidden rounded-xl bg-white text-left shadow-[0_2px_18px_rgba(0,0,0,0.06)]"
+              className="group relative block w-full cursor-zoom-in overflow-hidden rounded-xl bg-card text-left shadow-[0_2px_18px_rgba(0,0,0,0.06)]"
             >
               <Image src={g.src} alt={g.alt} width={900} height={1125} priority={i < 3} sizes="(min-width: 1024px) 320px, 50vw" className="aspect-[4/5] h-auto w-full object-cover transition-transform duration-[900ms] ease-[var(--ease-out-expo)] group-hover:scale-[1.04]" />
               <span className="pointer-events-none absolute inset-x-0 bottom-0 flex items-center justify-between bg-gradient-to-t from-black/55 to-transparent px-3 pb-2.5 pt-8 text-[11px] font-medium text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
@@ -119,7 +118,7 @@ export default function ProjectView({ p, next }: { p: Project; next: Project }) 
           </Reveal>
         ) : (
           <Reveal key={g.src} y={50}>
-            <div className="rounded-2xl bg-white p-2.5 shadow-[0_2px_18px_rgba(0,0,0,0.05)]">
+            <div className="rounded-2xl bg-card p-2.5 shadow-[0_2px_18px_rgba(0,0,0,0.05)]">
               <div className="relative overflow-hidden rounded-xl" style={{ background: g.bg ?? "#eee" }}>
                 <Image
                   src={g.src}
@@ -144,7 +143,7 @@ export default function ProjectView({ p, next }: { p: Project; next: Project }) 
           <div className={`grid grid-cols-2 gap-3 md:gap-4 ${p.mockups[0].includes("-app") ? "md:grid-cols-5" : "md:grid-cols-4"}`}>
             {p.mockups.map((src, i) => (
               <Reveal key={src} y={40} delay={(i % 4) * 0.05} className={i === 0 && !src.includes("-app") ? "col-span-2 row-span-2" : ""}>
-                <div className="aspect-square overflow-hidden rounded-2xl bg-white shadow-[0_2px_18px_rgba(0,0,0,0.05)]">
+                <div className="aspect-square overflow-hidden rounded-2xl bg-card shadow-[0_2px_18px_rgba(0,0,0,0.05)]">
                   <Image
                     src={src}
                     alt={`${p.title.split(": ")[0]} mockup`}
@@ -163,7 +162,7 @@ export default function ProjectView({ p, next }: { p: Project; next: Project }) 
       <Link href={`/work/${next.slug}`} className="group relative block overflow-hidden bg-night px-5 py-20 text-white md:px-10 md:py-28">
         <p className="text-[11px] uppercase tracking-[0.18em] text-white/50">Next project</p>
         <div className="mt-4 flex items-end justify-between gap-6">
-          <span className="font-display text-[clamp(2rem,6vw,4.5rem)] font-medium uppercase leading-none tracking-tight transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:translate-x-3">
+          <span className="font-display text-[clamp(1.4rem,4.2vw,3.15rem)] font-medium uppercase leading-none tracking-[-0.02em] transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:translate-x-3">
             {next.title.split(": ")[0]}
           </span>
           <ArrowUpRight className="size-8 shrink-0 transition-transform duration-500 group-hover:-translate-y-1 group-hover:translate-x-1 md:size-12" />

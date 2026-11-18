@@ -227,26 +227,6 @@ export const projects: Project[] = [
 
   },
   {
-    slug: "linkco",
-    poster: true,
-    title: "Linkco: Power bank campaign",
-    kind: "Product Visuals",
-    category: "Design",
-    tags: ["Product", "Poster"],
-    summary: "Launch posters for a 50,000 mAh power bank range.",
-    description:
-      "Two poster layouts built around the product. Large numerals sit behind a lit power bank on a pedestal, and the spec callouts stay small.",
-    services: "Art direction, product visuals",
-    timeline: "Campaign",
-    tools: ["Affinity Designer", "Affinity Photo"],
-    cover: w("linco-max"),
-    coverFit: "cover",
-    gallery: [
-      { src: w("linco-max"), alt: "Linkco Max poster" },
-      { src: w("linco-50000"), alt: "Linkco 50000 mAh poster" },
-    ],
-  },
-  {
     slug: "poster-series",
     poster: true,
     title: "Poster series",

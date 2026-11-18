@@ -1,13 +1,13 @@
 "use client";
 
-import { useContactHref, useContent } from "./ContentProvider";
+import { useContent } from "./ContentProvider";
+import ContactLink from "./ContactLink";
 import { ArrowUpRight, Reveal } from "./ui";
 import { SocialIcon } from "./SocialIcon";
 
 /** Closes the page like the last sheet of the PDF: dark, one big line. */
 export default function Contact() {
   const { profile } = useContent();
-  const contactHref = useContactHref();
   return (
     <section id="contact" className="relative -mt-8 overflow-hidden rounded-t-[2rem] bg-[#111] px-5 pb-8 pt-16 text-white md:px-10 md:pt-24">
       <div className="mx-auto max-w-[1600px]">
@@ -16,7 +16,7 @@ export default function Contact() {
         </Reveal>
 
         <Reveal delay={0.08}>
-          <h2 className="mt-8 font-display text-[clamp(3rem,10.5vw,10rem)] font-bold leading-[0.9] tracking-[-0.05em]">
+          <h2 className="mt-8 font-display text-[clamp(2.1rem,7.35vw,7rem)] font-bold leading-[1.02] tracking-[-0.03em]">
             Got a project?
             <br />
             Let&apos;s talk.
@@ -28,15 +28,23 @@ export default function Contact() {
             Brand identity, product design or a full build. Tell me what you&apos;re making and I&apos;ll tell you how I&apos;d approach it.
           </Reveal>
           <Reveal delay={0.2}>
-            <a href={contactHref} className="group inline-flex items-center gap-2 rounded-full bg-ember px-7 py-4 text-[14px] font-medium text-ink transition-transform duration-300 hover:scale-105 active:scale-[0.97]">
+            <ContactLink className="group inline-flex items-center gap-2 rounded-full bg-ember px-7 py-4 text-[14px] font-medium text-[#111] transition-transform duration-300 hover:scale-105 active:scale-[0.97]">
               Say hello
               <ArrowUpRight className="size-3.5 transition-transform duration-300 group-hover:-translate-y-px group-hover:translate-x-px" />
-            </a>
+            </ContactLink>
+            {profile.email && (
+              <p className="mt-3 text-[12px] text-white/45">
+                No WhatsApp?{" "}
+                <a href={`mailto:${profile.email}`} className="underline underline-offset-4 transition-colors hover:text-white">
+                  Email me instead
+                </a>
+              </p>
+            )}
           </Reveal>
         </div>
 
         <Reveal delay={0.25} className="mt-16 flex flex-wrap items-center gap-2.5 border-t border-white/10 pt-8">
-          <span className="rounded-full bg-white px-3.5 py-2 text-[11px] font-semibold text-ink">
+          <span className="rounded-full bg-white px-3.5 py-2 text-[11px] font-semibold text-[#111]">
             {profile.firstName} {profile.lastName}
           </span>
           {profile.socials.filter((x) => x.href).map((x) => (

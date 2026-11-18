@@ -83,7 +83,7 @@ export function SectionHead({
         {aside && <span>{aside}</span>}
       </Reveal>
       <Reveal delay={0.08}>
-        <h2 className="mt-6 font-display text-[clamp(2.8rem,8vw,7rem)] font-bold leading-[0.92] tracking-[-0.05em]">{title}</h2>
+        <h2 className="mt-6 font-display text-[clamp(1.96rem,5.6vw,4.9rem)] font-bold leading-[1.02] tracking-[-0.03em]">{title}</h2>
       </Reveal>
     </div>
   );
@@ -100,7 +100,7 @@ export function Cover({ p, sizes = "(min-width: 768px) 50vw, 100vw", priority = 
         <div className="absolute -right-10 -top-10 size-56 rounded-full bg-white/[0.06]" />
         <div className="absolute -bottom-16 left-10 size-64 rounded-full bg-white/[0.04]" />
         <span className="relative text-[11px] uppercase tracking-[0.2em] text-white/50">{p.kind}</span>
-        <span className="relative font-display text-5xl font-extrabold tracking-tight">{p.title.split(": ")[0].toLowerCase()}</span>
+        <span className="relative font-display text-5xl font-extrabold tracking-[-0.02em]">{p.title.split(": ")[0].toLowerCase()}</span>
       </div>
     );
   }

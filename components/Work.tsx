@@ -25,7 +25,7 @@ export default function Work() {
           <span>{String(shown.length).padStart(2, "0")} projects</span>
         </Reveal>
         <Reveal delay={0.08}>
-        <h2 className="mt-6 font-display text-[clamp(3rem,9.5vw,9rem)] font-bold leading-[0.9] tracking-[-0.05em]">
+        <h2 className="mt-6 font-display text-[clamp(2.1rem,6.65vw,6.3rem)] font-bold leading-[1.02] tracking-[-0.03em]">
           Selected
           <br />
           work
@@ -38,7 +38,7 @@ export default function Work() {
               key={f}
               onClick={() => setActive(f)}
               className={`whitespace-nowrap rounded-full px-4 py-2 transition-colors duration-300 ${
-                active === f ? "bg-ink text-white" : "bg-white text-ink/70 hover:bg-ink/5"
+                active === f ? "bg-ink text-paper" : "bg-card text-ink/70 hover:bg-ink/10"
               }`}
             >
               {f}
@@ -70,7 +70,7 @@ export default function Work() {
                       <Cover p={p} />
                     </div>
                   )}
-                  <span className="absolute right-4 top-4 grid size-11 translate-y-2 place-items-center rounded-full bg-white text-ink opacity-0 shadow-lg transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+                  <span className="absolute right-4 top-4 grid size-11 translate-y-2 place-items-center rounded-full bg-white text-[#111] opacity-0 shadow-lg transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
                     <ArrowUpRight className="size-4" />
                   </span>
                 </div>
@@ -84,7 +84,7 @@ export default function Work() {
                   </div>
                   <div className="hidden shrink-0 flex-wrap justify-end gap-1.5 sm:flex">
                     {p.tags.slice(0, 2).map((t) => (
-                      <span key={t} className="rounded-full bg-white px-3 py-1 text-[11px] font-medium text-ink/65">
+                      <span key={t} className="rounded-full bg-card px-3 py-1 text-[11px] font-medium text-ink/65">
                         {t}
                       </span>
                     ))}

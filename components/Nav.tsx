@@ -3,9 +3,10 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { useContactHref, useContent } from "./ContentProvider";
+import { useContent } from "./ContentProvider";
+import ContactLink from "./ContactLink";
 import { ArrowUpRight } from "./ui";
-import ShareButton from "./ShareButton";
+import ThemeToggle from "./ThemeToggle";
 import LogoMark from "./LogoMark";
 
 const pad = (n: number) => String(n).padStart(2, "0");
@@ -14,9 +15,8 @@ const pad = (n: number) => String(n).padStart(2, "0");
  * The site navigation. Fixed to the top on every page: clear over the hero, frosted once you scroll,
  * with a full-screen menu on phones. `tone` matches the page behind it.
  */
-export default function Nav({ tone = "dark" }: { tone?: "dark" | "light" }) {
+export default function Nav({ tone = "hero" }: { tone?: "hero" | "dark" | "light" }) {
   const { profile, projects, services, experience } = useContent();
-  const contactHref = useContactHref();
   const path = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -71,24 +71,24 @@ export default function Nav({ tone = "dark" }: { tone?: "dark" | "light" }) {
   type Item = { label: string; href: string; id: string; count: string | undefined };
   const isActive = (l: Item) => (l.id ? path === "/" && section === l.id : path === l.href);
 
-  const dark = tone === "dark";
+  // "hero" (home) and "dark" (Socials) sit over a dark page; the home bar switches to the theme once you scroll.
+  const dark = tone === "dark" || (tone === "hero" && !scrolled);
   const bar =
     scrolled || open
       ? dark
-        ? "bg-[#111]/90 shadow-[0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-xl"
-        : "bg-paper/80 shadow-[0_1px_0_rgba(0,0,0,0.07)] backdrop-blur-xl"
-      : "bg-transparent";
+        ? "border-white/10 bg-[#111]/90 backdrop-blur-xl"
+        : "border-ink/10 bg-paper/85 backdrop-blur-xl"
+      : "border-transparent bg-transparent";
   const text = open || dark ? "text-white" : "text-ink";
   const idle = dark ? "text-white/65 hover:text-white" : "text-ink/60 hover:text-ink";
   const on = dark ? "text-white" : "text-ink";
-  const ctaTone = "bg-ember text-ink";
-  const share = "Samuel Emeka (Web Phoenix), developer and designer";
+  const ctaTone = "bg-ember text-[#111]";
 
   return (
     <>
-      <header className={`fixed inset-x-0 top-0 z-40 transition-[background-color,box-shadow] duration-300 ${bar} ${text}`}>
+      <header className={`fixed inset-x-0 top-0 z-40 border-b transition-[background-color,border-color] duration-300 ${bar} ${text}`}>
         <div className="mx-auto flex h-[4.25rem] max-w-[1600px] items-center justify-between gap-4 px-5 text-[13px] md:px-10">
-          <Link href="/" onClick={() => setOpen(false)} aria-label="Home" className="flex items-center gap-2.5 font-display text-base font-bold tracking-tight">
+          <Link href="/" onClick={() => setOpen(false)} aria-label="Home" className="flex items-center gap-2.5 font-display text-base font-bold tracking-[-0.02em]">
             <LogoMark className="size-8" />
             <span className="hidden sm:inline">
               {profile.firstName} {profile.lastName}
@@ -105,16 +105,16 @@ export default function Nav({ tone = "dark" }: { tone?: "dark" | "light" }) {
               >
                 {l.label}
                 {l.count && (
-                  <span className={`ml-1.5 rounded-full px-1.5 py-0.5 align-middle text-[10px] font-semibold leading-none ${dark ? "bg-white/12 text-white/75" : "bg-ink/8 text-ink/60"}`}>{l.count}</span>
+                  <span className={`ml-1.5 rounded-full px-1.5 py-0.5 align-middle text-[10px] font-semibold leading-none ${dark ? "bg-white/12 text-white/75" : "bg-ink/10 text-ink/60"}`}>{l.count}</span>
                 )}
                 <span className={`absolute -bottom-1 left-0 h-px w-full origin-left bg-ember transition-transform duration-500 ${isActive(l) ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}`} />
               </Link>
             ))}
-            <ShareButton variant="icon" tone={dark ? "dark" : "light"} path="/" title="Samuel Emeka, developer and designer" text={share} className="hidden sm:inline-block [&>button]:size-9" label="Share this site" />
-            <Link href={contactHref} className={`group flex items-center gap-1.5 rounded-full px-4 py-2.5 font-medium transition-transform hover:scale-[1.04] ${ctaTone}`}>
+            <ThemeToggle tone={open || dark ? "dark" : "light"} />
+            <ContactLink className={`group flex items-center gap-1.5 rounded-full px-4 py-2.5 font-medium transition-transform hover:scale-[1.04] ${ctaTone}`}>
               Let&apos;s Talk
               <ArrowUpRight className="size-3 transition-transform duration-300 group-hover:-translate-y-px group-hover:translate-x-px" />
-            </Link>
+            </ContactLink>
             <button
               type="button"
               onClick={() => setOpen((o) => !o)}
@@ -146,7 +146,7 @@ export default function Nav({ tone = "dark" }: { tone?: "dark" | "light" }) {
                 href={l.href}
                 onClick={() => setOpen(false)}
                 style={{ transitionDelay: open ? `${80 + i * 45}ms` : "0ms" }}
-                className={`flex items-baseline justify-between py-4 font-display text-[clamp(2rem,9vw,3rem)] font-semibold tracking-[-0.03em] transition-all duration-500 ${open ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"} ${isActive(l) ? "text-white" : "text-white/70"}`}
+                className={`flex items-baseline justify-between py-4 font-display text-[clamp(1.4rem,6.3vw,2.1rem)] font-semibold tracking-[-0.03em] transition-all duration-500 ${open ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"} ${isActive(l) ? "text-white" : "text-white/70"}`}
               >
                 {l.label}
                 {l.count && <span className="text-sm font-medium text-white/40">{l.count}</span>}
@@ -156,7 +156,7 @@ export default function Nav({ tone = "dark" }: { tone?: "dark" | "light" }) {
         </ul>
         <div className="flex items-center justify-between gap-4 text-[13px] text-white/55">
           <span className="truncate">{profile.email}</span>
-          <ShareButton variant="pill" tone="dark" path="/" title="Samuel Emeka, developer and designer" text={share} className="shrink-0" />
+          <ThemeToggle tone="dark" showLabel className="shrink-0" />
         </div>
       </div>
     </>

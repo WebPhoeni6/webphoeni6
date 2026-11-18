@@ -101,8 +101,8 @@ export default function ShareButton({ path, title, text, image, variant = "pill"
   const dark = tone === "dark";
   const base =
     variant === "icon"
-      ? `grid size-10 place-items-center rounded-full ${dark ? "border border-white/25 hover:bg-white hover:text-black" : "bg-white shadow-[0_1px_8px_rgba(0,0,0,0.06)] hover:scale-105"}`
-      : `inline-flex items-center gap-2 rounded-full px-3.5 py-2 text-[12px] font-medium ${dark ? "border border-white/25 hover:bg-white hover:text-black" : "bg-white shadow-[0_1px_8px_rgba(0,0,0,0.06)] hover:scale-[1.04]"}`;
+      ? `grid size-10 place-items-center rounded-full ${dark ? "border border-white/25 hover:bg-white hover:text-black" : "bg-card shadow-[0_1px_8px_rgba(0,0,0,0.1)] hover:scale-105"}`
+      : `inline-flex items-center gap-2 rounded-full px-3.5 py-2 text-[12px] font-medium ${dark ? "border border-white/25 hover:bg-white hover:text-black" : "bg-card shadow-[0_1px_8px_rgba(0,0,0,0.1)] hover:scale-[1.04]"}`;
 
   return (
     <span ref={root} className={`relative inline-block ${className}`}>
@@ -111,7 +111,7 @@ export default function ShareButton({ path, title, text, image, variant = "pill"
         {variant === "pill" && label}
       </button>
       {open && (
-        <div role="menu" className="absolute right-0 top-full z-[60] mt-2 w-48 overflow-hidden rounded-2xl bg-white p-1.5 text-[13px] text-ink shadow-[0_12px_40px_rgba(0,0,0,0.22)]">
+        <div role="menu" className="absolute right-0 top-full z-[60] mt-2 w-48 overflow-hidden rounded-2xl bg-card p-1.5 text-[13px] text-ink ring-1 ring-ink/10 shadow-[0_12px_40px_rgba(0,0,0,0.22)]">
           <button role="menuitem" onClick={copy} className="flex w-full items-center rounded-xl px-3 py-2 text-left font-medium hover:bg-ink/[0.06]">
             Copy link
           </button>
@@ -122,7 +122,7 @@ export default function ShareButton({ path, title, text, image, variant = "pill"
           ))}
         </div>
       )}
-      <span role="status" aria-live="polite" className={`pointer-events-none absolute right-0 top-full z-[60] mt-2 whitespace-nowrap rounded-full bg-ink px-3 py-1.5 text-[11px] font-medium text-white transition-opacity duration-300 ${note ? "opacity-100" : "opacity-0"}`}>
+      <span role="status" aria-live="polite" className={`pointer-events-none absolute right-0 top-full z-[60] mt-2 whitespace-nowrap rounded-full bg-ink px-3 py-1.5 text-[11px] font-medium text-paper transition-opacity duration-300 ${note ? "opacity-100" : "opacity-0"}`}>
         {note}
       </span>
     </span>

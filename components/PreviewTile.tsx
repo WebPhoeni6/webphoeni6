@@ -91,7 +91,7 @@ export default function PreviewTile({ p, children }: { p: Project; children: Rea
       <div className={`pointer-events-none absolute inset-0 bg-black/50 transition-opacity duration-500 ${phase === "open" ? "opacity-100" : "opacity-0"}`} />
 
       {phase === "wait" && (
-        <div className="pointer-events-none absolute bottom-3 left-3 flex items-center gap-2 overflow-hidden rounded-full bg-ink/85 px-3 py-1.5 text-[11px] font-medium text-white backdrop-blur">
+        <div className="pointer-events-none absolute bottom-3 left-3 flex items-center gap-2 overflow-hidden rounded-full bg-[#111]/85 px-3 py-1.5 text-[11px] font-medium text-white backdrop-blur">
           <span className="relative z-10">Opening live preview</span>
           <span className="dwell-bar absolute inset-y-0 left-0 bg-white/20" style={{ animationDuration: `${DWELL}ms` }} />
         </div>
@@ -106,10 +106,10 @@ export default function PreviewTile({ p, children }: { p: Project; children: Rea
             <span className="size-1.5 rounded-full bg-[#ff5f57]" />
             <span className="size-1.5 rounded-full bg-[#febc2e]" />
             <span className="size-1.5 rounded-full bg-[#28c840]" />
-            <span className="absolute left-1/2 -translate-x-1/2 rounded bg-white px-3 py-px text-[9px] text-ink/55">
+            <span className="absolute left-1/2 -translate-x-1/2 rounded bg-white px-3 py-px text-[9px] text-[#111]/55">
               {pv.url.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "")}
             </span>
-            <div ref={bar} className="absolute bottom-0 left-0 h-px w-full origin-left scale-x-0 bg-ink/60" />
+            <div ref={bar} className="absolute bottom-0 left-0 h-px w-full origin-left scale-x-0 bg-[#111]/60" />
           </div>
           <div ref={view} className="relative min-h-0 flex-1 overflow-hidden">
             <div ref={page} className="absolute left-0 top-0 origin-top-left will-change-transform" style={{ width: 1440, height: pv.height }}>
@@ -118,7 +118,7 @@ export default function PreviewTile({ p, children }: { p: Project; children: Rea
             </div>
           </div>
           {hint && (
-            <span className="absolute bottom-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-ink/85 px-3 py-1.5 text-[10px] font-medium text-white backdrop-blur">
+            <span className="absolute bottom-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-[#111]/85 px-3 py-1.5 text-[10px] font-medium text-white backdrop-blur">
               Move your mouse down to scroll, up to go back
             </span>
           )}

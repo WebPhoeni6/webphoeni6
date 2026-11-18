@@ -4,6 +4,7 @@ import Link from "next/link";
 import { getContent } from "@/lib/store";
 import { about } from "@/lib/about";
 import Nav from "@/components/Nav";
+import ContactLink from "@/components/ContactLink";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { profile } = await getContent();
@@ -18,7 +19,6 @@ const label = "text-[11px] font-semibold uppercase tracking-[0.18em] text-ink/45
 
 export default async function AboutPage() {
   const { profile, projects } = await getContent();
-  const contact = profile.email ? `mailto:${profile.email}` : "/#contact";
   const hasPrinciples = about.principles.length > 0;
   const hasBeyond = about.beyond.length > 0;
   const nn = (n: number) => String(n).padStart(2, "0");
@@ -32,7 +32,7 @@ export default async function AboutPage() {
         <section className="grid items-end gap-12 pt-32 md:grid-cols-[1.2fr_1fr] md:pt-40">
           <div>
             <p className={label}>About</p>
-            <h1 className="mt-6 font-display text-[clamp(3.4rem,10vw,9rem)] font-bold leading-[0.9] tracking-[-0.05em]">
+            <h1 className="mt-6 font-display text-[clamp(2.38rem,7vw,6.3rem)] font-bold leading-[1.02] tracking-[-0.03em]">
               Hi, I&apos;m
               <br />
               {profile.firstName}.
@@ -65,12 +65,12 @@ export default async function AboutPage() {
         {hasPrinciples && (
         <section className="mt-28 md:mt-40">
           <p className={label}>01 / How I work</p>
-          <h2 className="mt-5 max-w-3xl font-display text-[clamp(2.2rem,5.5vw,4.6rem)] font-bold leading-[0.95] tracking-[-0.045em]">What working with me looks like</h2>
+          <h2 className="mt-5 max-w-3xl font-display text-[clamp(1.54rem,3.85vw,3.22rem)] font-bold leading-[1.05] tracking-[-0.03em]">What working with me looks like</h2>
           <ol className="mt-12 grid gap-x-12 gap-y-10 md:grid-cols-2">
             {about.principles.map((p, i) => (
               <li key={p.title} className="border-t border-ink/15 pt-5">
                 <span className={label}>{String(i + 1).padStart(2, "0")}</span>
-                <h3 className="mt-3 font-display text-xl font-semibold tracking-[-0.02em] md:text-2xl">{p.title}</h3>
+                <h3 className="mt-3 font-display text-xl font-semibold tracking-[-0.03em] md:text-2xl">{p.title}</h3>
                 <p className="mt-2 max-w-md text-[13px] leading-relaxed text-ink/65 md:text-sm">{p.text}</p>
               </li>
             ))}
@@ -82,12 +82,12 @@ export default async function AboutPage() {
         {hasBeyond && (
         <section className="mt-28 md:mt-40">
           <p className={label}>{nn(1 + Number(hasPrinciples))} / Beyond work</p>
-          <h2 className="mt-5 font-display text-[clamp(2.2rem,5.5vw,4.6rem)] font-bold leading-[0.95] tracking-[-0.045em]">Away from the client work</h2>
+          <h2 className="mt-5 font-display text-[clamp(1.54rem,3.85vw,3.22rem)] font-bold leading-[1.05] tracking-[-0.03em]">Away from the client work</h2>
           <div className="mt-12 grid gap-4 md:grid-cols-2 md:gap-5">
             {about.beyond.map((b) => (
-              <article key={b.title} className="grid grid-cols-[1fr_7rem] gap-5 rounded-[1.4rem] bg-white p-5 shadow-[0_2px_18px_rgba(0,0,0,0.05)] md:grid-cols-[1fr_9rem] md:p-6">
+              <article key={b.title} className="grid grid-cols-[1fr_7rem] gap-5 rounded-[1.4rem] bg-card p-5 shadow-[0_2px_18px_rgba(0,0,0,0.05)] md:grid-cols-[1fr_9rem] md:p-6">
                 <div>
-                  <h3 className="font-display text-xl font-semibold tracking-[-0.02em] md:text-2xl">{b.title}</h3>
+                  <h3 className="font-display text-xl font-semibold tracking-[-0.03em] md:text-2xl">{b.title}</h3>
                   <p className="mt-3 text-[13px] leading-relaxed text-ink/65">{b.text}</p>
                 </div>
                 <div className="relative aspect-[4/5] self-start overflow-hidden rounded-xl">
@@ -102,7 +102,7 @@ export default async function AboutPage() {
         {/* Now */}
         <section className="mt-28 md:mt-40">
           <p className={label}>{nn(1 + Number(hasPrinciples) + Number(hasBeyond))} / Now</p>
-          <h2 className="mt-5 font-display text-[clamp(2.2rem,5.5vw,4.6rem)] font-bold leading-[0.95] tracking-[-0.045em]">What I&apos;m working on</h2>
+          <h2 className="mt-5 font-display text-[clamp(1.54rem,3.85vw,3.22rem)] font-bold leading-[1.05] tracking-[-0.03em]">What I&apos;m working on</h2>
           <ul className="mt-12 border-t border-ink/15">
             {about.now.map((n) => {
               const p = projects.find((x) => x.slug === n.slug);
@@ -120,16 +120,16 @@ export default async function AboutPage() {
         </section>
 
         {/* Close */}
-        <section className="mt-28 rounded-[2rem] bg-[#111] px-6 py-14 text-white md:mt-40 md:px-14 md:py-20">
-          <h2 className="font-display text-[clamp(2.4rem,7vw,6rem)] font-bold leading-[0.92] tracking-[-0.05em]">
+        <section className="mt-28 rounded-[2rem] bg-night px-6 py-14 text-white md:mt-40 md:px-14 md:py-20">
+          <h2 className="font-display text-[clamp(1.68rem,4.9vw,4.2rem)] font-bold leading-[1.02] tracking-[-0.03em]">
             Got something
             <br />
             to build?
           </h2>
           <div className="mt-10 flex flex-wrap items-center gap-3">
-            <a href={contact} className="rounded-full bg-white px-6 py-3.5 text-[13px] font-medium text-ink transition-transform hover:scale-[1.04]">
+            <ContactLink className="rounded-full bg-white px-6 py-3.5 text-[13px] font-medium text-[#111] transition-transform hover:scale-[1.04]">
               Say hello
-            </a>
+            </ContactLink>
             <Link href="/socials" className="rounded-full border border-white/25 px-6 py-3.5 text-[13px] font-medium transition-colors hover:bg-white/10">
               All socials
             </Link>

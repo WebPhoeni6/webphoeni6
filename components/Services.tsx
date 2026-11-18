@@ -10,7 +10,7 @@ export default function Services() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section id="service" className="relative -mt-8 rounded-t-[2rem] bg-white px-5 pb-28 pt-16 md:px-10 md:pt-16">
+    <section id="service" className="relative -mt-8 rounded-t-[2rem] bg-card px-5 pb-28 pt-16 md:px-10 md:pt-16">
       <SectionHead n="02" title="Services" />
 
       <ul className="relative">
@@ -25,7 +25,7 @@ export default function Services() {
                   className={`group relative block w-full text-left transition-colors duration-500 ${isOpen ? "rounded-xl bg-night text-white" : "border-b border-line"}`}
                 >
                   <div className="flex items-center justify-between gap-4 px-4 py-6 md:px-8 md:py-8">
-                    <span className="font-display text-[clamp(1.6rem,4.6vw,3.4rem)] font-medium uppercase leading-none tracking-tight transition-all duration-500 group-hover:translate-x-2 md:group-hover:translate-x-4">
+                    <span className="font-display text-[clamp(1.12rem,3.22vw,2.38rem)] font-medium uppercase leading-none tracking-[-0.02em] transition-all duration-500 group-hover:translate-x-2 md:group-hover:translate-x-4">
                       {s.title}
                     </span>
                     <span className={`shrink-0 transition-transform duration-500 ease-[var(--ease-out-expo)] ${isOpen ? "rotate-90" : ""}`}>

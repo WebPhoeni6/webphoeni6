@@ -3,9 +3,11 @@
 @theme {
   --color-paper: #f5f5f4;
   --color-ink: #111111;
+  --color-card: #ffffff;
   --color-night: #262626;
   --color-mute: #8a8a87;
   --color-line: #e4e4e1;
+  --backdrop: #d9d9d7;
   --color-live: #22c55e;
   /* The Web Phoenix orange, from the logo. Use it for small accents. */
   --color-ember: #ff4f1a;
@@ -15,13 +17,33 @@
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* Dark is the default. The light values are used when the page, or a wrapper, has data-theme="light". */
+:root {
+  color-scheme: dark;
+  --color-paper: #161616;
+  --color-ink: #f2f2ef;
+  --color-card: #1f1f1f;
+  --color-line: #2c2c2c;
+  --backdrop: #0b0b0b;
+}
+:root[data-theme="light"],
+[data-theme="light"],
+.brand-doc {
+  color-scheme: light;
+  --color-paper: #f5f5f4;
+  --color-ink: #111111;
+  --color-card: #ffffff;
+  --color-line: #e4e4e1;
+  --backdrop: #d9d9d7;
+}
+
 html {
   scroll-behavior: smooth;
-  background: #d9d9d7;
+  background: var(--backdrop);
 }
 
 body {
-  background: #d9d9d7;
+  background: var(--backdrop);
   color: var(--color-ink);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
