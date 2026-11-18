@@ -54,6 +54,8 @@ export type Project = {
   shot?: boolean;
   /** Brand mockups shown in an "In use" section on the project page. */
   mockups?: string[];
+  /** Identity details. When set, the project page is laid out as a brand case study. */
+  brand?: BrandWork;
   /**
    * Hover preview on the Work grid: after a short dwell, a browser-style frame
    * opens and scrolls this full-page capture as the mouse moves. `height` is the
@@ -314,6 +316,7 @@ const fromBrand = (b: BrandWork): Project => {
     coverFit: "contain",
     coverPad: true,
     mockups: mockupSet(b.name),
+    brand: b,
     gallery: [
       { src: b.mark, alt: `${b.name} logo`, fit: "contain", bg: b.tint },
       ...(b.icon
@@ -338,6 +341,14 @@ projects.push(
     )
     .map(fromBrand),
 );
+
+// Identity projects written by hand (like Sendforte) pick up their brand details by name.
+for (const p of projects) {
+  if (p.category === "Branding" && !p.brand) {
+    const b = brands.find((x) => x.name === p.title.split(": ")[0]);
+    if (b) p.brand = b;
+  }
+}
 
 export const filters: ("All" | Category)[] = [
   "All",

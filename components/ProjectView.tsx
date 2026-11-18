@@ -8,6 +8,7 @@ import Nav from "./Nav";
 import type { Project } from "@/lib/content";
 import ContactLink from "./ContactLink";
 import { ArrowUpRight, Cover, Reveal } from "./ui";
+import BrandCase from "./BrandCase";
 
 // Loaded only when a poster is opened, so it adds nothing to the page weight.
 const Lightbox = dynamic(() => import("./Lightbox"), { ssr: false });
@@ -85,6 +86,7 @@ export default function ProjectView({ p, next }: { p: Project; next: Project }) 
         </Reveal>
       </section>
 
+      {p.brand ? <BrandCase p={p} /> : (
       <section
         className={
           p.poster
@@ -134,8 +136,9 @@ export default function ProjectView({ p, next }: { p: Project; next: Project }) 
           </Reveal>
         ))}
       </section>
+      )}
 
-      {p.mockups && (
+      {!p.brand && p.mockups && (
         <section className="mx-auto max-w-5xl px-5 pb-24 md:px-10">
           <Reveal>
             <p className="mb-5 text-[11px] font-semibold uppercase tracking-[0.18em] text-ink/50">In use</p>
