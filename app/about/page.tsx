@@ -55,7 +55,7 @@ export default async function AboutPage() {
             <p className="mt-8 max-w-xl text-base leading-relaxed text-ink/70 md:text-lg">{about.lede}</p>
           </div>
           <div className="relative mx-auto aspect-[1200/1245] w-full max-w-md overflow-hidden rounded-[2rem] bg-[#161616] md:max-w-none">
-            <Image src={profile.portrait} alt={`${profile.firstName} ${profile.lastName}`} fill priority sizes="(min-width: 768px) 40vw, 90vw" className="object-contain object-bottom" />
+            <Image src={profile.portrait} alt={`Portrait of ${profile.firstName} ${profile.lastName}, developer and designer, also known as Web Phoenix`} fill priority sizes="(min-width: 768px) 40vw, 90vw" className="object-contain object-bottom" />
           </div>
         </section>
 
@@ -145,6 +145,9 @@ export default async function AboutPage() {
             <ContactLink className="rounded-full bg-white px-6 py-3.5 text-[13px] font-medium text-[#111] transition-transform hover:scale-[1.04]">
               Say hello
             </ContactLink>
+            <a href="/samuel-emeka-cv.pdf" download="Samuel-Emeka-CV.pdf" className="rounded-full border border-white/25 px-6 py-3.5 text-[13px] font-medium transition-colors hover:bg-white/10">
+              Download CV
+            </a>
             <Link href="/socials" className="rounded-full border border-white/25 px-6 py-3.5 text-[13px] font-medium transition-colors hover:bg-white/10">
               All socials
             </Link>

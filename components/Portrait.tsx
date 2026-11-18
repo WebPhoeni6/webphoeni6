@@ -168,7 +168,7 @@ export default function Portrait({ src, alt }: { src: string; alt: string }) {
       {/* soft light behind the head so the dark hoodie separates from the page */}
       <div className="pointer-events-none absolute inset-x-[6%] bottom-[8%] top-[10%] hidden rounded-[50%] bg-white/[0.08] blur-3xl md:block [[data-theme=light]_&]:md:hidden" />
 
-      <Image src={src} alt={alt} fill priority fetchPriority="high" quality={90} sizes={sizes} unoptimized={!optimize} draggable={false} className="select-none object-contain object-bottom" style={{ filter: GREY }} />
+      <Image src={src} alt={`Portrait of ${alt}, developer and designer, also known as Web Phoenix`} fill priority fetchPriority="high" quality={90} sizes={sizes} unoptimized={!optimize} draggable={false} className="select-none object-contain object-bottom" style={{ filter: GREY }} />
 
       {/* the same image in color, shown only inside the circle */}
       <Image

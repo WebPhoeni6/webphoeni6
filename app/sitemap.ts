@@ -3,12 +3,12 @@ import { getContent } from "@/lib/store";
 import { abs, SITE_URL } from "@/lib/seo";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const { projects } = await getContent();
+  const { profile, projects } = await getContent();
   const now = new Date();
 
   const pages: MetadataRoute.Sitemap = [
-    { url: SITE_URL, lastModified: now, changeFrequency: "weekly", priority: 1 },
-    { url: `${SITE_URL}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: SITE_URL, lastModified: now, changeFrequency: "weekly", priority: 1, images: [abs(profile.portrait)] },
+    { url: `${SITE_URL}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.8, images: [abs(profile.portrait)] },
     { url: `${SITE_URL}/brand`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/socials`, lastModified: now, changeFrequency: "yearly", priority: 0.5 },
   ];

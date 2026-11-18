@@ -55,11 +55,14 @@ export default function Contact() {
               rel="noreferrer"
               aria-label={x.label}
               title={x.label}
-              className="grid size-9 place-items-center rounded-full border border-white/20 text-white/75 transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:text-ink"
+              className="grid size-9 place-items-center rounded-full border border-white/20 text-white/75 transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:text-[#111]"
             >
               <SocialIcon label={x.label} className="size-[15px]" />
             </a>
           ))}
+          <a href="/samuel-emeka-cv.pdf" download="Samuel-Emeka-CV.pdf" className="rounded-full bg-ember px-3.5 py-2 text-[11px] font-semibold text-[#111] transition-transform hover:scale-105">
+            Download CV
+          </a>
           <a href="/about" className="rounded-full border border-white/20 px-3.5 py-2 text-[11px] font-medium text-white/80 transition-colors hover:bg-white/10">
             About me
           </a>
