@@ -9,8 +9,9 @@ const GREY = "grayscale(1) contrast(1.1) brightness(0.9)";
  * The portrait sits in grey. Where the pointer is, a soft circle of the real
  * colors shows through. Position and size are eased, so it follows with a little
  * weight and relaxes back to grey when the pointer leaves.
- * On a phone the same thing follows your finger: drag across the portrait or tap it. While your finger is
- * on the portrait the page does not scroll; swipe the text below it to scroll again. The spot stays where you leave it. Reduced-motion users get a
+ * On a phone the spot follows how you tilt the phone in your hand, before you touch anything. Touch it and
+ * it follows your finger instead: drag across the portrait or tap it. While your finger is on the portrait the
+ * page does not scroll; swipe the text below it to scroll again. Reduced-motion users get a
  * still spot of color instead, which costs nothing to run.
  */
 export default function Portrait({ src, alt }: { src: string; alt: string }) {
@@ -74,8 +75,50 @@ export default function Portrait({ src, alt }: { src: string; alt: string }) {
     const wake = () => {
       if (!raf) raf = requestAnimationFrame(tick);
     };
+    // Tilt: lean the phone and the spot drifts with it. A finger on the portrait always wins.
+    let touching = false;
+    let lastTouch = 0;
+    let base: { g: number; b: number } | null = null;
+    const clamp = (v: number) => Math.max(-1, Math.min(1, v));
+    const onTilt = (e: DeviceOrientationEvent) => {
+      if (e.gamma == null || e.beta == null) return;
+      if (!base) {
+        base = { g: e.gamma, b: e.beta };
+        return;
+      }
+      // Slowly re-center, so a new way of holding the phone becomes the new middle.
+      base.g += (e.gamma - base.g) * 0.003;
+      base.b += (e.beta - base.b) * 0.003;
+      if (touching || performance.now() - lastTouch < 2500) return;
+      const dx = clamp((e.gamma - base.g) / 20);
+      const dy = clamp((e.beta - base.b) / 20);
+      if (Math.abs(dx) > 0.12 || Math.abs(dy) > 0.12) timers.forEach(clearTimeout);
+      s.tx = el.clientWidth * (0.5 + 0.42 * dx);
+      s.ty = el.clientHeight * (0.34 + 0.26 * dy);
+      s.tr = el.clientWidth * 0.26;
+      wake();
+    };
+    // Android and most browsers send tilt right away. iPhones only send it after the visitor allows it,
+    // which can only be asked from a tap, so the first touch on the portrait asks.
+    let asked = false;
+    if (!fine && typeof DeviceOrientationEvent !== "undefined") window.addEventListener("deviceorientation", onTilt);
+    const askTilt = () => {
+      const DOE = DeviceOrientationEvent as unknown as { requestPermission?: () => Promise<string> };
+      if (asked || typeof DOE.requestPermission !== "function") return;
+      asked = true;
+      DOE.requestPermission().catch(() => {});
+    };
+    const up = () => {
+      touching = false;
+      lastTouch = performance.now();
+    };
+
     const move = (e: PointerEvent) => {
       const touch = e.pointerType === "touch";
+      if (touch) {
+        touching = true;
+        askTilt();
+      }
       if (!touch) el.dataset.hover = "true";
       timers.forEach(clearTimeout);
       const b = el.getBoundingClientRect();
@@ -92,11 +135,16 @@ export default function Portrait({ src, alt }: { src: string; alt: string }) {
     };
     el.addEventListener("pointermove", move);
     el.addEventListener("pointerdown", move);
+    el.addEventListener("pointerup", up);
+    el.addEventListener("pointercancel", up);
     el.addEventListener("pointerenter", move);
     el.addEventListener("pointerleave", leave);
     return () => {
       cancelAnimationFrame(raf);
       timers.forEach(clearTimeout);
+      window.removeEventListener("deviceorientation", onTilt);
+      el.removeEventListener("pointerup", up);
+      el.removeEventListener("pointercancel", up);
       el.removeEventListener("pointerdown", move);
       el.removeEventListener("pointermove", move);
       el.removeEventListener("pointerenter", move);
