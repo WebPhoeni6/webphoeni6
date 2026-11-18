@@ -60,8 +60,8 @@ export default function Contact() {
               <SocialIcon label={x.label} className="size-[15px]" />
             </a>
           ))}
-          <a href="/samuel-emeka-cv.pdf" download="Samuel-Emeka-CV.pdf" className="rounded-full bg-ember px-3.5 py-2 text-[11px] font-semibold text-[#111] transition-transform hover:scale-105">
-            Download CV
+          <a href="/cv" className="rounded-full bg-ember px-3.5 py-2 text-[11px] font-semibold text-[#111] transition-transform hover:scale-105">
+            View my CV
           </a>
           <a href="/about" className="rounded-full border border-white/20 px-3.5 py-2 text-[11px] font-medium text-white/80 transition-colors hover:bg-white/10">
             About me

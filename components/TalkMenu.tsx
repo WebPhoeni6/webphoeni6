@@ -72,19 +72,18 @@ export default function TalkMenu({ className = "" }: { className?: string }) {
           </a>
         ))}
         <a
-          href="/samuel-emeka-cv.pdf"
-          download="Samuel-Emeka-CV.pdf"
+          href="/cv"
           onClick={() => setOpen(false)}
           className="mt-1 flex items-center gap-3 rounded-xl border-t border-ink/10 px-3 py-3 transition-colors hover:bg-ink/[0.06]"
         >
           <span className="grid size-9 shrink-0 place-items-center rounded-full bg-ember text-[#111]">
             <svg viewBox="0 0 16 16" className="size-4" fill="none" aria-hidden>
-              <path d="M8 2v8m0 0L5 7m3 3l3-3M3 13h10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M4 1.8h5.2L12 4.6v9.6H4V1.8zM9 2v3h3M6 8h4M6 10.5h4" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </span>
           <span>
-            <span className="block text-[13px] font-medium leading-tight">Download my CV</span>
-            <span className="block text-[12px] text-ink/50">PDF, 2 pages</span>
+            <span className="block text-[13px] font-medium leading-tight">View my CV</span>
+            <span className="block text-[12px] text-ink/50">Read it, then download the PDF</span>
           </span>
         </a>
       </div>

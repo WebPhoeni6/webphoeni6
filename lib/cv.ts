@@ -1,109 +1,118 @@
 /**
  * The CV. Edit the words here and the CV page and the PDF follow.
- * It uses the same facts as the site, plus the history from the old CV.
+ *
+ * Written for applicant tracking systems (ATS) as well as people: one column, standard section names,
+ * plain text, every bullet starts with a verb, and tools are named inside the bullets.
  */
 
 export const cv = {
   name: "Samuel Emeka",
-  title: "Developer and designer",
+  title: "Full-Stack Developer | Brand Designer",
   contact: [
     { label: "Lagos State, Nigeria" },
+    { label: "+234 904 608 8720" },
     { label: "devsamuel0611@gmail.com", href: "mailto:devsamuel0611@gmail.com" },
-    { label: "webphoenix.net", href: "https://webphoenix.net" },
     { label: "linkedin.com/in/samuelemekawp", href: "https://www.linkedin.com/in/samuelemekawp" },
+    { label: "webphoenix.net", href: "https://webphoenix.net" },
   ],
 
   summary:
-    "Developer and designer with 3+ years of professional experience. I design and build products from the logo to the backend: React, TypeScript and Tailwind on the front, Node.js and PostgreSQL behind it. I co-founded Pendu, I'm head software engineer at Vowrify and a backend developer at Rendo. I also design brand identities and posters, so the product and the brand come from the same hands.",
+    "Full-Stack Developer with 3+ years of professional experience building web and mobile products with React, Next.js, TypeScript, Node.js and PostgreSQL, from design to deployment. Co-founder of Pendu, Head Software Engineer at Vowrify and Backend Developer at Rendo. Experienced in REST API integration, component architecture, automated testing with Jest, Git workflows and CI/CD, and in working with designers, product managers and backend engineers in Agile teams. Also a brand designer, with identities for six companies and a series of 20+ posters.",
 
   experience: [
     {
-      role: "Co-founder, designer and developer",
+      role: "Co-founder, Designer and Developer",
       org: "Pendu",
       period: "2026 – Present",
       bullets: [
-        "Co-founded a free app for gaming communities that puts chat, voice and video calls and finding communities in one place, on Android, iOS and the web.",
-        "Designed the brand (the P and D logo, the mascot and the landing page) and the app screens.",
-        "Built the mobile apps, the web app and the system behind them: chat with replies, reactions and voice notes, one-to-one and group calls, and messages that still arrive after a bad connection.",
+        "Co-founded a free app for gaming communities that combines chat, voice and video calls and community discovery on Android, iOS and the web.",
+        "Built the mobile app with Flutter and the web app with React, backed by a Node.js, Socket.IO, PostgreSQL and Redis system for real-time messaging and calls.",
+        "Engineered message delivery that survives dropped connections and closed apps, so messages are not lost.",
+        "Designed the brand (the P and D logo, the mascot and the landing page) and the app interface.",
       ],
-      stack: "Flutter · React · Node.js · Socket.IO · PostgreSQL · Redis",
     },
     {
-      role: "Head software engineer",
+      role: "Head Software Engineer",
       org: "Vowrify",
       period: "2026 – Present",
       bullets: [
-        "Lead the engineering of a platform that makes it safe to pay for something big when you don't know the other person yet. A licensed partner holds the money until both sides have done what they agreed.",
-        "Built the system so every step is kept in one clear record, and nobody can argue later about what was agreed.",
-        "Designed the brand, the colors and the screens, and build each screen together with the system behind it before starting the next.",
+        "Lead engineering of a payments platform that makes large purchases safe between people who do not know each other: a licensed partner holds the money until both sides have done what they agreed.",
+        "Architect and build the backend with TypeScript, Node.js, PostgreSQL and Redis, keeping one clear record of every step of each transaction.",
+        "Develop the React interface screen by screen, finishing and testing each screen together with its backend before starting the next.",
+        "Designed the brand identity, color system and interface.",
       ],
-      stack: "TypeScript · Node.js · PostgreSQL · Redis · React",
     },
     {
-      role: "Backend developer",
+      role: "Backend Developer",
       org: "Rendo (formerly Rentipede)",
       period: "2026 – Present",
       bullets: [
-        "Build the system behind a rental housing app for students and professionals: the data, the payments and the rules for who can do what.",
-        "Applications, bookings, payments and room maintenance in one system for owners, staff and tenants, with online payments that confirm themselves.",
-        "Every update is tested automatically before it goes live.",
+        "Develop the backend of a rental housing platform for students, professionals, owners and hostel staff: the data model, REST APIs, payments and role-based permissions.",
+        "Implemented applications, bookings, payments and room maintenance in one system, with online payments that confirm automatically.",
+        "Write automated tests with Jest that run on every update before it goes live (CI/CD).",
       ],
-      stack: "Node.js · Express · Prisma · PostgreSQL · TypeScript · Zod · Jest",
+      stack: "Node.js, Express, Prisma, PostgreSQL, TypeScript, Zod, Jest",
     },
     {
-      role: "Frontend developer",
+      role: "Frontend Developer",
       org: "Earlybean Inc.",
       period: "2025 – Present",
       bullets: [
-        "Build and maintain responsive interfaces with React and TypeScript, turning Figma designs into accessible, pixel-accurate components.",
-        "Integrate REST APIs with proper loading states and error handling, and manage state with hooks and Context.",
-        "Write unit and integration tests with Jest and React Testing Library, and take part in code reviews with designers, product managers and backend engineers.",
+        "Build and maintain responsive interfaces with React.js and TypeScript, converting Figma designs into accessible, pixel-accurate components.",
+        "Develop reusable components with Tailwind CSS and manage state with React hooks and the Context API.",
+        "Integrate REST APIs with async handling, loading states and error boundaries.",
+        "Write unit and integration tests with Jest and React Testing Library to catch regressions early.",
+        "Collaborate with designers, product managers and backend engineers, and take part in code reviews.",
       ],
-      stack: "React · TypeScript · Tailwind CSS · Jest",
     },
     {
-      role: "Frontend developer / Backend developer",
+      role: "Frontend Developer / Backend Developer",
       org: "Charis BI",
       period: "2024 – 2025",
       bullets: [
-        "Built responsive web applications with React, TypeScript and Tailwind CSS across several product lines.",
-        "Improved performance and scalability through code optimization, and fixed technical issues to keep the system stable.",
+        "Built responsive web applications with React.js, TypeScript and Tailwind CSS across multiple product lines.",
+        "Translated Figma designs into accessible UI components and integrated REST APIs with loading and error states.",
+        "Optimized application performance and scalability through code optimization, and resolved technical issues to improve stability.",
+        "Collaborated in Agile teams using Git branching and pull request reviews.",
       ],
     },
     {
-      role: "Frontend developer",
+      role: "Frontend Developer",
       org: "Expintek LTD",
       period: "2023 – 2024",
       bullets: [
-        "Built user-friendly interfaces with React, TypeScript, HTML5, CSS3 and JavaScript, and kept them working across browsers and phones.",
-        "Integrated REST APIs, wrote tests, and maintained and sped up existing applications.",
+        "Built responsive, semantic interfaces with React.js, TypeScript, HTML5, CSS3 and JavaScript.",
+        "Integrated REST APIs, managed state with React hooks, and ensured cross-browser and mobile compatibility.",
+        "Wrote tests and took part in code reviews to keep components reliable and code quality high.",
+        "Maintained and optimized existing applications for performance and usability.",
       ],
     },
   ],
 
   projects: [
-    { name: "Pendu", text: "Voice, chat and calls for gaming communities, on mobile and web.", link: "webphoenix.net/work/pendu" },
-    { name: "Vowrify", text: "Protected payments for big purchases between people who don't know each other yet.", link: "webphoenix.net/work/vowrify" },
-    { name: "Rendo", text: "Hostels and rentals: apply online, pay securely, move in.", link: "webphoenix.net/work/rendo" },
+    { name: "Pendu", text: "Voice, chat and calls for gaming communities on Android, iOS and web (Flutter, React, Node.js).", link: "webphoenix.net/work/pendu" },
+    { name: "Vowrify", text: "Protected payments for big purchases (TypeScript, Node.js, PostgreSQL).", link: "webphoenix.net/work/vowrify" },
+    { name: "Rendo", text: "Hostels and rentals platform: apply online, pay securely, move in (Node.js, Express, Prisma).", link: "webphoenix.net/work/rendo" },
     { name: "Earlybean", text: "A money app that teaches kids to save, spend and earn, with parents in control.", link: "earlybean.co" },
     { name: "Brand identities", text: "Logos and identities for Pendu, Vowrify, Sendforte, Hommission, Unipulse and Linkco.", link: "webphoenix.net/brand" },
-    { name: "Poster series", text: "Over 20 posters, including the Board Notes chess set.", link: "webphoenix.net/work/poster-series" },
+    { name: "Poster series", text: "20+ posters, including the Board Notes chess set.", link: "webphoenix.net/work/poster-series" },
   ],
 
   skills: [
-    { label: "Frontend", text: "React, Next.js, TypeScript, JavaScript (ES6+), HTML5, CSS3, Tailwind CSS, GSAP, Flutter" },
-    { label: "Backend", text: "Node.js, Express, Prisma, REST APIs, Socket.IO, Python, Django, Flask, Zod" },
-    { label: "Data", text: "PostgreSQL, Redis, SQLite" },
-    { label: "Design", text: "Brand identity, logos, posters, product UI, Figma, Affinity Designer and Photo, Illustrator" },
-    { label: "Practice", text: "Git and pull-request workflows, CI/CD, Jest, React Testing Library, performance work, Agile teams" },
+    { label: "Languages", text: "TypeScript, JavaScript (ES6+), Python, SQL, HTML5, CSS3" },
+    { label: "Frontend", text: "React.js, Next.js, Tailwind CSS, Flutter, AngularJS, jQuery, GSAP, responsive and accessible UI, Figma-to-code" },
+    { label: "Backend", text: "Node.js, Express, Prisma, REST APIs, Socket.IO, Django, Flask, Zod" },
+    { label: "Databases", text: "PostgreSQL, Redis, SQLite" },
+    { label: "Testing and DevOps", text: "Jest, React Testing Library, Git, GitHub, pull request workflows, CI/CD, Agile" },
+    { label: "Design", text: "Brand identity, logo design, poster design, product UI/UX, Figma, Affinity Designer, Affinity Photo, Illustrator" },
   ],
 
   achievements: [
-    "Built reusable React components that sped up project delivery by 25%.",
-    "Integrated REST APIs behind dashboards used by 500+ people a day.",
-    "Cut web application load times by 35%.",
-    "Built and maintained AngularJS applications: 40% better cross-device experience and 30% fewer bug reports.",
-    "Mentored junior developers, improving the team's code quality and collaboration.",
+    "Built reusable React.js components that improved project delivery speed by 25%.",
+    "Integrated RESTful APIs behind dashboards used by 500+ people a day.",
+    "Optimized web application performance, cutting load times by 35%.",
+    "Built and maintained AngularJS applications, improving cross-device experience by 40% and reducing bug reports by 30%.",
+    "Mentored junior developers, improving team code quality and collaboration.",
   ],
 
   education: [{ what: "Senior Secondary Certificate Examination (SSCE)", where: "Senior High School, Alimosho", period: "2021 – 2024" }],
@@ -115,5 +124,5 @@ export const cv = {
     "UI/UX Design Principles and Guidelines Training",
   ],
 
-  languages: ["English", "Igbo", "Yoruba", "Sign Language"],
+  languages: "English, Igbo, Yoruba, Sign Language",
 };

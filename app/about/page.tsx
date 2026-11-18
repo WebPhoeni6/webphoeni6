@@ -145,9 +145,9 @@ export default async function AboutPage() {
             <ContactLink className="rounded-full bg-white px-6 py-3.5 text-[13px] font-medium text-[#111] transition-transform hover:scale-[1.04]">
               Say hello
             </ContactLink>
-            <a href="/samuel-emeka-cv.pdf" download="Samuel-Emeka-CV.pdf" className="rounded-full border border-white/25 px-6 py-3.5 text-[13px] font-medium transition-colors hover:bg-white/10">
-              Download CV
-            </a>
+            <Link href="/cv" className="rounded-full border border-white/25 px-6 py-3.5 text-[13px] font-medium transition-colors hover:bg-white/10">
+              View my CV
+            </Link>
             <Link href="/socials" className="rounded-full border border-white/25 px-6 py-3.5 text-[13px] font-medium transition-colors hover:bg-white/10">
               All socials
             </Link>
