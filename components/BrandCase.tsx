@@ -3,14 +3,15 @@ import type { Project } from "@/lib/content";
 import LogoMark from "./LogoMark";
 import { Reveal } from "./ui";
 
-/** Black or white text, whichever reads better on a color. */
+/** Black or white text, whichever has the stronger contrast on that color. */
 function onColor(hex: string) {
   const n = parseInt(hex.replace("#", ""), 16);
   const [r, g, b] = [(n >> 16) & 255, (n >> 8) & 255, n & 255].map((v) => {
     const c = v / 255;
     return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
   });
-  return 0.2126 * r + 0.7152 * g + 0.0722 * b > 0.42 ? "#111111" : "#ffffff";
+  const lum = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+  return 1.05 / (lum + 0.05) > (lum + 0.05) / 0.05 ? "#ffffff" : "#111111";
 }
 
 const kicker = "text-[11px] font-semibold uppercase tracking-[0.18em]";
