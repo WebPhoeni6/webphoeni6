@@ -4,7 +4,6 @@ const logos: { name: string; src: string; w: number; ht: number; h: string }[] =
   { name: "Vowrify", src: "/work/ticker-vowrify.webp", w: 226, ht: 48, h: "h-5 md:h-6" },
   { name: "Sendforte", src: "/work/ticker-sendforte.webp", w: 247, ht: 48, h: "h-5 md:h-6" },
   { name: "Hommission", src: "/work/ticker-hommission.webp", w: 273, ht: 48, h: "h-5 md:h-6" },
-  { name: "Trackr", src: "/work/ticker-trackr.webp", w: 179, ht: 48, h: "h-5 md:h-6" },
   { name: "Unipulse", src: "/work/ticker-unipulse.webp", w: 185, ht: 56, h: "h-6 md:h-7" },
   { name: "Linkco", src: "/work/ticker-linkco.webp", w: 286, ht: 48, h: "h-5 md:h-6" },
   { name: "Rendo", src: "/work/ticker-rendo.webp", w: 327, ht: 72, h: "h-7 md:h-9" },

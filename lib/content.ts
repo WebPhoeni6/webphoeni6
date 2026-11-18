@@ -334,7 +334,7 @@ const fromBrand = (b: BrandWork): Project => {
 projects.push(
   ...brands
     .filter((b) =>
-      ["Hommission", "Trackr", "Unipulse", "Linkco"].includes(b.name),
+      ["Hommission", "Unipulse", "Linkco"].includes(b.name),
     )
     .map(fromBrand),
 );
