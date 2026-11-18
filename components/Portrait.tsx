@@ -9,7 +9,9 @@ const GREY = "grayscale(1) contrast(1.1) brightness(0.9)";
  * The portrait sits in grey. Where the pointer is, a soft circle of the real
  * colors shows through. Position and size are eased, so it follows with a little
  * weight and relaxes back to grey when the pointer leaves.
- * Touch screens and reduced-motion users get a still spot of color instead, which costs nothing to run.
+ * On a phone the same thing follows your finger: drag across the portrait (sideways, so the page can
+ * still scroll up and down) or tap it. The spot stays where you leave it. Reduced-motion users get a
+ * still spot of color instead, which costs nothing to run.
  */
 export default function Portrait({ src, alt }: { src: string; alt: string }) {
   // Built-in files go through the optimizer. Dashboard uploads are served as they are.
@@ -32,11 +34,30 @@ export default function Portrait({ src, alt }: { src: string; alt: string }) {
       el.style.setProperty("--r", `${Math.max(1, s.r).toFixed(1)}px`);
     };
 
-    // Touch screens and reduced motion: a still spot of color on the face, no animation loop at all.
-    if (!fine || reduce) {
-      s.r = reduce ? 1 : w0 * 0.26;
+    // Reduced motion: a still spot of color on the face, no animation loop at all.
+    if (reduce) {
+      s.r = w0 * 0.26;
       apply();
       return;
+    }
+    // Phones start with the spot on the face, and give it a short sweep once to show it can move.
+    const timers: number[] = [];
+    if (!fine) {
+      s.r = s.tr = w0 * 0.26;
+      timers.push(
+        window.setTimeout(() => {
+          s.tx = w0 * 0.3;
+          wake();
+        }, 700),
+        window.setTimeout(() => {
+          s.tx = w0 * 0.7;
+          wake();
+        }, 1500),
+        window.setTimeout(() => {
+          s.tx = w0 * 0.5;
+          wake();
+        }, 2300),
+      );
     }
     apply();
 
@@ -54,23 +75,29 @@ export default function Portrait({ src, alt }: { src: string; alt: string }) {
       if (!raf) raf = requestAnimationFrame(tick);
     };
     const move = (e: PointerEvent) => {
-      el.dataset.hover = "true";
+      const touch = e.pointerType === "touch";
+      if (!touch) el.dataset.hover = "true";
+      timers.forEach(clearTimeout);
       const b = el.getBoundingClientRect();
       s.tx = e.clientX - b.left;
       s.ty = e.clientY - b.top;
-      s.tr = el.clientWidth * 0.3;
+      s.tr = el.clientWidth * (touch ? 0.26 : 0.3);
       wake();
     };
-    const leave = () => {
+    const leave = (e: PointerEvent) => {
+      if (e.pointerType === "touch") return; // on a phone the spot stays where you left it
       s.tr = 1;
       el.dataset.hover = "false";
       wake();
     };
     el.addEventListener("pointermove", move);
+    el.addEventListener("pointerdown", move);
     el.addEventListener("pointerenter", move);
     el.addEventListener("pointerleave", leave);
     return () => {
       cancelAnimationFrame(raf);
+      timers.forEach(clearTimeout);
+      el.removeEventListener("pointerdown", move);
       el.removeEventListener("pointermove", move);
       el.removeEventListener("pointerenter", move);
       el.removeEventListener("pointerleave", leave);
@@ -80,7 +107,7 @@ export default function Portrait({ src, alt }: { src: string; alt: string }) {
   const mask = "radial-gradient(circle var(--r) at var(--mx) var(--my), #000 0%, #000 38%, rgba(0,0,0,0.55) 62%, transparent 100%)";
 
   return (
-    <div ref={root} className="absolute inset-0 group cursor-none [@media(hover:none)]:cursor-auto [-webkit-mask-image:linear-gradient(to_bottom,#000_62%,transparent_97%)] [mask-image:linear-gradient(to_bottom,#000_62%,transparent_97%)] md:[-webkit-mask-image:none] md:[mask-image:none]" style={{ ["--mx" as string]: "50%", ["--my" as string]: "30%", ["--r" as string]: "1px" }}>
+    <div ref={root} className="absolute inset-0 group cursor-none [@media(hover:none)]:cursor-auto [-webkit-mask-image:linear-gradient(to_bottom,#000_62%,transparent_97%)] [mask-image:linear-gradient(to_bottom,#000_62%,transparent_97%)] md:[-webkit-mask-image:none] md:[mask-image:none]" style={{ ["--mx" as string]: "50%", ["--my" as string]: "30%", ["--r" as string]: "1px", touchAction: "pan-y" }}>
       {/* lens: a soft ring that follows the pointer, so it is clear the color is under your cursor */}
       <div
         aria-hidden
