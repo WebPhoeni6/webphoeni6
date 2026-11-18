@@ -249,6 +249,10 @@ export const projects: Project[] = [
     coverFit: "cover",
     gallery: [
       // Newest first, by the day each poster was made.
+      { src: w("apple"), alt: "Apple poster" },
+      { src: w("zurich"), alt: "Zurich poster" },
+      { src: w("birds-of-america"), alt: "Birds of America poster" },
+      { src: w("phonograph"), alt: "Phonograph poster" },
       { src: w("pizza"), alt: "Pizza poster" },
       { src: w("coca-cola"), alt: "Coca-Cola poster" },
       { src: w("pawn"), alt: "Pawn poster" },
