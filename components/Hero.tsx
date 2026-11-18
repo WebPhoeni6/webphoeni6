@@ -89,15 +89,10 @@ export default function Hero({ hasPortrait }: { hasPortrait: boolean }) {
       if (!reduce) {
         const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
         tl.from(
-          ".h-label",
-          { opacity: 0, y: 14, duration: 0.8, stagger: 0.1 },
-          0.1,
+          ".h-char",
+          { yPercent: 120, rotate: 5, duration: 1.3, stagger: 0.045 },
+          0.15,
         )
-          .from(
-            ".h-char",
-            { yPercent: 120, rotate: 5, duration: 1.3, stagger: 0.045 },
-            0.15,
-          )
           .from(".h-portrait", { yPercent: 6, duration: 1.2 }, 0.3)
           .from(
             ".h-copy",
@@ -134,13 +129,9 @@ export default function Hero({ hasPortrait }: { hasPortrait: boolean }) {
   return (
     <section
       ref={root}
-      className="relative min-h-[min(100svh,1000px)] overflow-hidden bg-[#111] text-white"
+      className="relative min-h-[min(100svh,1000px)] overflow-hidden bg-stage text-ink"
     >
       <div className="relative mx-auto flex min-h-[min(100svh,1000px)] max-w-[1600px] flex-col px-5 pb-8 pt-24 md:px-10 md:pb-10 md:pt-24">
-        <p className="h-label text-[11px] font-semibold uppercase tracking-[0.18em] text-white/45">
-          Portfolio / 2026
-        </p>
-
         {/* Name, big and behind the portrait */}
         {/* Name sits behind the portrait */}
         <div className="relative">
@@ -161,8 +152,8 @@ export default function Hero({ hasPortrait }: { hasPortrait: boolean }) {
                   alt={`${profile.firstName} ${profile.lastName}`}
                 />
               ) : (
-                <div className="absolute inset-0 flex items-end justify-center rounded-t-[2rem] border border-dashed border-white/20 bg-white/[0.03] pb-6 text-center">
-                  <span className="max-w-[12rem] text-[11px] leading-relaxed text-white/35">
+                <div className="absolute inset-0 flex items-end justify-center rounded-t-[2rem] border border-dashed border-ink/20 bg-ink/[0.04] pb-6 text-center">
+                  <span className="max-w-[12rem] text-[11px] leading-relaxed text-ink/45">
                     Your portrait goes here. Save it as public/samuel.png
                   </span>
                 </div>
@@ -172,24 +163,24 @@ export default function Hero({ hasPortrait }: { hasPortrait: boolean }) {
 
           {/* Left: who I am */}
           <div className="relative z-30 order-2 -mt-[30vw] md:order-1 md:mt-0 md:max-w-sm">
-            <p className="h-copy font-display text-xl font-medium tracking-[-0.02em] text-white/90 md:text-2xl">
+            <p className="h-copy font-display text-xl font-medium tracking-[-0.02em] text-ink/90 md:text-2xl">
               {profile.role}
             </p>
-            <p className="h-copy mt-3 text-[13px] leading-relaxed text-white/55">
+            <p className="h-copy mt-3 text-[13px] leading-relaxed text-ink/65">
               {profile.blurb} Recent work includes Pendu, Vowrify and Rendo,
               plus brand identities for {brands.length} companies.
             </p>
             <div className="h-copy mt-6 flex flex-wrap gap-2.5">
               <a
                 href="#work"
-                className="group inline-flex items-center gap-1.5 rounded-full bg-white px-5 py-3 text-[13px] font-medium text-[#111] transition-transform hover:scale-[1.04]"
+                className="group inline-flex items-center gap-1.5 rounded-full bg-ink px-5 py-3 text-[13px] font-medium text-paper transition-transform hover:scale-[1.04]"
               >
                 See my work
                 <ArrowUpRight className="size-3 rotate-90 transition-transform duration-300 group-hover:translate-y-0.5" />
               </a>
               <a
                 href="/brand"
-                className="inline-flex items-center gap-1.5 rounded-full border border-white/25 px-5 py-3 text-[13px] font-medium text-white transition-colors hover:bg-white/10"
+                className="inline-flex items-center gap-1.5 rounded-full border border-ink/25 px-5 py-3 text-[13px] font-medium text-ink transition-colors hover:bg-ink/10"
               >
                 Brand portfolio
                 <ArrowUpRight className="size-3" />
@@ -199,13 +190,13 @@ export default function Hero({ hasPortrait }: { hasPortrait: boolean }) {
 
           {/* Right: numbers, what I do, contact */}
           <div className="h-copy relative z-30 order-3 w-full md:w-[min(26vw,400px)]">
-            <div className="grid grid-cols-3 gap-4 border-t border-white/15 pt-5">
+            <div className="grid grid-cols-3 gap-4 border-t border-ink/15 pt-5">
               {stats.map((x) => (
                 <div key={x.label}>
                   <p className="font-display text-4xl font-bold leading-none tracking-[-0.03em] md:text-5xl">
                     {x.n}
                   </p>
-                  <p className="mt-2 text-[11px] leading-tight text-white/45">
+                  <p className="mt-2 text-[11px] leading-tight text-ink/55">
                     {x.label}
                   </p>
                 </div>
@@ -213,11 +204,11 @@ export default function Hero({ hasPortrait }: { hasPortrait: boolean }) {
             </div>
             <div className="mt-10 flex items-center justify-between gap-4">
               {profile.email ? (
-                <span className="truncate text-[13px] text-white/60">
+                <span className="truncate text-[13px] text-ink/65">
                   {profile.email}
                 </span>
               ) : (
-                <span className="text-[13px] text-white/45">
+                <span className="text-[13px] text-ink/55">
                   Got a project?
                 </span>
               )}

@@ -15,7 +15,7 @@ const pad = (n: number) => String(n).padStart(2, "0");
  * The site navigation. Fixed to the top on every page: clear over the hero, frosted once you scroll,
  * with a full-screen menu on phones. `tone` matches the page behind it.
  */
-export default function Nav({ tone = "hero" }: { tone?: "hero" | "dark" | "light" }) {
+export default function Nav({ tone = "light" }: { tone?: "dark" | "light" }) {
   const { profile, projects, services, experience } = useContent();
   const path = usePathname();
   const [scrolled, setScrolled] = useState(false);
@@ -71,8 +71,8 @@ export default function Nav({ tone = "hero" }: { tone?: "hero" | "dark" | "light
   type Item = { label: string; href: string; id: string; count: string | undefined };
   const isActive = (l: Item) => (l.id ? path === "/" && section === l.id : path === l.href);
 
-  // "hero" (home) and "dark" (Socials) sit over a dark page; the home bar switches to the theme once you scroll.
-  const dark = tone === "dark" || (tone === "hero" && !scrolled);
+  // "dark" is for a page that is always dark (Socials). Everything else follows the theme.
+  const dark = tone === "dark";
   const bar =
     scrolled || open
       ? dark

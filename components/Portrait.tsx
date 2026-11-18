@@ -107,7 +107,7 @@ export default function Portrait({ src, alt }: { src: string; alt: string }) {
   const mask = "radial-gradient(circle var(--r) at var(--mx) var(--my), #000 0%, #000 38%, rgba(0,0,0,0.55) 62%, transparent 100%)";
 
   return (
-    <div ref={root} className="absolute inset-0 group cursor-none [@media(hover:none)]:cursor-auto [@media(hover:none)]:touch-none [-webkit-mask-image:linear-gradient(to_bottom,#000_62%,transparent_97%)] [mask-image:linear-gradient(to_bottom,#000_62%,transparent_97%)] md:[-webkit-mask-image:none] md:[mask-image:none]" style={{ ["--mx" as string]: "50%", ["--my" as string]: "30%", ["--r" as string]: "1px" }}>
+    <div ref={root} className="portrait-root absolute inset-0 group cursor-none [@media(hover:none)]:cursor-auto [@media(hover:none)]:touch-none [-webkit-mask-image:linear-gradient(to_bottom,#000_62%,transparent_97%)] [mask-image:linear-gradient(to_bottom,#000_62%,transparent_97%)] md:[-webkit-mask-image:none] md:[mask-image:none]" style={{ ["--mx" as string]: "50%", ["--my" as string]: "30%", ["--r" as string]: "1px" }}>
       {/* lens: a soft ring that follows the pointer, so it is clear the color is under your cursor */}
       <div
         aria-hidden
@@ -118,7 +118,7 @@ export default function Portrait({ src, alt }: { src: string; alt: string }) {
       </div>
 
       {/* soft light behind the head so the dark hoodie separates from the page */}
-      <div className="pointer-events-none absolute inset-x-[6%] bottom-[8%] top-[10%] hidden rounded-[50%] bg-white/[0.08] blur-3xl md:block" />
+      <div className="pointer-events-none absolute inset-x-[6%] bottom-[8%] top-[10%] hidden rounded-[50%] bg-white/[0.08] blur-3xl md:block [[data-theme=light]_&]:md:hidden" />
 
       <Image src={src} alt={alt} fill priority fetchPriority="high" quality={90} sizes={sizes} unoptimized={!optimize} draggable={false} className="select-none object-contain object-bottom" style={{ filter: GREY }} />
 
