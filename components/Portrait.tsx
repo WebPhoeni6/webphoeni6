@@ -9,8 +9,8 @@ const GREY = "grayscale(1) contrast(1.1) brightness(0.9)";
  * The portrait sits in grey. Where the pointer is, a soft circle of the real
  * colors shows through. Position and size are eased, so it follows with a little
  * weight and relaxes back to grey when the pointer leaves.
- * On a phone the same thing follows your finger: drag across the portrait (sideways, so the page can
- * still scroll up and down) or tap it. The spot stays where you leave it. Reduced-motion users get a
+ * On a phone the same thing follows your finger: drag across the portrait or tap it. While your finger is
+ * on the portrait the page does not scroll; swipe the text below it to scroll again. The spot stays where you leave it. Reduced-motion users get a
  * still spot of color instead, which costs nothing to run.
  */
 export default function Portrait({ src, alt }: { src: string; alt: string }) {
@@ -107,7 +107,7 @@ export default function Portrait({ src, alt }: { src: string; alt: string }) {
   const mask = "radial-gradient(circle var(--r) at var(--mx) var(--my), #000 0%, #000 38%, rgba(0,0,0,0.55) 62%, transparent 100%)";
 
   return (
-    <div ref={root} className="absolute inset-0 group cursor-none [@media(hover:none)]:cursor-auto [-webkit-mask-image:linear-gradient(to_bottom,#000_62%,transparent_97%)] [mask-image:linear-gradient(to_bottom,#000_62%,transparent_97%)] md:[-webkit-mask-image:none] md:[mask-image:none]" style={{ ["--mx" as string]: "50%", ["--my" as string]: "30%", ["--r" as string]: "1px", touchAction: "pan-y" }}>
+    <div ref={root} className="absolute inset-0 group cursor-none [@media(hover:none)]:cursor-auto [@media(hover:none)]:touch-none [-webkit-mask-image:linear-gradient(to_bottom,#000_62%,transparent_97%)] [mask-image:linear-gradient(to_bottom,#000_62%,transparent_97%)] md:[-webkit-mask-image:none] md:[mask-image:none]" style={{ ["--mx" as string]: "50%", ["--my" as string]: "30%", ["--r" as string]: "1px" }}>
       {/* lens: a soft ring that follows the pointer, so it is clear the color is under your cursor */}
       <div
         aria-hidden
