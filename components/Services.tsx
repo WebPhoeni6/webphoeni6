@@ -1,17 +1,18 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import { useContent } from "./ContentProvider";
 import { ArrowUpRight, Reveal, SectionHead } from "./ui";
 
-export default function Services() {
+export default function Services({ n = "02", cta = false }: { n?: string; cta?: boolean }) {
   const { services } = useContent();
   const [open, setOpen] = useState<number | null>(0);
 
   return (
     <section id="service" className="relative -mt-8 rounded-t-[2rem] bg-card px-5 pb-28 pt-16 md:px-10 md:pt-16">
-      <SectionHead n="02" title="Services" />
+      <SectionHead n={n} title="Services" />
 
       <ul className="relative">
         {services.map((s, i) => {
@@ -61,6 +62,16 @@ export default function Services() {
           );
         })}
       </ul>
+
+      {cta && (
+        <Reveal className="mt-14 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <p className="max-w-md text-[14px] leading-relaxed text-ink/65">Websites, brands and apps, each with a clear price. See what is included and build your own package on the pricing page.</p>
+          <Link href="/services#pricing" className="group inline-flex items-center gap-2 rounded-full bg-ember px-7 py-4 text-[14px] font-medium text-[#111] transition-transform hover:scale-[1.04]">
+            See full pricing
+            <ArrowUpRight className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+          </Link>
+        </Reveal>
+      )}
     </section>
   );
 }

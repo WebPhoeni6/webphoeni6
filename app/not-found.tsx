@@ -16,7 +16,7 @@ export default function NotFound() {
           <Link href="/" className="rounded-full bg-ink px-5 py-3 text-[13px] font-medium text-paper transition-transform hover:scale-[1.04]">
             Go home
           </Link>
-          <Link href="/#work" className="rounded-full border border-ink/25 px-5 py-3 text-[13px] font-medium transition-colors hover:bg-ink/10">
+          <Link href="/work" className="rounded-full border border-ink/25 px-5 py-3 text-[13px] font-medium transition-colors hover:bg-ink/10">
             See the work
           </Link>
         </div>

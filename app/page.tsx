@@ -5,7 +5,6 @@ import Hero from "@/components/Hero";
 import Marquee from "@/components/Marquee";
 import Work from "@/components/Work";
 import Services from "@/components/Services";
-import Pricing from "@/components/Pricing";
 import Experience from "@/components/Experience";
 import Contact from "@/components/Contact";
 import { getContent } from "@/lib/store";
@@ -44,9 +43,8 @@ export default async function Home() {
           <Hero hasPortrait={hasPortrait} />
         </div>
         <Marquee />
-        <Work />
-        <Services />
-        <Pricing />
+        <Work limit={6} />
+        <Services cta />
         <Experience />
         <Contact />
       </main>

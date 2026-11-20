@@ -46,7 +46,7 @@ function guessRegion(): RegionId {
   return "us";
 }
 
-export default function Pricing() {
+export default function Pricing({ n = "03" }: { n?: string }) {
   const { profile } = useContent();
   // The price list is chosen for the visitor from their country (see /api/region), never by them. Until it is
   // known, nothing with a price is shown, so nobody outside Nigeria ever sees naira, not even for a moment.
@@ -113,7 +113,7 @@ export default function Pricing() {
 
   return (
     <section id="pricing" className="relative -mt-8 rounded-t-[2rem] bg-paper px-5 pb-28 pt-16 text-ink md:px-10 md:pt-16">
-      <SectionHead n="03" title="Pricing" aside={region ? `In ${currencyName}` : undefined} />
+      <SectionHead n={n} title="Pricing" aside={region ? `In ${currencyName}` : undefined} />
 
       <Reveal>
         <p className="max-w-xl text-[15px] leading-relaxed text-ink/70 md:text-base">

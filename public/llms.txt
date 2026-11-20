@@ -3,7 +3,9 @@
 > Portfolio of Samuel Emeka, who goes by Web Phoenix online: a developer and designer who builds products and brand identities, from the logo to the backend.
 
 ## Pages
-- [Home and selected work](https://webphoenix.net/): projects, services and experience
+- [Home](https://webphoenix.net/): the short version, with selected work, services and experience
+- [Work](https://webphoenix.net/work): every project, with filters
+- [Services and pricing](https://webphoenix.net/services): websites, brand identities, apps and design, with prices and a package builder
 - [About](https://webphoenix.net/about): who Samuel is and what he is working on now
 - [Brand portfolio](https://webphoenix.net/brand): logos, mascots and poster work
 - [Socials and contact](https://webphoenix.net/socials): email, WhatsApp, Telegram, Instagram, LinkedIn

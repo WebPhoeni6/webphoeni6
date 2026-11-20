@@ -151,7 +151,7 @@ export default async function AboutPage() {
             <Link href="/socials" className="rounded-full border border-white/25 px-6 py-3.5 text-[13px] font-medium transition-colors hover:bg-white/10">
               All socials
             </Link>
-            <Link href="/#work" className="rounded-full border border-white/25 px-6 py-3.5 text-[13px] font-medium transition-colors hover:bg-white/10">
+            <Link href="/work" className="rounded-full border border-white/25 px-6 py-3.5 text-[13px] font-medium transition-colors hover:bg-white/10">
               See the work
             </Link>
           </div>

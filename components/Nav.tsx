@@ -9,27 +9,26 @@ import { ArrowUpRight } from "./ui";
 import ThemeToggle from "./ThemeToggle";
 import LogoMark from "./LogoMark";
 
-const pad = (n: number) => String(n).padStart(2, "0");
-
 /**
  * The site navigation. Fixed to the top on every page: clear over the hero, frosted once you scroll,
  * with a full-screen menu on phones. `tone` matches the page behind it.
  */
 export default function Nav({ tone = "light" }: { tone?: "dark" | "light" }) {
-  const { profile, projects, services, experience } = useContent();
+  const { profile } = useContent();
   const path = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [section, setSection] = useState("");
 
+  // Three pages in the bar. The CV, Brand PDF and Socials live in the footer and on the About page.
   const links = [
-    { label: "Work", href: "/#work", id: "work", count: pad(projects.length) },
-    { label: "Service", href: "/#service", id: "service", count: pad(services.length) },
-    { label: "Pricing", href: "/#pricing", id: "pricing", count: undefined },
-    { label: "Experience", href: "/#experience", id: "experience", count: pad(experience.length) },
-    { label: "Brand PDF", href: "/brand", id: "", count: undefined },
-    { label: "About", href: "/about", id: "", count: undefined },
-    { label: "Socials", href: "/socials", id: "", count: undefined },
+    { label: "Work", href: "/work" },
+    { label: "Services", href: "/services" },
+    { label: "About", href: "/about" },
+  ];
+  const more = [
+    { label: "CV", href: "/cv" },
+    { label: "Brand PDF", href: "/brand" },
+    { label: "Socials", href: "/socials" },
   ];
 
   useEffect(() => {
@@ -38,23 +37,6 @@ export default function Nav({ tone = "light" }: { tone?: "dark" | "light" }) {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  // On the home page, mark the section that is on screen.
-  useEffect(() => {
-    if (path !== "/") return;
-    const els = ["work", "service", "pricing", "experience", "contact"].map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
-    if (!els.length) return;
-    const io = new IntersectionObserver(
-      (entries) => {
-        const hit = entries.filter((e) => e.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (hit) setSection(hit.target.id);
-        else if (window.scrollY < 200) setSection("");
-      },
-      { rootMargin: "-35% 0px -55% 0px" },
-    );
-    els.forEach((el) => io.observe(el));
-    return () => io.disconnect();
-  }, [path]);
 
   // Phone menu: lock scroll, close with Esc.
   useEffect(() => {
@@ -69,8 +51,8 @@ export default function Nav({ tone = "light" }: { tone?: "dark" | "light" }) {
     };
   }, [open]);
 
-  type Item = { label: string; href: string; id: string; count: string | undefined };
-  const isActive = (l: Item) => (l.id ? path === "/" && section === l.id : path === l.href);
+  type Item = { label: string; href: string };
+  const isActive = (l: Item) => path === l.href || path.startsWith(`${l.href}/`);
 
   // "dark" is for a page that is always dark (Socials). Everything else follows the theme.
   const dark = tone === "dark";
@@ -105,9 +87,6 @@ export default function Nav({ tone = "light" }: { tone?: "dark" | "light" }) {
                 className={`group relative hidden font-medium transition-colors lg:block ${isActive(l) ? on : idle}`}
               >
                 {l.label}
-                {l.count && (
-                  <span className={`ml-1.5 rounded-full px-1.5 py-0.5 align-middle text-[10px] font-semibold leading-none ${dark ? "bg-white/12 text-white/75" : "bg-ink/10 text-ink/60"}`}>{l.count}</span>
-                )}
                 <span className={`absolute -bottom-1 left-0 h-px w-full origin-left bg-ember transition-transform duration-500 ${isActive(l) ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}`} />
               </Link>
             ))}
@@ -139,7 +118,7 @@ export default function Nav({ tone = "light" }: { tone?: "dark" | "light" }) {
         className={`fixed inset-0 z-[39] flex flex-col justify-between bg-[#111] px-5 pb-8 pt-28 text-white transition-opacity duration-300 lg:hidden ${open ? "opacity-100" : "pointer-events-none opacity-0"}`}
       >
         <ul>
-          {([...links, { label: "Contact", href: "/#contact", id: "contact", count: undefined }] as Item[]).map((l, i) => (
+          {([...links, { label: "Contact", href: "/#contact" }] as Item[]).map((l, i) => (
             <li key={l.label} className="overflow-hidden border-b border-white/10">
               <Link
                 href={l.href}
@@ -148,14 +127,24 @@ export default function Nav({ tone = "light" }: { tone?: "dark" | "light" }) {
                 className={`flex items-baseline justify-between py-4 font-display text-[clamp(1.4rem,6.3vw,2.1rem)] font-semibold tracking-[-0.03em] transition-all duration-500 ${open ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"} ${isActive(l) ? "text-white" : "text-white/70"}`}
               >
                 {l.label}
-                {l.count && <span className="text-sm font-medium text-white/40">{l.count}</span>}
               </Link>
             </li>
           ))}
         </ul>
-        <div className="flex items-center justify-between gap-4 text-[13px] text-white/55">
-          <span className="truncate">{profile.email}</span>
-          <ThemeToggle tone="dark" showLabel className="shrink-0" />
+        <div className="grid gap-6">
+          <ul className="flex flex-wrap gap-2">
+            {more.map((l) => (
+              <li key={l.label}>
+                <Link href={l.href} onClick={() => setOpen(false)} className="inline-block rounded-full border border-white/20 px-4 py-2 text-[12px] font-medium text-white/80">
+                  {l.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <div className="flex items-center justify-between gap-4 text-[13px] text-white/55">
+            <span className="truncate">{profile.email}</span>
+            <ThemeToggle tone="dark" showLabel className="shrink-0" />
+          </div>
         </div>
       </div>
     </>

@@ -47,7 +47,7 @@ export default async function ProjectPage({ params }: Props) {
           projectSchema(p),
           breadcrumbs([
             { name: "Home", path: "/" },
-            { name: "Work", path: "/#work" },
+            { name: "Work", path: "/work" },
             { name: p.title.split(": ")[0], path: `/work/${p.slug}` },
           ]),
         )}

@@ -11,28 +11,43 @@ import Latest from "./Latest";
 
 const filters: ("All" | Category)[] = ["All", "Development", "Design", "Branding"];
 
-export default function Work() {
+/**
+ * `limit` shows only the first few projects with a link to the rest (the home page).
+ * `page` is the full /work page: every project, with the filters.
+ */
+export default function Work({ limit, page = false }: { limit?: number; page?: boolean }) {
   const { projects } = useContent();
   const [active, setActive] = useState<"All" | Category>("All");
-  const shown = projects.filter((p) => active === "All" || p.category === active);
+  const filtered = projects.filter((p) => active === "All" || p.category === active);
+  const shown = limit ? filtered.slice(0, limit) : filtered;
 
   return (
-    <section id="work" className="relative -mt-8 rounded-t-[2rem] bg-paper px-5 pb-28 pt-16 md:px-10 md:pt-24">
+    <section id="work" className={`relative bg-paper px-5 pb-28 md:px-10 ${page ? "pt-32 md:pt-44" : "-mt-8 rounded-t-[2rem] pt-16 md:pt-24"}`}>
       <div className="mx-auto max-w-[1600px]">
-        <Latest />
+        {!page && <Latest />}
         <Reveal className="flex items-center justify-between text-[11px] font-semibold uppercase tracking-[0.18em] text-ink/50">
-          <span>01 / Selected work</span>
-          <span>{String(shown.length).padStart(2, "0")} projects</span>
+          <span>{page ? "Work" : "01 / Selected work"}</span>
+          <span>
+            {limit && projects.length > shown.length ? `${shown.length} of ${projects.length}` : String(shown.length).padStart(2, "0")} projects
+          </span>
         </Reveal>
         <Reveal delay={0.08}>
-        <h2 className="mt-6 font-display text-[clamp(2.1rem,6.65vw,6.3rem)] font-bold leading-[1.02] tracking-[-0.03em]">
-          Selected
-          <br />
-          work
-        </h2>
+        {page ? (
+          <h1 className="mt-6 font-display text-[clamp(2.1rem,6.65vw,6.3rem)] font-bold leading-[1.02] tracking-[-0.03em]">
+            All
+            <br />
+            work
+          </h1>
+        ) : (
+          <h2 className="mt-6 font-display text-[clamp(2.1rem,6.65vw,6.3rem)] font-bold leading-[1.02] tracking-[-0.03em]">
+            Selected
+            <br />
+            work
+          </h2>
+        )}
         </Reveal>
 
-        <Reveal delay={0.16}><div className="no-scrollbar mt-10 flex gap-2 overflow-x-auto pb-1 text-[13px] font-medium md:mt-14">
+        {!limit && <Reveal delay={0.16}><div className="no-scrollbar mt-10 flex gap-2 overflow-x-auto pb-1 text-[13px] font-medium md:mt-14">
           {filters.map((f) => (
             <button
               key={f}
@@ -44,7 +59,7 @@ export default function Work() {
               {f}
             </button>
           ))}
-        </div></Reveal>
+        </div></Reveal>}
 
         <div className="mt-10 grid gap-x-6 gap-y-14 md:mt-14 md:grid-cols-2 md:gap-x-8">
           {shown.map((p, i) => (
@@ -95,6 +110,15 @@ export default function Work() {
             </Reveal>
           ))}
         </div>
+
+        {limit && projects.length > shown.length && (
+          <Reveal className="mt-16 flex justify-center">
+            <Link href="/work" className="group inline-flex items-center gap-2 rounded-full bg-ink px-7 py-4 text-[14px] font-medium text-paper transition-transform hover:scale-[1.04]">
+              See all {projects.length} projects
+              <ArrowUpRight className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+            </Link>
+          </Reveal>
+        )}
       </div>
     </section>
   );
