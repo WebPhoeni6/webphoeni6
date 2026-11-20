@@ -273,3 +273,24 @@ body {
     padding: 0;
   }
 }
+
+/* Pricing cards rise in one after another, and again when the tab or region changes. */
+@keyframes price-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.price-in {
+  animation: price-in 0.55s var(--ease-out-expo) both;
+  animation-delay: var(--d, 0s);
+}
+@media (prefers-reduced-motion: reduce) {
+  .price-in {
+    animation: none;
+  }
+}
