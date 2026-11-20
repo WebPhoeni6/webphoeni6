@@ -5,6 +5,7 @@ import Hero from "@/components/Hero";
 import Marquee from "@/components/Marquee";
 import Work from "@/components/Work";
 import Services from "@/components/Services";
+import Pricing from "@/components/Pricing";
 import Experience from "@/components/Experience";
 import Contact from "@/components/Contact";
 import { getContent } from "@/lib/store";
@@ -45,6 +46,7 @@ export default async function Home() {
         <Marquee />
         <Work />
         <Services />
+        <Pricing />
         <Experience />
         <Contact />
       </main>

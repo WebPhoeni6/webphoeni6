@@ -25,6 +25,7 @@ export default function Nav({ tone = "light" }: { tone?: "dark" | "light" }) {
   const links = [
     { label: "Work", href: "/#work", id: "work", count: pad(projects.length) },
     { label: "Service", href: "/#service", id: "service", count: pad(services.length) },
+    { label: "Pricing", href: "/#pricing", id: "pricing", count: undefined },
     { label: "Experience", href: "/#experience", id: "experience", count: pad(experience.length) },
     { label: "Brand PDF", href: "/brand", id: "", count: undefined },
     { label: "About", href: "/about", id: "", count: undefined },
@@ -41,7 +42,7 @@ export default function Nav({ tone = "light" }: { tone?: "dark" | "light" }) {
   // On the home page, mark the section that is on screen.
   useEffect(() => {
     if (path !== "/") return;
-    const els = ["work", "service", "experience", "contact"].map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
+    const els = ["work", "service", "pricing", "experience", "contact"].map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
     if (!els.length) return;
     const io = new IntersectionObserver(
       (entries) => {

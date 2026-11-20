@@ -40,7 +40,7 @@ export default function Experience() {
       }}
       onPointerLeave={() => setHover(null)}
     >
-      <SectionHead n="03" title="Experience" dark aside={`${experience.length} products`} />
+      <SectionHead n="04" title="Experience" dark aside={`${experience.length} products`} />
 
       <ul className="relative">
         {experience.map((e, i) => (
