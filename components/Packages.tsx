@@ -104,6 +104,7 @@ export default function Packages() {
                     {addOn.title}: {addOn.line}
                   </h2>
                   <p className="mt-3 text-[15px] font-medium opacity-80">({addOn.text})</p>
+                  <p className="mt-3 max-w-xl text-[14px] leading-relaxed opacity-75">{addOn.detail}</p>
                   <AddOnPrice />
                 </div>
                 <ContactLink className="group inline-flex shrink-0 items-center gap-2 rounded-full bg-[#111] px-7 py-4 text-[14px] font-semibold text-white transition-transform duration-300 hover:scale-105 active:scale-[0.97]">

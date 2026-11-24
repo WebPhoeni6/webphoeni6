@@ -19,7 +19,12 @@ export default function AddOnPrice() {
           {min.toLocaleString("en-US")}
         </>
       ) : (
-        <span aria-hidden className="h-7 w-36 animate-pulse rounded-lg bg-current opacity-10" />
+        <>
+          <span aria-hidden className="h-7 w-36 animate-pulse rounded-lg bg-current opacity-10" />
+          <noscript>
+            <span className="text-lg">Message me for a quote</span>
+          </noscript>
+        </>
       )}
     </p>
   );

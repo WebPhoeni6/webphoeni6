@@ -41,7 +41,7 @@ export default async function PackagesPage() {
       <main className="mx-auto max-w-[1600px] bg-[#111]">
         <Nav />
         <Packages />
-        <Contact />
+        <Contact n="" />
       </main>
     </>
   );

@@ -15,7 +15,7 @@ export default function Contact({ n = "04" }: { n?: string }) {
       <FlameArt light className="absolute right-4 top-24 hidden w-24 opacity-90 sm:block sm:w-36 md:right-16 md:top-28 md:w-56" delay={0.2} />
       <div className="relative mx-auto max-w-[1600px]">
         <Reveal className="flex items-center justify-between text-[11px] font-semibold uppercase tracking-[0.18em] text-white/45">
-          <span>{n} / Contact</span>
+          <span>{n ? `${n} / Contact` : "Contact"}</span>
         </Reveal>
 
         <Reveal delay={0.08}>

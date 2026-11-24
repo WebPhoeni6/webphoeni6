@@ -93,4 +93,5 @@ export const addOn = {
   title: "Website build",
   line: "I don't just design it, I ship it.",
   text: "A live site built from your brand.",
+  detail: "Up to 5 pages, a contact form, a WhatsApp button and basic SEO, put online with the first year of hosting.",
 };

@@ -21,7 +21,7 @@ export const profile = {
     { label: "Behance", href: "https://www.behance.net/samuelemeka2" },
     { label: "Instagram", href: "https://www.instagram.com/web_phoenix___/" },
     { label: "Telegram", href: "https://t.me/webphoeni6" },
-    { label: "WhatsApp", href: "https://wa.me/qr/BCKVQZZLC4HZG1" },
+    { label: "WhatsApp", href: "https://wa.me/2349046088720" },
     { label: "Discord", href: "https://discord.com/users/1109887724808315030" },
     { label: "Facebook", href: "https://www.facebook.com/webphoeni6" },
   ],
