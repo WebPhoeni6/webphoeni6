@@ -52,7 +52,7 @@ export default async function ServicesPage() {
         </header>
         <Services n="01" />
         <Pricing n="02" />
-        <Contact />
+        <Contact n="03" />
       </main>
     </>
   );

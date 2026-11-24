@@ -49,7 +49,7 @@ export default async function WorkPage() {
       <main className="mx-auto max-w-[1600px] bg-[#111]">
         <Nav />
         <Work page />
-        <Contact />
+        <Contact n="" />
       </main>
     </>
   );
