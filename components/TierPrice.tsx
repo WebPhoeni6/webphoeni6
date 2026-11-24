@@ -5,28 +5,32 @@ import type { Tier } from "@/lib/packages";
 
 const naira = (n: number) => `₦${n.toLocaleString("en-US")}`;
 
+type Region = "ng" | "uk" | "us";
+
 /** Best guess from the browser's time zone, used only if the country lookup fails. */
-function guessNigeria() {
+function guessRegion(): Region {
   try {
-    return (Intl.DateTimeFormat().resolvedOptions().timeZone || "") === "Africa/Lagos";
-  } catch {
-    return false;
-  }
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || "";
+    if (tz === "Africa/Lagos") return "ng";
+    if (tz === "Europe/London") return "uk";
+  } catch {}
+  return "us";
 }
 
 /**
- * One tier's price. Naira is shown only to visitors in Nigeria, decided from their connection (/api/region),
- * never picked by them. Everyone else is invited to ask for a quote, and nothing is shown until we know.
+ * One tier's price. Naira is shown only to visitors in Nigeria and pounds only to visitors in the UK, decided from
+ * their connection (/api/region), never picked by them. Everyone else is invited to ask for a quote, and nothing
+ * is shown until we know.
  */
 export default function TierPrice({ tier }: { tier: Tier }) {
-  const [nigeria, setNigeria] = useState<boolean | null>(null);
+  const [region, setRegion] = useState<Region | null>(null);
 
   useEffect(() => {
     let live = true;
     fetch("/api/region", { cache: "no-store" })
       .then((r) => r.json())
-      .then((j: { region: string | null }) => live && setNigeria(j.region ? j.region === "ng" : guessNigeria()))
-      .catch(() => live && setNigeria(guessNigeria()));
+      .then((j: { region: string | null }) => live && setRegion(j.region === "ng" || j.region === "uk" || j.region === "us" ? j.region : guessRegion()))
+      .catch(() => live && setRegion(guessRegion()));
     return () => {
       live = false;
     };
@@ -43,7 +47,7 @@ export default function TierPrice({ tier }: { tier: Tier }) {
     );
   }
 
-  if (nigeria === null) {
+  if (region === null) {
     return (
       <div className={box} aria-hidden>
         <span className="h-9 w-40 animate-pulse rounded-lg bg-current opacity-10" />
@@ -51,7 +55,15 @@ export default function TierPrice({ tier }: { tier: Tier }) {
     );
   }
 
-  if (!nigeria || !tier.price) {
+  if (region === "uk" && tier.uk) {
+    return (
+      <div className={box}>
+        <p className="font-display text-3xl font-semibold tracking-[-0.02em] md:text-4xl">{`£${tier.uk.toLocaleString("en-GB")}`}</p>
+      </div>
+    );
+  }
+
+  if (region !== "ng" || !tier.price) {
     return (
       <div className={box}>
         <p className="font-display text-2xl font-semibold tracking-[-0.02em] md:text-3xl">Message me for a quote</p>

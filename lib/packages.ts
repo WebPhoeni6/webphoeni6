@@ -1,5 +1,6 @@
 /**
- * Brand packages. Prices are in naira and are shown only to visitors in Nigeria (see TierPrice).
+ * Brand packages. `price` is naira, shown only to visitors in Nigeria; `uk` is pounds, shown only to visitors in the UK
+ * (see TierPrice). Everyone else is asked to message for a quote.
  * `was` is the price before the discount. `custom` tiers have no listed price: the visitor contacts me.
  * PRICE is the placeholder still used by the add-on.
  */
@@ -15,6 +16,8 @@ export type Tier = {
   popular?: boolean;
   /** Naira. */
   price?: number;
+  /** Pounds, set from what UK freelance designers typically charge for the same scope. */
+  uk?: number;
   /** Naira, the full price before the discount. Shown crossed out with a saving tag. */
   was?: number;
   /** No listed price: the card says so and the button asks the visitor to get in touch. */
@@ -27,6 +30,7 @@ export const tiers: Tier[] = [
     name: "Ember",
     forWho: "we just registered",
     price: 120000,
+    uk: 1500,
     features: [
       "Logo suite (primary, secondary, icon)",
       "Light/dark/mono versions",
@@ -48,6 +52,7 @@ export const tiers: Tier[] = [
     includes: "Everything in Ember, plus:",
     popular: true,
     price: 150000,
+    uk: 3500,
     was: 180000,
     features: [
       "Brand guidelines (15–20 pages)",
