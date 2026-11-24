@@ -123,7 +123,7 @@ export default function PaylaneCase() {
             <div className="mt-12 grid gap-4 md:mt-16 md:grid-cols-2 md:gap-6">
               <Reveal y={36}>
                 <div className="grid aspect-[10/6] place-items-center overflow-hidden rounded-[1.2rem] bg-[#F5F7FA] ring-1 ring-black/5 md:rounded-[1.6rem]">
-                  <Image src="/work/paylane/logo-light.webp" alt="Paylane logo in full colour on a light background: black lane-marking blocks, a lime P bowl and the lowercase wordmark" width={800} height={280} loading="lazy" sizes="(min-width: 768px) 46vw, 92vw" className="w-[78%]" />
+                  <Image src="/work/paylane/logo-light.webp" alt="Paylane logo in full colour on a light background: navy lane-marking blocks, a lime P bowl and the lowercase wordmark" width={800} height={280} loading="lazy" sizes="(min-width: 768px) 46vw, 92vw" className="w-[78%]" />
                 </div>
               </Reveal>
               <Reveal y={36} delay={0.1}>
