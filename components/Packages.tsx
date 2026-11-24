@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { addOn, PRICE, tiers } from "@/lib/packages";
 import ContactLink from "./ContactLink";
+import TierPrice from "./TierPrice";
 import { ArrowUpRight, Reveal } from "./ui";
 import { Blob, FlameArt, GridPattern, LaneArt, LineAccent } from "./Art";
 
@@ -61,7 +62,7 @@ export default function Packages() {
                       <p className={`mt-3 text-[14px] ${t.popular ? "text-white/65" : "text-ink/60"}`}>
                         For &ldquo;{t.forWho}&rdquo;
                       </p>
-                      <p className="mt-8 font-display text-3xl font-semibold tracking-[-0.02em] md:text-4xl">{t.price ?? PRICE}</p>
+                      <TierPrice tier={t} />
 
                       {t.includes && <p className={`mt-8 text-[13px] font-semibold ${t.popular ? "text-ember" : "text-ember-deep"}`}>{t.includes}</p>}
                       <ul className={`${t.includes ? "mt-4" : "mt-8"} grid gap-3 text-[14px] leading-snug`}>
@@ -81,7 +82,7 @@ export default function Packages() {
                           t.popular ? "bg-ember text-[#111]" : "bg-ink text-paper"
                         }`}
                       >
-                        Start with {t.name}
+                        {t.custom ? "Contact me for a quote" : `Start with ${t.name}`}
                         <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                       </ContactLink>
                     </div>

@@ -1,6 +1,7 @@
 /**
- * Brand packages. Prices are placeholders until they are decided: change PRICE here and every card follows,
- * or give a tier its own `price`.
+ * Brand packages. Prices are in naira and are shown only to visitors in Nigeria (see TierPrice).
+ * `was` is the price before the discount. `custom` tiers have no listed price: the visitor contacts me.
+ * PRICE is the placeholder still used by the add-on.
  */
 export const PRICE = "[PRICE]";
 
@@ -12,7 +13,12 @@ export type Tier = {
   includes?: string;
   features: string[];
   popular?: boolean;
-  price?: string;
+  /** Naira. */
+  price?: number;
+  /** Naira, the full price before the discount. Shown crossed out with a saving tag. */
+  was?: number;
+  /** No listed price: the card says so and the button asks the visitor to get in touch. */
+  custom?: boolean;
 };
 
 export const tiers: Tier[] = [
@@ -20,6 +26,7 @@ export const tiers: Tier[] = [
     id: "ember",
     name: "Ember",
     forWho: "we just registered",
+    price: 120000,
     features: [
       "Logo suite (primary, secondary, icon)",
       "Light/dark/mono versions",
@@ -40,6 +47,8 @@ export const tiers: Tier[] = [
     forWho: "we're getting customers",
     includes: "Everything in Ember, plus:",
     popular: true,
+    price: 150000,
+    was: 180000,
     features: [
       "Brand guidelines (15–20 pages)",
       "Brand story and voice guide",
@@ -58,6 +67,7 @@ export const tiers: Tier[] = [
     name: "Phoenix",
     forWho: "we're going big",
     includes: "Everything in Flame, plus:",
+    custom: true,
     features: [
       "Brand strategy and audience personas",
       "Tagline development",
