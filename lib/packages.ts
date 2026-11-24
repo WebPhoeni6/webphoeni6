@@ -88,6 +88,8 @@ export const tiers: Tier[] = [
 ];
 
 export const addOn = {
+  /** What the add-on starts at, in each country's own currency (naira, pounds, dollars). */
+  from: { ng: 180000, uk: 450, us: 500 } as Record<"ng" | "uk" | "us", number>,
   title: "Website build",
   line: "I don't just design it, I ship it.",
   text: "A live site built from your brand.",

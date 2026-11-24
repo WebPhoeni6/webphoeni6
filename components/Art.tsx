@@ -2,7 +2,7 @@ import { Reveal } from "./ui";
 
 /**
  * Decorative graphics for the site. One style throughout: thick rounded strokes in the page's ink
- * colour, one flat ember shape per picture, and a soft tint behind it. Everything is inline SVG so it
+ * color, one flat ember shape per picture, and a soft tint behind it. Everything is inline SVG so it
  * costs almost nothing, follows light and dark themes through currentColor, and is hidden from
  * screen readers. The line drawing and gentle float run once the picture scrolls into view.
  */
@@ -32,7 +32,7 @@ export function GridPattern({ className = "" }: { className?: string }) {
   );
 }
 
-/** A soft organic shape. Tint it with a text colour class, for example text-ember. */
+/** A soft organic shape. Tint it with a text color class, for example text-ember. */
 export function Blob({ className = "", variant = 0 }: { className?: string; variant?: 0 | 1 }) {
   const d =
     variant === 0

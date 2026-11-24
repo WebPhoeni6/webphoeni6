@@ -1,18 +1,19 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Reveal, ArrowUpRight } from "./ui";
-import { Blob, GridPattern, LaneArt } from "./Art";
+import { Blob, GridPattern } from "./Art";
+import { BriefArt, ChallengeArt, IdeaArt, TypeArt, ResultArt } from "./PaylaneArt";
 
 const label = "text-[11px] font-semibold uppercase tracking-[0.18em] text-ink/50";
 const body = "max-w-xl text-[15px] leading-relaxed text-ink/75 md:text-[17px]";
 const h2 = "mt-5 font-display text-[clamp(1.7rem,4.2vw,3.4rem)] font-bold leading-[1.05] tracking-[-0.03em]";
 
-/** Paylane's own colours. Built in code so they stay sharp at any size. */
+/** Paylane's own colors. Built in code so they stay sharp at any size. `w` is how much room each takes in the band. */
 const swatches = [
-  { name: "Midnight Navy", hex: "#0B1B3F", note: "Trust", dark: true },
-  { name: "Electric Lime", hex: "#C6F432", note: "Speed", dark: false },
-  { name: "Cloud", hex: "#F5F7FA", note: "Clean space", dark: false },
-  { name: "Signal Coral", hex: "#FF6B4A", note: "Alerts", dark: false },
+  { name: "Midnight Navy", hex: "#0B1B3F", note: "Trust", dark: true, w: 5 },
+  { name: "Electric Lime", hex: "#C6F432", note: "Speed", dark: false, w: 3.4 },
+  { name: "Cloud", hex: "#F5F7FA", note: "Clean space", dark: false, w: 2.2 },
+  { name: "Signal Coral", hex: "#FF6B4A", note: "Alerts", dark: false, w: 1.6 },
 ];
 
 const shots = {
@@ -75,13 +76,16 @@ export default function PaylaneCase() {
       <div className="bg-paper px-5 pb-24 text-ink md:px-10 md:pb-32">
         <div className="mx-auto grid max-w-[1600px] gap-20 md:gap-32">
           {/* Brief */}
-          <section className="grid gap-8 md:grid-cols-[1fr_2fr] md:gap-16">
+          <section className="grid items-center gap-8 md:grid-cols-[1fr_2fr_1.1fr] md:gap-12">
             <Reveal>
               <p className={label}>01 / The brief</p>
             </Reveal>
             <Reveal delay={0.08}>
               <p className={body}>Paylane is a payments app for Nigerian small businesses and freelancers. It needed a brand that feels fast, trustworthy and unmistakably local, without looking like every other fintech.</p>
             </Reveal>
+            <div className="max-w-sm md:max-w-none">
+              <BriefArt delay={0.1} />
+            </div>
           </section>
 
           <Row>
@@ -89,13 +93,16 @@ export default function PaylaneCase() {
           </Row>
 
           {/* Challenge */}
-          <section className="grid gap-8 md:grid-cols-[1fr_2fr] md:gap-16">
+          <section className="grid items-center gap-8 md:grid-cols-[1fr_2fr_1.1fr] md:gap-12">
             <Reveal>
               <p className={label}>02 / The challenge</p>
             </Reveal>
             <Reveal delay={0.08}>
               <p className={body}>Nigerian fintech is a sea of green, purple and blue. Most brands sell &ldquo;banking&rdquo;. Paylane sells speed: getting paid without the &ldquo;transfer pending&rdquo; anxiety.</p>
             </Reveal>
+            <div className="max-w-sm md:max-w-none">
+              <ChallengeArt delay={0.1} />
+            </div>
           </section>
 
           <Row>
@@ -104,27 +111,33 @@ export default function PaylaneCase() {
 
           {/* Idea + logo */}
           <section>
-            <div className="grid gap-8 md:grid-cols-[1fr_2fr] md:gap-16">
+            <div className="grid items-center gap-8 md:grid-cols-[1fr_2fr_1.1fr] md:gap-12">
               <Reveal>
                 <p className={label}>03 / The idea</p>
               </Reveal>
-              <div className="relative">
-                <Reveal delay={0.08}>
-                  <p className={body}>The logo is a P built from lane markings. The navy blocks are the road and the lime bowl is the destination, so it&apos;s a fast lane straight into the wordmark.</p>
-                </Reveal>
-                <LaneArt className="mt-8 w-40 md:absolute md:-top-6 md:right-0 md:mt-0 md:w-56" />
+              <Reveal delay={0.08}>
+                <p className={body}>The logo is a P built from lane markings. The navy blocks are the road and the lime bowl is the destination, so it&apos;s a fast lane straight into the wordmark.</p>
+              </Reveal>
+              <div className="max-w-sm md:max-w-none">
+                <IdeaArt delay={0.1} />
               </div>
             </div>
             <div className="mt-12 grid gap-4 md:mt-16 md:grid-cols-2 md:gap-6">
               <Reveal y={36}>
-                <div className="grid aspect-[10/6] place-items-center overflow-hidden rounded-[1.2rem] bg-[#F5F7FA] ring-1 ring-black/5 md:rounded-[1.6rem]">
-                  <Image src="/work/paylane/logo-light.webp" alt="Paylane logo in full colour on a light background: navy lane-marking blocks, a lime P bowl and the lowercase wordmark" width={800} height={280} loading="lazy" sizes="(min-width: 768px) 46vw, 92vw" className="w-[78%]" />
-                </div>
+                <figure>
+                  <div className="grid aspect-[10/6] place-items-center overflow-hidden rounded-[1.2rem] bg-[#F5F7FA] ring-1 ring-black/5 md:rounded-[1.6rem]">
+                    <Image src="/work/paylane/logo-light.webp" alt="Paylane logo in full color on a light background: navy lane-marking blocks, a lime P bowl and the lowercase wordmark" width={800} height={280} loading="lazy" sizes="(min-width: 768px) 46vw, 92vw" className="w-[78%]" />
+                  </div>
+                  <figcaption className="mt-3 text-[11px] font-medium uppercase tracking-[0.14em] text-ink/45">Full-color logo on light</figcaption>
+                </figure>
               </Reveal>
               <Reveal y={36} delay={0.1}>
-                <div className="grid aspect-[10/6] place-items-center overflow-hidden rounded-[1.2rem] bg-[#0B1B3F] md:rounded-[1.6rem]">
-                  <Image src="/work/paylane/logo-dark.webp" alt="Paylane logo in white and lime on Midnight Navy" width={800} height={280} loading="lazy" sizes="(min-width: 768px) 46vw, 92vw" className="w-[78%]" />
-                </div>
+                <figure>
+                  <div className="grid aspect-[10/6] place-items-center overflow-hidden rounded-[1.2rem] bg-[#0B1B3F] md:rounded-[1.6rem]">
+                    <Image src="/work/paylane/logo-dark.webp" alt="Paylane logo in white and lime on Midnight Navy" width={800} height={280} loading="lazy" sizes="(min-width: 768px) 46vw, 92vw" className="w-[78%]" />
+                  </div>
+                  <figcaption className="mt-3 text-[11px] font-medium uppercase tracking-[0.14em] text-ink/45">White logo on Midnight Navy</figcaption>
+                </figure>
               </Reveal>
             </div>
           </section>
@@ -133,7 +146,7 @@ export default function PaylaneCase() {
             <Shot s={shots.danfo} />
           </Row>
 
-          {/* Colours */}
+          {/* Colors */}
           <section>
             <div className="grid gap-8 md:grid-cols-[1fr_2fr] md:gap-16">
               <Reveal>
@@ -143,17 +156,17 @@ export default function PaylaneCase() {
                 <p className={body}>Midnight Navy (trust), Electric Lime (speed, and a color no Nigerian fintech owns), Cloud (clean space), Signal Coral (alerts).</p>
               </Reveal>
             </div>
-            <ul className="mt-12 grid grid-cols-2 gap-3 md:mt-16 md:grid-cols-4 md:gap-5">
+            <ul className="mt-12 grid grid-cols-2 gap-3 md:mt-16 md:flex md:h-[26rem] md:gap-4">
               {swatches.map((s, i) => (
-                <li key={s.hex}>
-                  <Reveal delay={i * 0.07} y={30}>
+                <li key={s.hex} className="md:min-w-0" style={{ flexGrow: s.w, flexBasis: 0 }}>
+                  <Reveal delay={i * 0.08} y={36} className="h-full">
                     <div
-                      className={`flex aspect-[4/5] flex-col justify-between rounded-[1.2rem] p-4 md:rounded-[1.6rem] md:p-6 ${s.dark ? "text-white" : "text-[#0B1B3F]"} ${s.hex === "#F5F7FA" ? "ring-1 ring-black/10" : ""}`}
+                      className={`flex aspect-[4/5] h-full flex-col justify-between rounded-[1.2rem] p-4 md:aspect-auto md:rounded-[1.6rem] md:p-7 ${s.dark ? "text-white" : "text-[#0B1B3F]"} ${s.hex === "#F5F7FA" ? "ring-1 ring-black/10" : ""}`}
                       style={{ background: s.hex }}
                     >
                       <span className="text-[11px] font-semibold uppercase tracking-[0.14em] opacity-70">{s.note}</span>
                       <span>
-                        <span className="block font-display text-lg font-bold leading-tight tracking-[-0.02em] md:text-2xl">{s.name}</span>
+                        <span className="block font-display text-xl font-bold leading-tight tracking-[-0.02em] md:text-2xl">{s.name}</span>
                         <span className="mt-1 block font-mono text-[12px] uppercase opacity-70">{s.hex}</span>
                       </span>
                     </div>
@@ -168,13 +181,16 @@ export default function PaylaneCase() {
           </Row>
 
           {/* Type */}
-          <section className="grid gap-8 md:grid-cols-[1fr_2fr] md:gap-16">
+          <section className="grid items-center gap-8 md:grid-cols-[1fr_2fr_1.1fr] md:gap-12">
             <Reveal>
               <p className={label}>05 / Type</p>
             </Reveal>
             <Reveal delay={0.08}>
               <p className={body}>Clash Display for bold headlines, and Satoshi for clean, readable UI.</p>
             </Reveal>
+            <div className="max-w-sm md:max-w-none">
+              <TypeArt delay={0.1} />
+            </div>
           </section>
 
           <Row>
@@ -199,6 +215,9 @@ export default function PaylaneCase() {
               <Reveal delay={0.16}>
                 <p className={`${body} mt-6`}>A complete identity system that&apos;s ready for launch, from app icon to danfo wrap.</p>
               </Reveal>
+              <div className="mt-8 max-w-sm">
+                <ResultArt delay={0.2} />
+              </div>
             </div>
             <Reveal y={50} delay={0.1}>
               <Shot s={shots.poster} className="mx-auto aspect-[896/1200] max-w-sm md:max-w-none" sizes="(min-width: 768px) 40vw, 92vw" />

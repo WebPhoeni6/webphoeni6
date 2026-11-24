@@ -1,13 +1,14 @@
 "use client";
 
 import { regions } from "@/lib/pricing";
+import { addOn } from "@/lib/packages";
 import { useRegion } from "./useRegion";
 
-/** The website add-on costs the same as a business website on the services page, in the visitor's own currency. */
+/** The website add-on's starting price, in the visitor's own currency (see addOn.from). */
 export default function AddOnPrice() {
   const region = useRegion();
   const r = regions.find((x) => x.id === region);
-  const min = r?.prices["business-site"]?.min;
+  const min = region ? addOn.from[region] : undefined;
 
   return (
     <p className="mt-5 flex min-h-9 items-baseline gap-2 font-display text-2xl font-semibold tracking-[-0.02em]">

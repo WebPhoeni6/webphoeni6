@@ -14,7 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const { profile } = await getContent();
   const name = fullName(profile);
   const title = `Paylane: Brand Identity (concept project) | ${name}`;
-  const description = "A concept brand identity for Paylane, a Lagos payments app for small businesses and freelancers. Logo, colours and applications from billboard to danfo wrap.";
+  const description = "A concept brand identity for Paylane, a Lagos payments app for small businesses and freelancers. Logo, colors and applications from billboard to danfo wrap.";
   const images = [{ url: OG, width: 1200, height: 630, alt: "Paylane logo on a billboard above a busy Lagos highway" }];
   return {
     title: { absolute: title },
@@ -46,7 +46,7 @@ export default async function PaylanePage() {
       <main className="mx-auto max-w-[1600px] bg-[#111]">
         <Nav />
         <PaylaneCase />
-        <Contact />
+        <Contact n="07" />
       </main>
     </>
   );
