@@ -60,13 +60,8 @@ export default function PaylaneCase() {
             <span aria-hidden>/</span>
             <span className="text-ink/70">Paylane</span>
           </nav>
-          <Reveal delay={0.05}>
-            <p className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#0B1B3F] px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#C6F432]">
-              <span className="size-1.5 rounded-full bg-[#C6F432]" /> Concept project
-            </p>
-          </Reveal>
           <Reveal delay={0.1}>
-            <h1 className="mt-6 font-display text-[clamp(2.2rem,7vw,6.6rem)] font-bold leading-[1] tracking-[-0.035em]">Paylane: Brand Identity</h1>
+            <h1 className="mt-8 font-display text-[clamp(2.2rem,7vw,6.6rem)] font-bold leading-[1] tracking-[-0.035em]">Paylane: Brand Identity</h1>
           </Reveal>
           <Reveal delay={0.18}>
             <p className="mt-6 text-[15px] font-medium text-ink/60 md:text-lg">Concept project · Fintech · Lagos</p>
