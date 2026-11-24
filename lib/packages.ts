@@ -2,10 +2,7 @@
  * Brand packages. `price` is naira, shown only to visitors in Nigeria; `uk` is pounds, shown only to visitors in the UK
  * (see TierPrice). Everyone else is asked to message for a quote.
  * `was` is the price before the discount. `custom` tiers have no listed price: the visitor contacts me.
- * PRICE is the placeholder still used by the add-on.
  */
-export const PRICE = "[PRICE]";
-
 export type Tier = {
   id: "ember" | "flame" | "phoenix";
   name: string;

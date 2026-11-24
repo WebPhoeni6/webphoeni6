@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import { addOn, PRICE, tiers } from "@/lib/packages";
+import { addOn, tiers } from "@/lib/packages";
 import ContactLink from "./ContactLink";
 import TierPrice from "./TierPrice";
+import AddOnPrice from "./AddOnPrice";
 import { ArrowUpRight, Reveal } from "./ui";
 import { Blob, FlameArt, GridPattern, LaneArt, LineAccent } from "./Art";
 
@@ -103,7 +104,7 @@ export default function Packages() {
                     {addOn.title}: {addOn.line}
                   </h2>
                   <p className="mt-3 text-[15px] font-medium opacity-80">({addOn.text})</p>
-                  <p className="mt-5 font-display text-2xl font-semibold tracking-[-0.02em]">{PRICE}</p>
+                  <AddOnPrice />
                 </div>
                 <ContactLink className="group inline-flex shrink-0 items-center gap-2 rounded-full bg-[#111] px-7 py-4 text-[14px] font-semibold text-white transition-transform duration-300 hover:scale-105 active:scale-[0.97]">
                   Add a website
