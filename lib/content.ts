@@ -57,6 +57,8 @@ export type Project = {
   mockups?: string[];
   /** Identity details. When set, the project page is laid out as a brand case study. */
   brand?: BrandWork;
+  /** A self-initiated project, not a client job. Cards show a "Concept project" label. */
+  concept?: boolean;
   /** The same project on Behance, shown as a button on the project page. */
   behance?: string;
   /**
@@ -167,6 +169,26 @@ export const projects: Project[] = [
       height: 4687,
       image: "/work/live/pendu-full.webp",
     },
+  },
+  {
+    // Its page is built by hand in app/work/paylane, so the story can run image by image.
+    slug: "paylane",
+    title: "Paylane: Brand Identity",
+    kind: "Brand identity",
+    category: "Branding",
+    tags: ["Brand Identity", "Fintech"],
+    concept: true,
+    summary: "A concept brand for a Lagos payments app: the fast lane to getting paid.",
+    description:
+      "Paylane is a payments app for Nigerian small businesses and freelancers. It needed a brand that feels fast, trustworthy and unmistakably local, without looking like every other fintech.",
+    services: "Brand identity, logo, applications and mockups",
+    role: "Brand designer",
+    timeline: "Concept",
+    tools: ["Logo design", "Brand identity", "Mockups"],
+    cover: "/work/paylane/billboard.webp",
+    shot: true,
+    coverFit: "cover",
+    gallery: [{ src: "/work/paylane/billboard.webp", alt: "Paylane logo on a billboard above a busy Lagos highway" }],
   },
   {
     slug: "rendo",

@@ -19,10 +19,11 @@ export default function Nav({ tone = "light" }: { tone?: "dark" | "light" }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
-  // Three pages in the bar. The CV, Brand PDF and Socials live in the footer and on the About page.
+  // Four pages in the bar. The CV, Brand PDF and Socials live in the footer and on the About page.
   const links = [
     { label: "Work", href: "/work" },
     { label: "Services", href: "/services" },
+    { label: "Packages", href: "/packages" },
     { label: "About", href: "/about" },
   ];
   const more = [

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { useContent } from "./ContentProvider";
 import { ArrowUpRight, Reveal, SectionHead } from "./ui";
+import { Blob, BuildArt, GridPattern } from "./Art";
 
 export default function Services({ n = "02", cta = false }: { n?: string; cta?: boolean }) {
   const { services } = useContent();
@@ -12,6 +13,11 @@ export default function Services({ n = "02", cta = false }: { n?: string; cta?: 
 
   return (
     <section id="service" className="relative -mt-8 rounded-t-[2rem] bg-card px-5 pb-28 pt-16 md:px-10 md:pt-16">
+      <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden rounded-t-[2rem]">
+        <GridPattern className="inset-0" />
+        <Blob className="-right-24 top-0 w-[24rem] text-ember opacity-[0.07] md:-right-8 md:w-[32rem]" />
+      </div>
+      {cta && <BuildArt className="absolute right-4 top-6 z-0 w-28 sm:w-40 md:right-12 md:top-2 md:w-60" delay={0.15} />}
       <SectionHead n={n} title="Services" />
 
       <ul className="relative">

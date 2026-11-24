@@ -3,6 +3,7 @@ import Nav from "@/components/Nav";
 import Services from "@/components/Services";
 import Pricing from "@/components/Pricing";
 import Contact from "@/components/Contact";
+import { BuildArt } from "@/components/Art";
 import JsonLd from "@/components/JsonLd";
 import { getContent } from "@/lib/store";
 import { breadcrumbs, brandSchema, fullName, graph, personSchema } from "@/lib/seo";
@@ -37,7 +38,8 @@ export default async function ServicesPage() {
       />
       <main className="mx-auto max-w-[1600px] bg-[#111]">
         <Nav />
-        <header className="bg-paper px-5 pb-24 pt-32 text-ink md:px-10 md:pb-28 md:pt-44">
+        <header className="relative overflow-hidden bg-paper px-5 pb-24 pt-32 text-ink md:px-10 md:pb-28 md:pt-44">
+          <BuildArt className="absolute -right-3 top-28 hidden w-36 opacity-90 sm:right-6 sm:block sm:w-52 md:right-16 md:top-36 md:w-72" delay={0.2} />
           <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-ink/50">Services and pricing</p>
           <h1 className="mt-6 font-display text-[clamp(2.1rem,6.65vw,6.3rem)] font-bold leading-[1.02] tracking-[-0.03em]">
             What I can

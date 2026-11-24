@@ -4,13 +4,16 @@ import { useContent } from "./ContentProvider";
 import ContactLink from "./ContactLink";
 import { ArrowUpRight, Reveal } from "./ui";
 import { SocialIcon } from "./SocialIcon";
+import { FlameArt, GridPattern } from "./Art";
 
 /** Closes the page like the last sheet of the PDF: dark, one big line. */
 export default function Contact() {
   const { profile } = useContent();
   return (
     <section id="contact" className="relative -mt-8 overflow-hidden rounded-t-[2rem] bg-[#111] px-5 pb-8 pt-16 text-white md:px-10 md:pt-24">
-      <div className="mx-auto max-w-[1600px]">
+      <GridPattern className="inset-0 !text-white" />
+      <FlameArt light className="absolute right-4 top-24 hidden w-24 opacity-90 sm:block sm:w-36 md:right-16 md:top-28 md:w-56" delay={0.2} />
+      <div className="relative mx-auto max-w-[1600px]">
         <Reveal className="flex items-center justify-between text-[11px] font-semibold uppercase tracking-[0.18em] text-white/45">
           <span>04 / Contact</span>
         </Reveal>

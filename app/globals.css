@@ -294,3 +294,39 @@ body {
     animation: none;
   }
 }
+
+/* ---- Illustrations: lines draw in once, then the picture floats very gently ---- */
+.art-draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 1.8s var(--ease-out-expo) calc(var(--rd, 0s) + 0.25s);
+}
+.reveal.in .art-draw {
+  stroke-dashoffset: 0;
+}
+@keyframes art-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+.art-float {
+  animation: art-float 7s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .art-float {
+    animation: none;
+  }
+  .art-draw {
+    stroke-dashoffset: 0;
+    transition: none;
+  }
+}
+@media (scripting: none) {
+  .art-draw {
+    stroke-dashoffset: 0;
+  }
+}

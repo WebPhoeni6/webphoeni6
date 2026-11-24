@@ -8,6 +8,7 @@ import { ArrowUpRight, Cover, Reveal } from "./ui";
 import PreviewTile from "./PreviewTile";
 import PosterCover from "./PosterCover";
 import Latest from "./Latest";
+import { BrandArt } from "./Art";
 
 const filters: ("All" | Category)[] = ["All", "Development", "Design", "Branding"];
 
@@ -32,6 +33,7 @@ export default function Work({ limit, page = false }: { limit?: number; page?: b
           </span>
         </Reveal>
         <Reveal delay={0.08}>
+        <div className="flex items-end justify-between gap-6">
         {page ? (
           <h1 className="mt-6 font-display text-[clamp(2.1rem,6.65vw,6.3rem)] font-bold leading-[1.02] tracking-[-0.03em]">
             All
@@ -45,6 +47,8 @@ export default function Work({ limit, page = false }: { limit?: number; page?: b
             work
           </h2>
         )}
+        <BrandArt className="mb-2 hidden w-40 shrink-0 sm:block md:w-60" delay={0.2} />
+        </div>
         </Reveal>
 
         {!limit && <Reveal delay={0.16}><div className="no-scrollbar mt-10 flex gap-2 overflow-x-auto pb-1 text-[13px] font-medium md:mt-14">
@@ -84,6 +88,11 @@ export default function Work({ limit, page = false }: { limit?: number; page?: b
                     <div className="absolute inset-0 transition-transform duration-[1100ms] ease-[var(--ease-out-expo)] group-hover:scale-[1.04]">
                       <Cover p={p} />
                     </div>
+                  )}
+                  {p.concept && (
+                    <span className="absolute left-4 top-4 rounded-full bg-[#111]/85 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-white backdrop-blur">
+                      Concept project
+                    </span>
                   )}
                   <span className="absolute right-4 top-4 grid size-11 translate-y-2 place-items-center rounded-full bg-white text-[#111] opacity-0 shadow-lg transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
                     <ArrowUpRight className="size-4" />
